@@ -1,16 +1,16 @@
 %% This is file `mgr.cls',
 %%
-%% Plik LaTeX'owej klasy dokumentu wspomagającej pisanie pracy magisterskiej
+%% Plik LaTeX'owej klasy dokumentu wspomagajÄcej pisanie pracy magisterskiej
 %% oraz testowo pracy inzynierskiej
-%% na wydziale Elektroniki Politechniki Wrocławskiej
+%% na wydziale Elektroniki Politechniki WrocĹawskiej
 %%
 %% Autor: Adam Ratajczak
 %% www:http://rab.ict.pwr.wroc.pl/~ar/LaTeX/mgr.html
 %% Ostatnia modyfikacja: 06.06.2011
 %%
-%% Do pliku klasy dołączone są:
+%% Do pliku klasy doĹÄczone sÄ:
 %%  * plik instrukcji manual.pdf
-%%  * przykład użycia dyplom.tex [dyplom_inz.tex]
+%%  * przykĹad uĹźycia dyplom.tex [dyplom_inz.tex]
 %%
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
@@ -64,8 +64,8 @@
 %rozmiar kartki
 \setlength\paperheight {297mm}
 \setlength\paperwidth  {210mm}
-%wybranie odpowiedniej wielkości czcionki
-\ifnum\@ptsize=8 %poniżej definicja czcionki 8pt
+%wybranie odpowiedniej wielkoĹci czcionki
+\ifnum\@ptsize=8 %poniĹźej definicja czcionki 8pt
 \renewcommand\normalsize{%
    \@setfontsize\normalsize\@viiipt{9.5}%
    \abovedisplayskip 8\p@ \@plus4\p@ \@minus4\p@
@@ -153,10 +153,10 @@
 \def\@listvi {\leftmargin\leftmarginvi
               \labelwidth\leftmarginvi
               \advance\labelwidth-\labelsep}
-\else %pozostałe, standardowe czcionki
+\else %pozostaĹe, standardowe czcionki
   \input{bk1\@ptsize.clo}
 \fi
-%standardowe rozmiary i wartości liczników
+%standardowe rozmiary i wartoĹci licznikĂłw
 \setlength\lineskip{1\p@}
 \setlength\normallineskip{1\p@}
 \renewcommand\baselinestretch{}
@@ -174,7 +174,7 @@
 \setcounter{dbltopnumber}{2}
 \renewcommand\dbltopfraction{.7}
 \renewcommand\dblfloatpagefraction{.5}
-%definicje nagłówków i stopek
+%definicje nagĹĂłwkĂłw i stopek
 \if@twoside
   \def\ps@headings{%
       \let\@oddfoot\@empty\let\@evenfoot\@empty
@@ -234,7 +234,7 @@
 \textwidth 16cm
 \textheight 25cm 
 
-%definicje danych do utworzenia strony tyułowej
+%definicje danych do utworzenia strony tyuĹowej
 \if@pl
 \newcommand{\@naglowek}{PRACA DYPLOMOWA \\ MAGISTERSKA}
 \newcommand{\@napisProwadzacy}{Prowadz\k{a}cy prac\k{e}:}
@@ -260,11 +260,11 @@
 
 \renewcommand{\@author}{Brak autora\typeout{MGR.cls Warning: Brak podanego nazwiska autora, uzyj polecenia author}}
 \renewcommand{\author}[1]{\renewcommand{\@author}{#1}}
-\renewcommand{\@title}{Brak polskiego tytułu pracy dyplomowej\typeout{MGR.cls Warning: Brak podanego polskiego tytu\l{}u pracy dyplomowej, uzyj polecenia title }}  
+\renewcommand{\@title}{Brak polskiego tytuĹu pracy dyplomowej\typeout{MGR.cls Warning: Brak podanego polskiego tytu\l{}u pracy dyplomowej, uzyj polecenia title }}  
 \renewcommand{\title}[1]{\renewcommand{\@title}{#1}}
-\newcommand{\@engtitle}{Brak angielskiego tytułu pracy dyplomowej\typeout{MGR.cls Warning: Brak podanego angielskiego tytulu pracy dyplomowej, uzyj polecenia engtitle}}
+\newcommand{\@engtitle}{Brak angielskiego tytuĹu pracy dyplomowej\typeout{MGR.cls Warning: Brak podanego angielskiego tytulu pracy dyplomowej, uzyj polecenia engtitle}}
 \newcommand{\engtitle}[1]{\renewcommand{\@engtitle}{#1}}
-\newcommand{\@supervisor}{Brak prowadzącego\typeout{MGR.cls Warning: Brak podanego nazwiska prowadzacego, uzyj polecenia supervisor}}
+\newcommand{\@supervisor}{Brak prowadzÄcego\typeout{MGR.cls Warning: Brak podanego nazwiska prowadzacego, uzyj polecenia supervisor}}
 \newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
 \newcommand{\@guardian}{}
 \newcommand{\guardian}[1]{\renewcommand{\@guardian}{
@@ -273,12 +273,12 @@
 \vfill}}
 \newcommand{\@field}{Brak kierunku\typeout{MGR.cls Warning: Brak podanej nazwy kierunku studiow, uzyj polecenia field}}
 \newcommand{\field}[1]{\renewcommand{\@field}{#1}}
-\newcommand{\@specialisation}{Brak specjalności\typeout{MGR.cls Warning: Brak podanej nazwy specjalnosci, uzyj polecenia specialisation}}
+\newcommand{\@specialisation}{Brak specjalnoĹci\typeout{MGR.cls Warning: Brak podanej nazwy specjalnosci, uzyj polecenia specialisation}}
 \newcommand{\specialisation}[1]{\renewcommand{\@specialisation}{#1}}
 \renewcommand{\@date}{\the\year}
 \renewcommand{\date}[1]{\renewcommand{\@date}{#1}}
 
-%dodatkowe polecenia zmiany czcionki na 12pt dla poprawnego złożenia strony tytułowej
+%dodatkowe polecenia zmiany czcionki na 12pt dla poprawnego zĹoĹźenia strony tytuĹowej
 \newcommand\@normalsizetemp{%
    \@setfontsize\normalsize\@xiipt{14.5}%
    \abovedisplayskip 12\p@ \@plus3\p@ \@minus7\p@
@@ -316,9 +316,9 @@
 \newcommand\@huge{\@setfontsize\huge\@xxvpt{30}}
 \let\@Huge=\@huge
 
-%definicja tworząca stronę tytułową
+%definicja tworzÄca stronÄ tytuĹowÄ
 \def\maketitle{%
-%chwilowa podmiana czcionki na 12pt w celu złożenia strony tytułowej
+%chwilowa podmiana czcionki na 12pt w celu zĹoĹźenia strony tytuĹowej
 \setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
 \setlength\medskipamount{6\p@ \@plus 2\p@ \@minus 2\p@}
 \setlength\bigskipamount{12\p@ \@plus 4\p@ \@minus 4\p@}
@@ -385,7 +385,7 @@
 \let\huge=\@huge
 \let\@tempHuge=\Huge
 \let\Huge=\@Huge
-%usunięcie warningów podczas składania strony tytułowej
+%usuniÄcie warningĂłw podczas skĹadania strony tytuĹowej
 \newcount{\@temphbadness}
 \newcount{\@tempvbadness}
 \newlength{\@temphfuzz}
@@ -395,7 +395,7 @@
 \hbadness=10000
 \vbadness=10000
 \hfuzz=400pt
-%ustawienie nowych marginesów dla strony tytułowej
+%ustawienie nowych marginesĂłw dla strony tytuĹowej
 \newlength{\@temptextwidth}
 \@temptextwidth=\textwidth
 \textwidth=\paperwidth
@@ -439,12 +439,12 @@
 
 
 
-%właściwe składanie strony tytułowej
+%wĹaĹciwe skĹadanie strony tytuĹowej
 \begin{titlepage}% 
 
 %\layout
-\vbox{\vrule height44mm width0mm\\ \nopagebreak% odstęp od góry strony
-\begin{minipage}[c][63mm]{\textwidth} %górna ramka z uczelnią, wydziałem, kierunkiem i specjalnością oraz tekst "PRACA DYPLOMOWA MAGISTERSKA" zdefiniowane z pływającymi odległościami i z możliwością wielolinijkowych kierunek i specjalność
+\vbox{\vrule height44mm width0mm\\ \nopagebreak% odstÄp od gĂłry strony
+\begin{minipage}[c][63mm]{\textwidth} %gĂłrna ramka z uczelniÄ, wydziaĹem, kierunkiem i specjalnoĹciÄ oraz tekst "PRACA DYPLOMOWA MAGISTERSKA" zdefiniowane z pĹywajÄcymi odlegĹoĹciami i z moĹźliwoĹciÄ wielolinijkowych kierunek i specjalnoĹÄ
 \begin{center}\begin{minipage}[c][17mm]{16cm}
      \begin{center}                              %
          \@university%
@@ -454,7 +454,7 @@
 \begin{minipage}[c][\totalheight]{16cm}
 \mbox{}
 \vfill
-%korekcja rozmieszczenia napisów Kierunek: i Specjalność: w zależności od wysokości (ilości linijek) w nazwie kierunku lub specjalności
+%korekcja rozmieszczenia napisĂłw Kierunek: i SpecjalnoĹÄ: w zaleĹźnoĹci od wysokoĹci (iloĹci linijek) w nazwie kierunku lub specjalnoĹci
 \newlength{\@tempheightkier}
 \newlength{\@tempheighttkier}
 \settoheight{\@tempheighttkier}{\vbox{\@fieldtext}}
@@ -472,7 +472,7 @@
 \addtolength{\@tempheightspec}{\@tempheighttspec}
 \settoheight{\@tempheighttspec}{\vbox{\@specialisationtext}}
 \addtolength{\@tempheightspec}{-\@tempheighttspec}
-%tabelka składająca kierunek i specjalność
+%tabelka skĹadajÄca kierunek i specjalnoĹÄ
 \begin{tabular}{p{4.5cm}p{10.5cm}}
 \parbox{4.5cm}{\@fieldtext \vrule depth \@tempheightkier width 0pt} & \parbox{10cm}{\large \vrule height \@tempheighttkier width 0pt \@field}\\
 \parbox{4.5cm}{\@specialisationtext \vrule depth \@tempheightspec width 0pt } & \parbox{10cm}{\large \vrule height \@tempheighttspec width 0pt \@specialisation} 
@@ -482,13 +482,13 @@
 \end{center}\vspace{2cm}\vfill
 \end{minipage}\end{center}
 \end{minipage}\nopagebreak\linebreak
-{\begin{minipage}[c][7.5cm]{7.3cm} %ramka pozycjonująca
+{\begin{minipage}[c][7.5cm]{7.3cm} %ramka pozycjonujÄca
 \mbox{}
 %\fbox{My}\hfill\fbox{My}
 %\vfill
 %\fbox{My}\hfill\fbox{My}
 \end{minipage}}
-{\begin{minipage}[c][7.5cm][c]{11.2cm} %ramka z tytułami i autorem, widoczna w okienku okładki
+{\begin{minipage}[c][7.5cm][c]{11.2cm} %ramka z tytuĹami i autorem, widoczna w okienku okĹadki
 \begin{center}
 \begin{minipage}[c][7.3cm][c]{10.6cm}
 \begin{center}
@@ -511,19 +511,19 @@
 \end{minipage}
 \end{center}
 \end{minipage}}\nolinebreak
-{\begin{minipage}[c][7.5cm]{2.3cm} %ramka pozycjonująca
+{\begin{minipage}[c][7.5cm]{2.3cm} %ramka pozycjonujÄca
 \mbox{}
 \end{minipage}}\nopagebreak\linebreak
-{\begin{minipage}[c][9.5cm]{8.4cm} %ramka pozycjonująca
+{\begin{minipage}[c][9.5cm]{8.4cm} %ramka pozycjonujÄca
 \mbox{}
 \end{minipage}}
-{\begin{minipage}[c][9.5cm]{12.5cm} %ramka z promotorem i oceną
+{\begin{minipage}[c][9.5cm]{12.5cm} %ramka z promotorem i ocenÄ
 {\begin{minipage}[c][9.5cm]{10cm}
 \vfill
 {\Large\sc \@napisProwadzacy}\\[3mm]
 {\large \@supervisor}\\
 \vfill
-\@guardian %tego nie ma jeżeli nie jest zdefiniowane, a nie powinno się definiować jeżeli prowadzący i opiekun to ta sama osoba
+\@guardian %tego nie ma jeĹźeli nie jest zdefiniowane, a nie powinno siÄ definiowaÄ jeĹźeli prowadzÄcy i opiekun to ta sama osoba
 {\Large\sc \@napisOcena\\[20mm]}
 \vfill\mbox{}
 \end{minipage}}
@@ -535,22 +535,22 @@
    \begin{center}\large WROC\L{}AW \@date \end{center}
 \end{minipage}\end{center}
 \end{minipage}}
-\nopagebreak \vskip -30cm \pagebreak %zabieg nie pozwalający łamać strony
+\nopagebreak \vskip -30cm \pagebreak %zabieg nie pozwalajÄcy ĹamaÄ strony
 
-\end{titlepage}%koniec właściwego składania strony tytułowej
+\end{titlepage}%koniec wĹaĹciwego skĹadania strony tytuĹowej
 %
-%powrót do wcześniejszych wartości aby znów zgłaszać błędy o Over i Under fullach
+%powrĂłt do wczeĹniejszych wartoĹci aby znĂłw zgĹaszaÄ bĹÄdy o Over i Under fullach
 \hbadness=\@temphbadness
 \vbadness=\@tempvbadness
 \hfuzz\@temphfuzz
-%powrót do standardowych marginesów itp
+%powrĂłt do standardowych marginesĂłw itp
 \topmargin=\@temptopmargin
 \headheight=\@tempheadheight
 \headsep=\@tempheadsep
 \oddsidemargin=\@tempoddsidemargin
 \evensidemargin=\@tempevensidemargin
 \textwidth=\@temptextwidth
-%powrót z rozmiaru 12pt do rozmiaru czcionki zależnego od wyboru
+%powrĂłt z rozmiaru 12pt do rozmiaru czcionki zaleĹźnego od wyboru
 \let\normalsize=\@tempnormalsize
 \let\small=\@tempsmall
 \let\footnotesize=\@tempfootnotesize
@@ -574,10 +574,21 @@
   \global\let\date\relax
   \global\let\and\relax
 }
-%nowe polecenie dla złożenia opcjonalnej dedykacji
-
+%nowe polecenie dla zĹoĹźenia opcjonalnej dedykacji
+\newcommand{\dedication}[2]{%
+\if@archive\else
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{empty}%
+  \setcounter{page}\@ne
+  \mbox{}\vfill
+  \hfill
+  \parbox{#1}{\itshape#2}\hspace{1.5cm}
+  \if@openright\vspace{1.5cm}\cleardoublepage\else\vspace{5.5cm}\clearpage\fi
+  \setcounter{page}\@ne
+\fi
+}
 %
-%kod nie zmieniony z klasy book.cls, czyli definicje poleceń podziału dokumentu i innych poleceń i otoczeń
+%kod nie zmieniony z klasy book.cls, czyli definicje poleceĹ podziaĹu dokumentu i innych poleceĹ i otoczeĹ
 \newcommand*\chaptermark[1]{}
 \setcounter{secnumdepth}{2}
 \newcounter {part}
@@ -856,7 +867,7 @@
 \newlength\belowcaptionskip
 \setlength\abovecaptionskip{10\p@}
 \setlength\belowcaptionskip{0\p@}
-%tutaj jest zmiana, zostały usunięte dwukropki
+%tutaj jest zmiana, zostaĹy usuniÄte dwukropki
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
   \sbox\@tempboxa{#1~~#2}%
@@ -1012,7 +1023,7 @@
   \onecolumn
 \fi
 
-%poniżej kod usuwający paginę z pustych stron na końcu rozdziałów przy włączonej opcji openright, zaczerpnięte od American Mathematical Society ze strony http://www.ams.org/authors/author-faq.html
+%poniĹźej kod usuwajÄcy paginÄ z pustych stron na koĹcu rozdziaĹĂłw przy wĹÄczonej opcji openright, zaczerpniÄte od American Mathematical Society ze strony http://www.ams.org/authors/author-faq.html
 \let\cleardouble@page\cleardoublepage
 \AtBeginDocument{%
   \ifx\cleardouble@page\cleardoublepage

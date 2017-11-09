@@ -5,11 +5,10 @@
 %opcje klasy dokumentu mgr.cls zostały opisane w dołączonej instrukcji
 
 %poniżej deklaracje użycia pakietów, usunąć to co jest niepotrzebne
-\usepackage{polski} %przydatne podczas składania dokumentów w j. polskim
-%\usepackage[polish]{babel}%alternatywnie do pakietu polski, wybrać jeden z nich
-\usepackage[cp1250]{inputenc} %kodowanie znaków, zależne od systemu
+%\usepackage{polski} %przydatne podczas składania dokumentów w j. polskim
+\usepackage{polski}
+\usepackage[cp1250]{inputenc}
 \usepackage[T1]{fontenc} %poprawne składanie polskich czcionek
-
 %pakiety do grafiki
 \usepackage{graphicx}
 \usepackage{subfigure}
@@ -33,17 +32,19 @@
 \newtheorem{theorem}{Twierdzenie}[section] %nowe otoczenie do składania twierdzeń
 
 %dane do złożenia strony tytułowej
-\title{Tytuł pracy inżynierskiej}
-\engtitle{English title}
-\author{Jan Nowak}
-\supervisor{dr hab. inż. Imię Nazwisko Prof. PWr, I-6}
+\title{System lokalizacji samolot\.'ow z wykorzystaniem ADS-B}
+\engtitle{Airplane tracking system using ADS-B}
+\author{Karol Szpila}
+\supervisor{\vfil dr in\.z. Krzysztof Halawa\\
+\\ Katedra Informatyki Technicznej}
 %\guardian{dr hab. inż. Imię Nazwisko Prof. PWr, I-6} %nie używać jeśli opiekun jest tą samą osobą co prowadzący pracę
 
 %\date{2008} %standardowo u dołu strony tytułowej umieszczany jest bieżący rok, to polecenie pozwala wstawić dowolny rok
 
 %poniżej jest lista kierunków i specjalności na wydziale elektroniki, należy wybrać właściwe lub dopisać jeśli nie ma odpowiednich
 \field{Automatyka i Robotyka (AIR)}
-\specialisation{Robotyka (ARR)}
+\specialisation{Technologie Informacyjne\\ w Systemach Automatyki (ART)}
+%\specialisation{Robotyka (ARR)}
 %\specialisation{Komputerowe sieci sterowania (ARK)}
 %\specialisation{Systemy informatyczne w automatyce (ASI)}
 %\specialisation{Komputerowe systemy zarządzania \\procesami produkcyjnymi (ARS)}
@@ -76,7 +77,7 @@
 \tableofcontents %spis treści
 
 %poniżej znajduje się przykładowa treść dalszej części dokumentu, zainteresowanych zachęcam do rozszyfrowania frazy "Lorem ipsum" :)
-\chapter{Lorem ipsum}
+\chapter{Za\l{}o\.zenia projektowe}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam neque. Morbi interdum. Sed nibh nunc, imperdiet non, malesuada blandit, tempor vel, odio. Aenean in leo ut nulla tempor blandit. Praesent bibendum. Praesent varius imperdiet dolor. Etiam urna eros, lacinia at, scelerisque quis, fringilla vel, lectus. Ut sit amet dui ac pede lobortis varius. Integer mattis, neque non ornare consequat, libero tellus luctus elit, a tempor pede massa nec orci. Aenean ante lacus, feugiat in, lacinia sit amet, lobortis at, leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Morbi ac ipsum eget est rutrum porttitor. Duis sapien. Sed vel quam. Nullam volutpat facilisis magna. 
 
 Proin iaculis. Proin eu risus et metus hendrerit fermentum. Cras a magna. Nullam at massa sit amet nibh tempor pretium. Donec neque sapien, viverra vel, vestibulum a, vestibulum eu, dolor. Quisque imperdiet pellentesque odio. Praesent eget erat. Praesent tempus odio vitae elit. Nunc sit amet elit. Proin id sapien. Proin a ipsum. Cras rutrum sem eget sapien. Maecenas eu ligula ut turpis ullamcorper mollis. Morbi quam ante, adipiscing eget, sagittis id, molestie id, odio. Maecenas tristique. 
