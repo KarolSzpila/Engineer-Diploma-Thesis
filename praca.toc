@@ -1,7 +1,15 @@
-\contentsline {chapter}{\numberline {1}Za\l {}o\.zenia projektowe}{3}
-\contentsline {chapter}{\numberline {2}Quisque nibh sapien}{5}
-\contentsline {section}{\numberline {2.1}Nulla quis enim ut erat rutrum feugiat}{5}
-\contentsline {section}{\numberline {2.2}Aliquam quis sem}{6}
-\contentsline {chapter}{\numberline {3}Nulla a nisl at nisl dignissim facilisis}{9}
-\contentsline {chapter}{\numberline {A}Donec cursus nulla vitae pede}{11}
-\contentsline {chapter}{Bibliografia}{12}
+\contentsline {chapter}{\numberline {1} Wst\IeC {\k e}p }{2}
+\contentsline {subsection}{\numberline {1.0.1}Automatic dependent surveillance \IeC {\textendash } broadcast}{2}
+\contentsline {chapter}{\numberline {2} Cele i za\IeC {\l }o\IeC {\.z}enia projektowe }{3}
+\contentsline {chapter}{\numberline {3} Realizacja projektu }{4}
+\contentsline {section}{\numberline {3.1} Warstwa sprz\IeC {\k e}towa}{4}
+\contentsline {subsection}{\numberline {3.1.1}Zasilanie}{4}
+\contentsline {subsection}{\numberline {3.1.2}Mikrokontroler}{5}
+\contentsline {subsection}{\numberline {3.1.3}Pami\IeC {\k e}\IeC {\'c} SDRAM}{6}
+\contentsline {subsection}{\numberline {3.1.4}Modu\IeC {\l } GPS}{6}
+\contentsline {subsection}{\numberline {3.1.5}Wyswietlacz}{7}
+\contentsline {subsection}{\numberline {3.1.6}Interfejsy komunikacyjne}{7}
+\contentsline {section}{\numberline {3.2} Warstwa Programowa }{8}
+\contentsline {subsection}{\numberline {3.2.1}System Operacyjny}{8}
+\contentsline {chapter}{\numberline {4} Podsumowanie }{9}
+\contentsline {chapter}{Bibliografia}{9}
