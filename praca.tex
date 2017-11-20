@@ -25,7 +25,8 @@
 \usepackage{hhline}
 
 %pakiet wypisujący na marginesie etykiety równań i rysunków zdefiniowanych przez \label{}, chcąc wygenerować finalną wersję dokumentu wystarczy usunąć poniższą linię
-\usepackage{showlabels}
+%\usepackage{showlabels}
+
 
 %definicje własnych poleceń
 \newcommand{\R}{I\!\!R} %symbol liczb rzeczywistych, działa tylko w trybie matematycznym
@@ -81,13 +82,20 @@
 
 \chapter{ Wstęp }
 
-\subsection{Automatic dependent surveillance – broadcast}
 ADS-B jest systemem śledzenia położenia statków powietrznych mający uzupełiac pracę PSR (eng. Primary Surveilance Radar). PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od obiektu. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem. ADS-B polega na automatycznym wysyłaniu pozycji statku powietrznego określonego przy pomocy pokładowego systemu GPS w przestrzeń, tak że zarówno kontrola naziemna jak i pobliskie samoloty są w stanie odebrać tą wiadomość. 
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{images/adsb_how_works.jpg}
+    \caption{\textit{\scriptsize Schemat podłączenia mikrokontrolera STM32f767ZIT6}}
+\end{figure}
+
 \chapter{ Cele i założenia projektowe }
-Celem niniejszej pracy by\l{}o zbudowanie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w nadajniki ADS-B.                                                                                                                                                                                                                                                                                                                                                            
+Celem niniejszej pracy by\l{}o zbudowanie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w transpondery ADS-B.
+System zostanie zbudowany w oparciu o mikrokontroler z rodziny STM32F7 ze względu na parametry sprzętowe i peryferia. 
+Jako radio do odbierania wiadomości ADS-B zostanie wykorzystany tuner DVB-T USB ze względu na niską cenę oraz gotowe biblioteki pozwalające łatwo przekształcić urządzenie w SDR (ang. Software Defined Radio). SDR to programowalne radio które można dostroić do obierania zadanej częstotliwości bez ingerencji w sprzęt. Wykorzystane zostaną do tego biblioteki STM32 USB Host i rtlsdr. Urządzenie zostanie wyposażone w wyświetlacz prezentując zebrane dane jako                                                                                                                                                                                                                                                                                                                                            obraz radaru z pozycją samolotu względem systemu oraz tabelą z informacjami dodatkowymi. Wykorzystana zostanie do tego biblioteka STemWin bedąca dedykowaną wersją emWin dla mikrokontrolerów ST.
 \chapter{ Realizacja projektu }
-\section{ Warstwa sprzętowa}
+\section{ Schemat Urządzenia}
 W tym rozdziale zostanie opisana czę\'s\'c sprzętowa projektu, czyli schemat urządzenia oraz projekt PCB, wykorzystane elementy oraz zewnętrzne urządzenia.
 \subsection{Zasilanie}
 Urządzenie jest zasilanie z zewnętrznego źródła 5V poprzez port USB typu mini A. Pozwala to na podłącznie PCB zarówno do sieci przy pomocy ładowarki do telefonu jak i z komputera czy z przenośnego power banku. Ponieważ układy takie jak mikrokontroler czy pamieć SDRAM potrzebują napięcia 3.3V zastosowano stabilizator LM1117 Poniżej przedstawiono schemat podłączania.
@@ -106,8 +114,26 @@ Wykorzystany mikrokontroler to STM32F767ZIT6. Układ został wybrany ze względu
     \caption{\textit{\scriptsize Schemat podłączenia mikrokontrolera STM32f767ZIT6}}
 \end{figure}
 
-\subsection{Pamięć SDRAM}
-Do systemu dodano zewnętrzą pamięć SDRAM do buforowania ramek przekazywanych do wyświtlacza. Wewnętrza pamieć SRAM mikrokontrolera była niewystarczająca. Zdecydowano się na układ IS42S16400J-7TLI. Poniżej przedstawiono schemat podłaczenia.
+\subsection{Interfejsy komunikacyjne}
+System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do przechowywania skompresowanych obrazów do tła GUI lub co planowane jest w przyszłości map pozwalających lepiej orientować się w terenie na podstawie obrazu z radaru. Do programowania mikrokontrolera wykorzystany został dedykowany dwuprzeowodowy interfejs SWD zgodny z ST-Link. Ostatni zostanie omówiony interfejs USB do komunikacji z SDR (eng Software Defined Radio). Interfejs został wyprowadzony poprzez gniazdo Micro USB-B pozwalając w ten sposób zaoszczędzić miejsca na PCB. System jako Host USB będzie zasilać podłączony układy których pobór nie powinien przekroczyć, zgodznie ze stangardem USB2.0 500mA ,dlatego zastosowano power switch STMPS2141STR. W przypadku podania stanu wysokiego na pin USB PSO switch zostanie właczony. Jeżeli nie występują żadne sytuacje nieporządne takie jak przetężenie prądowe czy zwarcie, zapali się zielona dioda sygnalizująca poprawnie działanie zasilania. W przypadku jakichkolwiek problemów prąd zostanie natychmiast odcięty a układ wystawi wysoki stan na pin FAULT informując mikrokontroler i zapalając czerwona diodę. W celu zabezpieczania interfejsu przed nieporządanymi wyładowaniami elektrostatycznymi związanymi z dotykaniem urządzenia czy wkładaniem urządzenia do gniazda zastosowano układ ochrony ESD (ang . Electro Static Discharge ) STMECMF02-4CMX8 dedykowany dla USB2.0. Poniżej przedstawiono schemat połacznia na PCB.
+ %sprawdzic czy prawda z h na faul
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{schematics/conn.png}
+    \caption{\textit{\scriptsize Schemat podłączenia zewnętrych interfejsów}}
+\end{figure}
+
+\subsection{Wyświetlacz}
+Zgodnie z założeniem, system ma posiadać interfejs graficzny dla użytkownika. Do tego celu wybrano wyświetlacz HY101CTP o przekątnej 10,1" i rozdzielczości 1024 na 600 pikseli. Matryca jest sterowana poprzez MIPI-DPI (ang. Mobile Industry Processor Interface - Display Parell Interface) 24bity na pikesl przy użyciu wbudowanego w układ STM32F7 kontrolara LTDC. Panel dotykowy komunikuje się z mikrokontrolerem poprzez interfejs I2C. Rezystory R3 i R8 mają za zadanie wymusić stan wysoki na liniach, ponieważ są sterownie w trybie otwartego drenu. W tej konfiguracji można tylko zewrzeć linie do masy zmieniając stan wysoki na niski. Pozwoliło to wyeliminować sytuacje w której linia na jednym końcu jest zwarta do masy a na drugim do zasilania co doprowadziło by do zwarcia i gwałtownego wzrostu mocy mogącego uszkodzić układ.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{schematics/display.png}
+    \caption{\textit{\scriptsize Schemat podłączenia wyswietlacza}}
+\end{figure}
+
+\subsection{SDRAM}
+Do działania interfejsu graficznego potrzebna jest pamięć do przechowywania ramek wysyłanych do wyświetlacza poprzez interfejs MIPI-DPI. Założono iż warstwy będą przechowywane w pamięci w formacie ARGB8888 (po bajcie na każdy kolor i kanał alfa). Kontroler LTDC jest w stanie sprzętowo mieszać dwie warstwy w wynikową która jest wysyłana do wyświetlacza. Zdecydowano, że potrzeba pamięci wystarczająco dużej, by zmieścić trzy bufory. Pierwsza warstwa byłaby przeznaczony na tło, które jest niezmienne podczas działania urządzenia. Dwie pozostałe warstwy służyłby do naprzemiennej prezentacji zmiennych danych takich jak położenie statku powietrznego. Będzie to implementacja mechanizmu podwójnego buforowania pozwalająca wyeliminować migotanie matrycy podczas modyfikacji bufora aktualnie wyświetlanego. Trzy warstwa o rozmiarze 1024 na 600 piskeli w formacie ARGB8888 zajmą 57600 Kb. W pracy zdecydowano się wykorzystać układ IS42S16400J-7TLI posiadający 65536 Kb pamięci. Poniżej przedstawiono schemat połączenia z mikrokontrolerem.
 
 \begin{figure}[!h]
     \centering
@@ -116,33 +142,288 @@ Do systemu dodano zewnętrzą pamięć SDRAM do buforowania ramek przekazywanych
 \end{figure}
 
 \subsection{Moduł GPS}
-Aby system był w stanie popranie obliczyć odległość od namierzonego statu powietrznego i poprawnie zaznaczyć jego pozycję na radarze, potrzebna znać pozycje urządzenia. Do tego zadania wybrano układ NEO-6M-0-001 z zewnętrzną aktywną anteną. Układ posiada baterie podtrzymującą napięcie zasilania.
+Aby system był w stanie popranie obliczyć odległość od namierzonego statu powietrznego i poprawnie zaznaczyć jego pozycję na radarze, potrzebna znać pozycje urządzenia. Do tego zadania wybrano układ NEO-6M-0-001 z zewnętrzną aktywną anteną. Do układu została podłączono zewnętrza bateria podtrzymująca zasilanie. Dzieki temu urządzenie może uruchomić poprzez ciepły start, co pozwala zaoszczędzić czas potrzebny na znalezienie odpowiedniej liczby satelit Do komunikacji z mikrokontrolerem wybrano interfejs UART.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/gps.png}
-    \caption{\textit{\scriptsize Schemat podłączenia modułu GPS}}
+    \caption{\textit{ Schemat podłączenia modułu GPS}}
 \end{figure}
+\newpage
 
-\subsection{Wyswietlacz}
-Formę interfejsu graficznego dla użytkownika pełni 10,1" wyświetlacz HYC o rozdzielczości 1024 na 600 piskeli
-%dopisac cos o rbg i dopasowanii
+\section{ Wykonanie PCB }
+W tym rozdziale szczegółowo opisano projekt oraz parametry wykonanego PCB. Pokazano obliczenia uzasadniające decyzje projektowe oraz ograniczenia wynikające z technologi produkcji i zastosowanych układów. 
+
+\subsection{Parametry PCB} \label{pcbSection}
+W projekcie PCB zdecydowano się na wykonanie technologia czterowarstwową. Pozwoliło to zmniejszyć rozmiary urządzenia oraz zapewnić dobre ekranowanie dla pomiędzy warstwami sygnałowymi. Ograniczyło to przesłuchy pomiędzy warstwami. Ponadto ciągłość warstw referencyjnych (masy i zasilania) pozwala by prądy powrotne przepływało możliwe najkrótszą drogą o najmniejszej impedancji zmniejszając emisje EMC. Poniżej przedstawiono tabele z układem warstw PCB.
+
+\begin{table}[htb]
+
+\caption{\textit{ Kolejność i grubość warst PCB}}
+\label{tab:pcbStack}
+\begin{center}
+\begin{tabular}{ |c|c|c|c| }
+\hline
+Warstwa& grubość [mm] & grubość [mil] \\ 
+\hline
+sygnały & 0.03556 & 1,4 \\ 
+\hline
+dielektryk & 0,17018 & 6,7\\ 
+\hline
+masa & 0,01778 & 0,7\\ 
+\hline
+rdzeń & 1,1938 & 47\\ 
+\hline
+zasilanie & 0,01778 & 0,7\\ 
+\hline
+dielektryk & 0,17018 & 6,7\\ 
+\hline
+sygnały & 0.03556 & 1,4 \\ 
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Warstwy przewodzące wykonane są z miedzi natomiast jako dielektryk wykorzystano materiał FR-408 o stałej dielektrycznej \textbf{$\varepsilon_r$} = 3.66
+
+\subsection{GPS}
+Zgodnie z notą katalogową układu NEO-6M-0-001, ścieka antenowa powinna mieć impedancję dopasowaną do Z\textsubscript{0} = 50\textbf{$\Omega$}, którą obliczono z następującego wzoru :
+\begin{equation}
+Z_0= \frac{87}{\sqrt{\varepsilon_r + 1.41}}\ln{\left(\frac{5.98H}{0.8W + T}\right)} \label{eq:gps_z0}
+\end{equation}
+dla 
+$$
+0,1 < W/H < 2,0
+$$
+$$
+1 < \varepsilon_r < 15
+$$
+gdzie
+\begin{itemize}
+  \item \textbf{$\varepsilon_r$} - stała dielektryczna
+  \item H - grubość dielektryka
+  \item W - szerokość ścieżki
+  \item T - grubość ścieżki
+\end{itemize}
+\newpage
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=\textwidth]{schematics/display.png}
-    \caption{\textit{\scriptsize Schemat podłączenia wyswietlacza}}
+    \includegraphics[width=\textwidth]{plots/gpsZ0.png}
+    \caption{\textit{\scriptsize Impedancja ścieżki w zależności od szerokości ścieżki}}
 \end{figure}
 
-\subsection{Interfejsy komunikacyjne}
-System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do przechowywania skompresowanych obrazów do tła GUI lub co planowane jest w przyszłości map pozwalających lepiej orientować się w terenie na podstawie obrazu z radaru. Do programowania mikrokontrolera wykorzystany został dedykowany dwuprzeowodowy interfejs SWD zgodny z ST-Link. Ostatni zostanie omówiony interfejs USB do komunikacji z SDR (eng Software Defined Radio). Interfejs został wyprowadzony poprzez gniazdo Micro USB-B pozwalając w ten sposób zaoszczędzić miejsca na PCB. System jako Host USB będzie zasilać podłączony układy których pobór nie powinien przekroczyć, zgodznie ze stangardem USB2.0 500mA ,dlatego zastosowano power switch STMPS2141STR. W przypadku podania stanu wysokiego na pin USB PSO switch zostanie właczony. Jeżeli nie występują żadne sytuacje nieporządne takie jak przetężenie prądowe czy zwarcie, zapali się zielona dioda sygnalizująca poprawnie działanie zasilania. W przypadku jakichkolwiek problemów prąd zostanie natychmiast odcięty a układ wystawi wysoki stan na pin FAULT informując mikrokontroler i zapalając czerwona diodę. W celu zabezpieczania interfejsu przed nieporządanymi wyładowaniami elektrostatycznymi związanymi z dotykaniem urządzenia czy wkładaniem urządzenia do gniazda zastosowano układ ochrony ESD (ang . Electro Static Discharge ) STMECMF02-4CMX8 dedykowany dla USB2.0.
- %sprawdzic czy prawda z h na faul
+Powyższy wykres przedstawia impedancję ścieżki w zależności od szerokości dla anteny modułu GPS obliczoną ze wzoru ~\ref{eq:gps_z0} z parametrami $T = 1,4 mils$ i $H = 6,7 mils$ wziętymi z tabeli ~\ref{tab:pcbStack}. Czerwoną linią zaznaczono pożądane dopasowanie $Z_0 = 50 \Omega$. Założono że W zostanie obliczone z dokładnością do 1 mils. Obliczenia wykonano zaczynając od najmniejszej szerokości gwarantowanej przez producenta $W = 5 mils$, aż do punktu pod prostą z optymalnym dopasowaniem. Najlepsze dopasanie otrzymano dla $W = 12 mils$, gdzie $Z_0 \approx 49.95$
+Dla takiego $Z_0$ obliczono współczynnik odbicia, który reprezentuje jaka część sygnału została stracona w wyniku niedopasowania impedancji przy przejściu pomiędzy liniami transmisyjnymi.
+
+\begin{equation}
+\Gamma= \frac{Z_l - Z_s}{Z_l + Z_s} \label{eq:gammaGPS}
+\end{equation}
+gdzie
+\begin{itemize}
+  \item $Z_l$ - impedancja obciążenia, w tym przypadku impedancja lini transmisyjnej $Z_0 = 49,95 \Omega$
+  \item $Z_s$ - impedancja źródła, czyli wejścia antenowego modułu GPS, zgodnie z notą katalogową $Z_s = 50 \Omega$
+\end{itemize}
+
+Korzystając ze wzoru ~\ref{eq:gammaGPS} obliczono:
+\begin{equation}
+\Gamma= \frac{Z_0 - Z_s}{Z_0 + Z_s} = \frac{49,59\Omega -50\Omega}{49,59\Omega  + 50\Omega } \approx 0.0005
+\end{equation}
+
+W przeliczeniu na procenty daje to $\Gamma \cdot 100\% = 0.0005 \cdot 100\% = 0.05\%$ sygnału odbitego przez linie transmisyjną. Jest to wartość akceptowalna zatem pozostano prze szerokości $W = 12 mils$.\\
+
+Zgodnie z zaleceniami noty katalogowej wykonano serię przelotek pod i do okola układu GPS (U2). Ten sam zabieg zastosowano również dla ścieżki antenowej (pomiędzy J1 i U2). Zapewniło to lepsze odprowadzanie ciepła przez moduł, a zatem niższą temperaturę pracy i mniejsza emisję EMC. Poniżej zaprezentowano zdjęcie z projektem.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=15cm]{pcb/gps.png}
+    \caption{\textit{\scriptsize Projekt PCB dla GPS}}
+\end{figure}
+
+\subsection{USB}
+W projekcie wykorzystano wbudowany w mikrokontroler kontroler interfejsu USB2.0 High-Speed o maksymalnej przepustowości 12Mb/s. Zgodnie ze standardem, należy dopasować impedancję różnicową pomiędzy liniami transmisyjnymi sygnału nieodwróconego i odwróconego do 90 \textbf{$\Omega$}. Poniżej przedstawiono zastosowany wzór oraz obliczenia.
+\begin{equation}
+Z_0= \frac{174}{\sqrt{\varepsilon_r + 1.41}}\ln{\left(\frac{5.98H}{0.8W + T}\right)} \left(1-0.48e^{(-0.96\frac{D}{H})}\right) \label{eq:usb_zd}
+\end{equation}
+dla 
+$$
+0,1 < W/H < 2,0
+$$
+$$
+1 < \varepsilon_r < 15
+$$
+gdzie
+\begin{itemize}
+  \item \textbf{$\varepsilon_r$} - stała dielektryczna
+  \item H - grubość dielektryka
+  \item W - szerokość ścieżki
+  \item T - grubość ścieżki
+  \item D - odległość pomiędzy ścieżkami
+\end{itemize}
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=\textwidth]{schematics/conn.png}
-    \caption{\textit{\scriptsize Schemat podłączenia zewnętrych interfejsów}}
+    \includegraphics[width=\textwidth]{plots/usbzD.png}
+    \caption{\textit{\scriptsize Impedancja różnicowa w zależności od szerokości ścieżki}}
 \end{figure}
+
+Poniższy wykres przedstawia impedancję różnicową lini transmisyjnych interfejsu USB w zależności od szerokości obliczoną ze wzoru ~\ref{eq:usb_zd} z parametrami $T = 1,4 mils$ i $H = 6,7 mils$ wziętymi z tabeli ~\ref{tab:pcbStack}. Założono odległość pomiędzy ścieżkami $ D = 8mils$ równą rozstawowi padów w mikrokontrolerze. Czerwoną linią zaznaczono pożądane dopasowanie $Z_d = 90 \Omega$. Założono że W zostanie obliczone z dokładnością do 1 mils. Obliczenia wykonano zaczynając od najmniejszej szerokości gwarantowanej przez producenta $W = 5 mils$, aż do punktu pod prostą z optymalnym dopasowaniem. Najlepsze dopasanie otrzymano dla $W = 11 mils$, gdzie $Z_d \approx 89.56$. Zgodnie ze specyfikacją interfejsu USB2.0 Full-speed (12 Mb/s) impedancja różnicowa musi wynosić $Z_d = 90 \pm 15\%$. Zatem $ 76,5\Omega <= Z_d <= 103,5\Omega$. $Z_d$ obliczone dla $W = 11mils$ spełnia to wymaganie.
+
+Wszystkie elementy zostały umieszczone na górnej warstwie sygnałowej, aby nie stosować przelotek które wprowadzając niepożądane pojemności i indukcyjności linii transmisyjnym. Ścieżki są zaginane po kątem nie większym niż 45$^\circ$.Warstwą referencyjną dla sygnałów jest warstwa masy co zapewnia lepsze ekranowanie dla sygnałów szybkich. Linie różnicowe są oddzielone polem masy od innych sygnałów o co najmniej 50mils (1.27mm). Zastosowanie powyższych reguł pozwoliło ograniczyć zjawiska utrudniające dopasowania impedancji. Wspominanie w rozdziale schematu rezystory R5 i R4 służą jako szeregowa terminacja sygnału. Dzięki temu zabiegowi czasy narastania zboczy się większe co zmniejsza generowanie zakłócenia EMC. Układ U6 działa jako zabezpieczenie przeciwko wyładowaniom elektrostatycznym mogącym uszkodzić urządzenie oraz jako dodatkowy filtr EMC.Zgodnie z notą katalogową katalogową układu STM32F767xx ich rezystancja wynosi 22 \textbf{$\Omega$}. Poniżej przedstawiono część projektu PCB z interfejsem USB.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=9cm]{pcb/usb.png}
+    \caption{\textit{\scriptsize Projekt PCB dla interfejsu USB}}
+\end{figure}
+
+\subsection{Interfejsy szybkie}
+Częstotliwość sygnału zegarowego FMC wynosi $108Mhz$. W przypadku komunikacji z wyświetlaczem szybkość interfejsu zależy od oczekiwanej liczby klatek na sekundę. Częstotliwość sygnału zegarowego dla interfejsu MIPI-DPI wyraża się wzorem:
+\begin{equation}
+CLK = W \cdot H \cdot fps \label{eq:fps}
+\end{equation}
+gdzie:
+\begin{itemize}
+  \item W - szerokość matrycy w pikselach
+  \item H - wysokość matrycy w pikselach
+  \item fps - częstotliwość odświeżania ekranu
+\end{itemize}
+Dla użytego w projekcie wyświetlacza przy założeniu odświeżania matrycy 60Hz korzystając z równania ~\ref{eq:fps} otrzymujemy:
+$$
+CLK = 1024 \cdot 600 \cdot 60Hz = 614400 \cdot 60Hz = 36864000 Hz \approx 37MHz
+$$
+Interfejsy o takich częstotliwościach zostały uznane za szybkie, co za tym idzie podjęto dodatkowe działania podczas projektowania ich linii transmisyjnych. Zadbano by warstwy referencyjne pod ścieżkami sygnałowymi były ciągłe, aby zapewnić ekranowanie i ograniczyć przesłuchy od linii po przeciwnej stronie płytki. Ponadto dopasowano długości wszystkich ścieżek w interfejsie, by sygnały przychodziły w tym możliwie podobnym czasie. Wzorując się na projekcie referencyjnym płytki ewaluacyjnej STM32F746G-DISCO zadbano, by różnica długości pomiędzy ścieżkami dla obu interfejsów nie była większa niż $100 mils$.Opóźnienie linii transmisyjnej, czyli czas jaki sygnał potrzebuje na pokonanie określonej drogi wyraża się wzorem:
+\begin{equation}
+t = \frac{l \sqrt{\varepsilon_r}}{c} \label{eq:td}
+\end{equation}
+gdzie
+\begin{itemize}
+  \item l - długość linii transmisyjnej
+  \item \textbf{$\varepsilon_r$} - stała dielektryczna 
+  \item c - szybkość rozchodzenia się fali w próżni
+\end{itemize}
+Korzystając ze wzoru ~\ref{eq:td} dla parametrów $l = 0.00254m$ $(100 mils)$ i $c = $ $299$ $792$ $458\frac{m}{s}$ oraz $\varepsilon_r =3,66$ obliczono opóźnienie sygnału czyli maksymalny odstęp czasu w jakim dzieli sygnały w liniach o długości różniącej się o $100mils$.
+$$
+t = \frac{0.00254m \sqrt{3,66}}{299 792 458\frac{m}{s}} = \frac{0.00485931m}{299 792 458\frac{m}{s}} = 1.621\cdot10^-11 = 16,21 ps
+$$
+
+Wyświetlacz jest sterowny bezpośrednio poprzez interfejs LVDS (ang. Low Voltage Differential Signaling), jednak  posiada również wbudowany konwerter THC63LVDM83D pozwalający na komunikację ze pomocą MIPI-DPI. Oznacza to, że wszelkie ograniczenia czasowe powinny być rozpatrywane względem wspomnianego wcześniej układu. Wyjścia
+mikrokontrolera zmieniają się przy zboczu opadającym sygnału zegarowego, natomiast są zatrzaskiwane przez konwerter przy zboczu narastającym. Wszystkie sygnały powinny dojść do wyświetlacza od momentu wystąpieniem zbocza opadającego do narastającego z uwzględnieniem czasu ustalenia się sygnału (ang. Setup Time). Jest to najpóźniejszy moment w którym muszą ustalić się stany na wszystkich liniach przed przyjściem sygnału taktującego. Poniżej przedstawiono diagram ilustrujący opisane ograniczenia czasowe.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=10cm]{plots/timing.png}
+    \caption{\textit{\scriptsize Diagram ograniczeń czasowych}}
+\end{figure}
+
+Zatem maksymalna rozbieżność czasowa pomiędzy sygnałami wyraża się wzorem.
+\begin{equation}
+t_{max} = t_{low}- t_{setup} \label{eq:timing}
+\end{equation}
+gdzie
+\begin{itemize}
+  \item \textbf{$t_{low}$} - czas trwania stanu niskiego dla sygnału zegarowego
+  \item \textbf{$t_{setup}$} - czas ustalania dla sygnału
+\end{itemize}
+
+Z noty katalogowej mikrokontrolera odczytano że stan niski dla sygnał zegarowego LTDC wynosi minimalnie $45\%$
+okresu sygnału zegarowego obliczonego z równania ~\ref{eq:fps}zatem:
+$$
+t_{low} = \frac{1}{36864000Mhz} \cdot 45\% = 27127ps\cdot45\% = 12207ps
+$$
+W nocie THC63LVDM83D znaleziono $t_{setup} = 2000ps$. Korzystając z ~\ref{eq:timing} obliczono
+$$
+t_{max} = 4167ps - 2000ps = 2167ps
+$$
+Ograniczenia czasowe nie zostały przekroczone, ponieważ $t_{max}= 12207ps >= t=16,21$.\\
+
+W przypadku FMC wykorzystywanego do obsługi SDRAM, komunikacja odbywa się w obie strony. Ponownie czas trwania stanu niskiego sygnału zegarowego wynosi $45\%$ okresu. Zatem:
+$$
+t_{low} = \frac{1}{108Mhz} \cdot 45\% = 9259ps\cdot45\% = 4167ps
+$$
+ Poniżej przedstawiono tabelę z czasami ustalania dla wszystkich sygnałów interfejsu odczytanych z noty ukłądu IS42S16400J-7TLI.
+
+\begin{table}[htb]
+
+\caption{\textit{ Czasy ustalania dla wszystkich sygnałów układu SDRAM}}
+\label{tab:sdramTiming}
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+Parametr  & czas [ps] \\ 
+\hline
+Input Data Setup Time & 1500 \\ 
+\hline
+Address Setup Time & 1500\\ 
+\hline
+CKE Setup Time	 & 1500\\ 
+\hline
+Command Setup Time	 & 1500\\ 
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Oznacza to, że można przyjąć $t_{setup}=1500ps$. Korzystając z równania ~\ref{eq:timing} obliczono:
+$$
+t_{max} = 4167ps - 1500ps = 2667ps
+$$
+Ponownie $t_{max}= 2667ps >= t=16,21$, zatem ograniczenia czasowe nie zostały przekroczone.
+
+
+Poniżej przedstawiono zbliżenie na projekt PCB, gdzie można zauważyć meandry na ścieżkach,których celem jest wyrównanie różnicy długości pomiędzy ścieżkami sygnałowymi.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pcb/ltdc.png}
+    \caption{\textit{\scriptsize Przykład dopasowania długości ścieżek na PCB}}
+\end{figure}
+
+\subsection{Warstwa zasilania}
+Większość układów na PCB jest zasilana napięciem 3,3V. Jednak interfejs USB i podświetlenie wyświetlacza wymaga napięciem 5V. Wymagało to odpowiedniego podzielania warstwy trzeciej. Zadbano o to żeby żadne ścieżki sygnałów wrażliwych na zakłócenia nie przechodziły nad przerwą pomiędzy polem zasilanie 3,3V i 5V. Nieciągłość warstwy referencyjne powoduje powstawanie pętli prądowych, ponieważ prąd powrotny szuka innej dostępnej ścieżki powrotu. Zjawisko to może powodować wzrost zakłóceń elektromagnetycznych emitowanych przez urządzenie. Warstwę przedstawia obraz ~\ref{fig:power} w podrozdziale \ref{pcbOverview}.
+\subsection{Prezentacja PCB} \label{pcbOverview}
+Poniżej przedstawiano obrazy wszystkich warstw z programu wykorzystanego do projektu oraz zdjęcie gotowego PCB.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pcb/top.png}
+    \caption{\textit{\scriptsize Układ warstwy 1.}}
+\end{figure}
+\newpage
+
+\begin{center}\centering
+\vspace*{\fill}
+\begin{figure}[!h]
+    \centering
+   	
+    \includegraphics[width=\textwidth]{pcb/gnd.png}
+    \caption{\textit{\scriptsize Układ warstwy 2.}}
+\end{figure}
+\vfill
+\end{center}
+\newpage
+
+\begin{center}\centering
+\vspace*{\fill}
+\begin{figure}[!h]
+    \centering
+    \label{fig:power}
+    \includegraphics[width=\textwidth]{pcb/power.png}
+    \caption{\textit{\scriptsize Układ warstwy 3.}}
+\end{figure}
+\vfill
+\end{center}
+\newpage
+
+\begin{center}\centering
+\vspace*{\fill}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pcb/bottom.png}
+    \caption{\textit{\scriptsize Układ warstwy 4.}}
+\end{figure}
+\vfill
+\end{center}
+\newpage
 \section{ Warstwa Programowa }
+\subsection{Model UML}
 \subsection{System Operacyjny}
 
 \chapter{ Podsumowanie }

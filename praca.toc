@@ -1,15 +1,22 @@
 \contentsline {chapter}{\numberline {1} Wst\IeC {\k e}p }{2}
-\contentsline {subsection}{\numberline {1.0.1}Automatic dependent surveillance \IeC {\textendash } broadcast}{2}
 \contentsline {chapter}{\numberline {2} Cele i za\IeC {\l }o\IeC {\.z}enia projektowe }{3}
 \contentsline {chapter}{\numberline {3} Realizacja projektu }{4}
-\contentsline {section}{\numberline {3.1} Warstwa sprz\IeC {\k e}towa}{4}
+\contentsline {section}{\numberline {3.1} Schemat Urz\IeC {\k a}dzenia}{4}
 \contentsline {subsection}{\numberline {3.1.1}Zasilanie}{4}
 \contentsline {subsection}{\numberline {3.1.2}Mikrokontroler}{5}
-\contentsline {subsection}{\numberline {3.1.3}Pami\IeC {\k e}\IeC {\'c} SDRAM}{6}
-\contentsline {subsection}{\numberline {3.1.4}Modu\IeC {\l } GPS}{6}
-\contentsline {subsection}{\numberline {3.1.5}Wyswietlacz}{7}
-\contentsline {subsection}{\numberline {3.1.6}Interfejsy komunikacyjne}{7}
-\contentsline {section}{\numberline {3.2} Warstwa Programowa }{8}
-\contentsline {subsection}{\numberline {3.2.1}System Operacyjny}{8}
-\contentsline {chapter}{\numberline {4} Podsumowanie }{9}
-\contentsline {chapter}{Bibliografia}{9}
+\contentsline {subsection}{\numberline {3.1.3}Interfejsy komunikacyjne}{6}
+\contentsline {subsection}{\numberline {3.1.4}Wy\IeC {\'s}wietlacz}{6}
+\contentsline {subsection}{\numberline {3.1.5}SDRAM}{7}
+\contentsline {subsection}{\numberline {3.1.6}Modu\IeC {\l } GPS}{8}
+\contentsline {section}{\numberline {3.2} Wykonanie PCB }{9}
+\contentsline {subsection}{\numberline {3.2.1}Parametry PCB}{9}
+\contentsline {subsection}{\numberline {3.2.2}GPS}{9}
+\contentsline {subsection}{\numberline {3.2.3}USB}{11}
+\contentsline {subsection}{\numberline {3.2.4}Interfejsy szybkie}{13}
+\contentsline {subsection}{\numberline {3.2.5}Warstwa zasilania}{15}
+\contentsline {subsection}{\numberline {3.2.6}Prezentacja PCB}{16}
+\contentsline {section}{\numberline {3.3} Warstwa Programowa }{20}
+\contentsline {subsection}{\numberline {3.3.1}Model UML}{20}
+\contentsline {subsection}{\numberline {3.3.2}System Operacyjny}{20}
+\contentsline {chapter}{\numberline {4} Podsumowanie }{21}
+\contentsline {chapter}{Bibliografia}{21}
