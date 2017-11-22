@@ -23,7 +23,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{hhline}
-
+\usepackage{multirow}
 %pakiet wypisujący na marginesie etykiety równań i rysunków zdefiniowanych przez \label{}, chcąc wygenerować finalną wersję dokumentu wystarczy usunąć poniższą linię
 %\usepackage{showlabels}
 
@@ -81,19 +81,65 @@
 \let\cleardoublepage\clearpage %usuwa puste strony pomiaedzy rozdziałami
 
 \chapter{ Wstęp }
+ADS-B (ang. Automatic Dependent Surveillance–Broadcast) to system służący do śledzenia statków powietrznych wykorzystywany w kontroli ruchu powietrznego. Powstał, aby uzupełniać pracę PSR (ang. Primary Surveilance Radar) i w przyszłości go całkowicie zastąpić. PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od obiektu. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem, wrażliwość na ukształtowanie terenu oraz warunki pogodowe. ADS-B bazuje na lokalizacji przy pomocy satelit GPS. Statki powietrzne w sposób ciągły ustalają swoją pozycję oraz nadają drogą radiową swoje położenie, prędkość oraz identyfikator.
+\\
 
-ADS-B jest systemem śledzenia położenia statków powietrznych mający uzupełiac pracę PSR (eng. Primary Surveilance Radar). PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od obiektu. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem. ADS-B polega na automatycznym wysyłaniu pozycji statku powietrznego określonego przy pomocy pokładowego systemu GPS w przestrzeń, tak że zarówno kontrola naziemna jak i pobliskie samoloty są w stanie odebrać tą wiadomość. 
 
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=\textwidth]{images/adsb_how_works.jpg}
-    \caption{\textit{\scriptsize Schemat podłączenia mikrokontrolera STM32f767ZIT6}}
-\end{figure}
+Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpytywania statku powietrznego o danym 24-bitowym adresie ICAO (ang International Civil Aviation Organization). SSR to wtórny radar dozorowania, uzupełniający prace PSR o dodatkowe informacje odebrane od statku powietrznego. Zapytania wysyłane są przez ATM (ang. Air Traffic Management) na częstotliwości 1030Mhz, natomiast odpowiedzi na 1090Mhz.ADS-B wykorzystuje Mode-S jako technologię do przesyłania informacji.
+
+\begin{table}[ph]
+\caption{\textit{ Rodzaje wiadomości ADS-B}}
+\label{tab:adsb}
+  \centering
+  \def\arraystretch{1.3}% 
+  \begin{tabular}{|c|c|c|}
+  \hline
+  \multicolumn{1}{|c|}{Rodzaj wiadomości} & \multicolumn{1}{c|}{Downlink Format} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
+  \multirow{4}{*}{ADS-B (56 bitów)} 
+  				 & \multicolumn{1}{c|}{DF0} & \multicolumn{1}{c|}{Odpowiedz Short Air to Air ACAS} \\\cline{2-3}
+                 & \multicolumn{1}{c|}{DF4} & \multicolumn{1}{c|}{Poziom lotu} \\\cline{2-3}
+                 & \multicolumn{1}{c|}{DF5} & \multicolumn{1}{c|}{Identyfikator (Roll-call)} \\\cline{2-3}
+                 & \multicolumn{1}{c|}{DF11} & \multicolumn{1}{c|}{Mode-S odpowiedz All-call} \\\hline
+  \multirow{6}{*}{ADS-B (112 bitów)} 
+  				 & \multicolumn{1}{c|}{DF16} & \multicolumn{1}{c|}{Odpowiedz Long Air to Air ACAS} \\\cline{2-3}
+                 & \multirow{5}{*}{DF17} & Pozycja powietrzna \\\hhline{~~~} 
+                 &                       & pozycja lądowa \\\hhline{~~~} 
+                 &                       & status \\\hhline{~~~} 
+                 &                       & ID i rodzaj samolotu  \\\hhline{~~~} 
+                 &                       & prędkość powietrzna \\\hline
+ \multirow{2}{*}{Mode-S EHS (112 bitów)} 
+	& \multicolumn{1}{c|}{DF20} & \multicolumn{1}{c|}{Poziom lotu oraz (BDS 4.0/5.0/6.0)} \\\cline{2-3}
+	& \multicolumn{1}{c|}{DF21} & \multicolumn{1}{c|}{ID oraz (BDS 4.0/5.0/6.0)} \\\hline
+ \end{tabular}
+\end{table}
+\newpage
+
+Powyższa tabela prezentuje podział wiadomości ADS-B ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wiadomosci można podzielić według długości bloku danych na normalne o długości 56 bitów i rozszerzone 112 bitowe.DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System).Wyróżniamy odpowiedz Short air to air ACAS (DF0), odbieran przez stacje ATM, oraz Long air to air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Statki wysyłające ramkę DF5 potwierdzają, że są wyposarzone w transponder ADS-B. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, uzyskiwanie na zapytanie kontroli naziemnej, które zawierają dodatkowe informacja niedostępne w Mode-S ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymaną odpowiedź DF20 i DF21, poniewąż nie zawiera on wysłanego BDS. Poniżej przedstawiono tabelę z wymienionymi wcześniej BDS.
+
+\begin{table}[ph]
+\caption{\textit{ Rodzaje wiadomości ADS-B}}
+
+  \centering
+  \begin{tabular}{l}
+  \\
+    \includegraphics[width=\textwidth]{images/bds.png}
+ \end{tabular}
+\end{table}
+
+Wiadomość ADS-B i Mode-S EHS można odbierać przy pomocy dowolnego odbiornika dostrojonego do częstotliwości 1090MHz. Tunery z układem RTL2832U o można łatwo przekształcić w SDR (ang. Software Defined Radio) SDR to system komunikacji radiowej w którym można stroić poprzez pogram bez ingerencji w sprzęt. Wspomniany odbiornik jest znacznie tańszy od profesjonalnych rozwiązań, co zpopularyzowało ADS-B w zastosowaniach amatorskich. 
+
+
+
+%Transfer danych w Mode-S odbywa się z prędkoscią 1Mb/s, a ramki są modulowanie przy pomocy PPM (ang Pulse Position Modulation). PPM w przypadku sygnału cyfrowego polega na 
+
+
 
 \chapter{ Cele i założenia projektowe }
 Celem niniejszej pracy by\l{}o zbudowanie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w transpondery ADS-B.
-System zostanie zbudowany w oparciu o mikrokontroler z rodziny STM32F7 ze względu na parametry sprzętowe i peryferia. 
-Jako radio do odbierania wiadomości ADS-B zostanie wykorzystany tuner DVB-T USB ze względu na niską cenę oraz gotowe biblioteki pozwalające łatwo przekształcić urządzenie w SDR (ang. Software Defined Radio). SDR to programowalne radio które można dostroić do obierania zadanej częstotliwości bez ingerencji w sprzęt. Wykorzystane zostaną do tego biblioteki STM32 USB Host i rtlsdr. Urządzenie zostanie wyposażone w wyświetlacz prezentując zebrane dane jako                                                                                                                                                                                                                                                                                                                                            obraz radaru z pozycją samolotu względem systemu oraz tabelą z informacjami dodatkowymi. Wykorzystana zostanie do tego biblioteka STemWin bedąca dedykowaną wersją emWin dla mikrokontrolerów ST.
+
+
+%System zostanie zbudowany w oparciu o mikrokontroler z rodziny STM32F7 ze względu na parametry sprzętowe i peryferia. 
+%Jako radio do odbierania wiadomości ADS-B zostanie wykorzystany tuner DVB-T USB ze względu na niską cenę oraz gotowe biblioteki pozwalające łatwo przekształcić urządzenie w SDR (ang. Software Defined Radio). SDR to programowalne radio które można dostroić do obierania zadanej częstotliwości bez ingerencji w sprzęt. Wykorzystane zostaną do tego biblioteki STM32 USB Host i rtlsdr. Urządzenie zostanie wyposażone w wyświetlacz prezentując zebrane dane jako                                                                                                                                                                                                                                                                                                                                            obraz radaru z pozycją samolotu względem systemu oraz tabelą z informacjami dodatkowymi. Wykorzystana zostanie do tego biblioteka STemWin bedąca dedykowaną wersją emWin dla mikrokontrolerów ST.
 \chapter{ Realizacja projektu }
 \section{ Schemat Urządzenia}
 W tym rozdziale zostanie opisana czę\'s\'c sprzętowa projektu, czyli schemat urządzenia oraz projekt PCB, wykorzystane elementy oraz zewnętrzne urządzenia.
@@ -381,11 +427,15 @@ Poniżej przedstawiono zbliżenie na projekt PCB, gdzie można zauważyć meandr
 Większość układów na PCB jest zasilana napięciem 3,3V. Jednak interfejs USB i podświetlenie wyświetlacza wymaga napięciem 5V. Wymagało to odpowiedniego podzielania warstwy trzeciej. Zadbano o to żeby żadne ścieżki sygnałów wrażliwych na zakłócenia nie przechodziły nad przerwą pomiędzy polem zasilanie 3,3V i 5V. Nieciągłość warstwy referencyjne powoduje powstawanie pętli prądowych, ponieważ prąd powrotny szuka innej dostępnej ścieżki powrotu. Zjawisko to może powodować wzrost zakłóceń elektromagnetycznych emitowanych przez urządzenie. Warstwę przedstawia obraz ~\ref{fig:power} w podrozdziale \ref{pcbOverview}.
 \subsection{Prezentacja PCB} \label{pcbOverview}
 Poniżej przedstawiano obrazy wszystkich warstw z programu wykorzystanego do projektu oraz zdjęcie gotowego PCB.
+\begin{center}\centering
+\vspace*{\fill}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{pcb/top.png}
     \caption{\textit{\scriptsize Układ warstwy 1.}}
 \end{figure}
+\vfill
+\end{center}
 \newpage
 
 \begin{center}\centering
@@ -422,10 +472,8 @@ Poniżej przedstawiano obrazy wszystkich warstw z programu wykorzystanego do pro
 \vfill
 \end{center}
 \newpage
-\section{ Warstwa Programowa }
-\subsection{Model UML}
-\subsection{System Operacyjny}
 
+\section{Architektura systemowa}
 \chapter{ Podsumowanie }
 
 
