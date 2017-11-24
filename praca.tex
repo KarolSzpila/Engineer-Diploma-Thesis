@@ -81,7 +81,7 @@
 \let\cleardoublepage\clearpage %usuwa puste strony pomiaedzy rozdziałami
 
 \chapter{ Wstęp }
-ADS-B (ang. Automatic Dependent Surveillance–Broadcast) to system służący do śledzenia statków powietrznych wykorzystywany w kontroli ruchu powietrznego. Powstał, aby uzupełniać pracę PSR (ang. Primary Surveilance Radar) i w przyszłości go całkowicie zastąpić. PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od obiektu. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem, wrażliwość na ukształtowanie terenu oraz warunki pogodowe. ADS-B bazuje na lokalizacji przy pomocy satelit GPS. Statki powietrzne w sposób ciągły ustalają swoją pozycję oraz nadają drogą radiową swoje położenie, prędkość oraz identyfikator.
+ADS-B (ang. Automatic Dependent Surveillance–Broadcast) to system służący do śledzenia statków powietrznych wykorzystywany w kontroli ruchu powietrznego. Powstał, aby uzupełniać pracę PSR (ang. Primary Surveilance Radar) i w przyszłości całkowicie go zastąpić. PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od obiektu. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem, wrażliwość na ukształtowanie terenu oraz warunki pogodowe. ADS-B bazuje na lokalizacji przy pomocy satelit GPS. Statki powietrzne w sposób ciągły ustalają swoją pozycję oraz nadają drogą radiową swoje położenie, prędkość oraz identyfikator.
 \\
 
 
@@ -114,10 +114,10 @@ Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpy
 \end{table}
 \newpage
 
-Powyższa tabela prezentuje podział wiadomości ADS-B ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wiadomosci można podzielić według długości bloku danych na normalne o długości 56 bitów i rozszerzone 112 bitowe.DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System).Wyróżniamy odpowiedz Short air to air ACAS (DF0), odbieran przez stacje ATM, oraz Long air to air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Statki wysyłające ramkę DF5 potwierdzają, że są wyposarzone w transponder ADS-B. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, uzyskiwanie na zapytanie kontroli naziemnej, które zawierają dodatkowe informacja niedostępne w Mode-S ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymaną odpowiedź DF20 i DF21, poniewąż nie zawiera on wysłanego BDS. Poniżej przedstawiono tabelę z wymienionymi wcześniej BDS.
+Powyższa tabela prezentuje podział wiadomości ADS-B ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wiadomosci można podzielić według długości bloku danych na normalne o długości 56 bitów i rozszerzone 112 bitowe.DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System).Wyróżniamy odpowiedz Short air to air ACAS (DF0), odbierane przez stacje ATM, oraz Long air to air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Statki wysyłające ramkę DF5 potwierdzają, że są wyposarzone w transponder ADS-B. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, uzyskiwanie na zapytanie kontroli naziemnej, które zawierają dodatkowe informacja niedostępne w Mode-S ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymaną odpowiedź DF20 i DF21, poniewąż nie zawiera on wysłanego BDS. Poniżej przedstawiono tabelę z wymienionymi wcześniej BDS.
 
 \begin{table}[ph]
-\caption{\textit{ Rodzaje wiadomości ADS-B}}
+\caption{\textit{ BDS dla wiadomości DF20 i DF21}}
 
   \centering
   \begin{tabular}{l}
@@ -126,7 +126,7 @@ Powyższa tabela prezentuje podział wiadomości ADS-B ze względu na rozmiar bl
  \end{tabular}
 \end{table}
 
-Wiadomość ADS-B i Mode-S EHS można odbierać przy pomocy dowolnego odbiornika dostrojonego do częstotliwości 1090MHz. Tunery z układem RTL2832U o można łatwo przekształcić w SDR (ang. Software Defined Radio) SDR to system komunikacji radiowej w którym można stroić poprzez pogram bez ingerencji w sprzęt. Wspomniany odbiornik jest znacznie tańszy od profesjonalnych rozwiązań, co zpopularyzowało ADS-B w zastosowaniach amatorskich. 
+Wiadomość ADS-B i Mode-S EHS można odbierać przy pomocy dowolnego odbiornika dostrojonego do częstotliwości 1090MHz. Tunery z układem RTL2832U można łatwo przekształcić w SDR (ang. Software Defined Radio) SDR to system komunikacji radiowej w którym strojenie odbywa się poprzez pogram bez ingerencji w sprzęt. Wspomniany odbiornik jest znacznie tańszy od profesjonalnych rozwiązań, co spopularyzowało ADS-B w zastosowaniach amatorskich. 
 
 
 
@@ -135,10 +135,47 @@ Wiadomość ADS-B i Mode-S EHS można odbierać przy pomocy dowolnego odbiornika
 
 
 \chapter{ Cele i założenia projektowe }
-Celem niniejszej pracy by\l{}o zbudowanie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w transpondery ADS-B.
+Celem niniejszej pracy jest stworzenie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w transpondery ADS-B. W systemie można wyróżnić dwie zasadnicze części: 
+Komunikacji radiowej, odpowiedzialna za wykrywanie, zbieranie i dekodowanie wiadomości oraz prezentacji danych, której celem jest przedstawienie informacji w przystępny sposób poprzez interfejs graficzny. Urządzenie można wykorzystać jako alternatywa dla drogich i profesjonalny urządzeń w przypadku zastosowań amatorskich.
+
+\section{Środowisko sprzętowe i wykorzystane narzędzia}
+W tym podrozdziale zostaną przedstawiono wykorzystanie w systemie urządzenia oraz środowisko programistyczne.
+\\
+Jako odbiornik radiowy zostanie wykorzystany tuner DVB-T z układem RTL2832U wyposażony w interfejs USB. Urządzenie można łatwo zamienić w SDR. Zdecydowano się na wykorzystanie mikrokontrolera firmy ST z serii STM32F767, ze względu na posiadanie peryferiów niezbędnych do obłożenia urządzeń w systemie, oraz dostępność narzędzi i oprogramowania. W projekcie wykorzystano wyświetlacz LCD-TFT o przekątnej 10.1 cala.
+Poniżej wymieniono użyte biblioteki.
+\begin{itemize}
+  \item librtl-sdr - obsługa Tunera DVB-T jako SDR.
+  \item STM32 USB host library - komunikacja mikrokontolera z radiem porzez interfejs USB.
+  \item STemWin - obsługa interfejsu graficznego.
+  \item dump1090 - dekodowanie wiadomości ADS-B
+\end{itemize}
+
+Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnienia wielowątkowości oraz mechanizmów do zarządzania zasobami sprzętowymi. Do programowania urządzenia użyto programatora ST-Link z zestawu uruchomieniowego STM32F429I-DISC1. Poniżej przedstawiono programy wykorzystanie przy rewitalizacji projektu.
+
+\begin{itemize}
+  \item Atollic True Studio - środowisko do programowania mikrokontrolerów.
+  \item STM32CubeMx - generowania kodu konfiguracyjnego dla układów STM32.
+  \item Circuit Maker - wykonanie projektu PCB.
+\end{itemize}
 
 
-%System zostanie zbudowany w oparciu o mikrokontroler z rodziny STM32F7 ze względu na parametry sprzętowe i peryferia. 
+
+
+
+
+
+
+ 
+
+
+
+
+
+%
+
+
+
+
 %Jako radio do odbierania wiadomości ADS-B zostanie wykorzystany tuner DVB-T USB ze względu na niską cenę oraz gotowe biblioteki pozwalające łatwo przekształcić urządzenie w SDR (ang. Software Defined Radio). SDR to programowalne radio które można dostroić do obierania zadanej częstotliwości bez ingerencji w sprzęt. Wykorzystane zostaną do tego biblioteki STM32 USB Host i rtlsdr. Urządzenie zostanie wyposażone w wyświetlacz prezentując zebrane dane jako                                                                                                                                                                                                                                                                                                                                            obraz radaru z pozycją samolotu względem systemu oraz tabelą z informacjami dodatkowymi. Wykorzystana zostanie do tego biblioteka STemWin bedąca dedykowaną wersją emWin dla mikrokontrolerów ST.
 \chapter{ Realizacja projektu }
 \section{ Schemat Urządzenia}

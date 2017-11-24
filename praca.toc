@@ -1,5 +1,6 @@
 \contentsline {chapter}{\numberline {1} Wst\IeC {\k e}p }{2}
 \contentsline {chapter}{\numberline {2} Cele i za\IeC {\l }o\IeC {\.z}enia projektowe }{4}
+\contentsline {section}{\numberline {2.1}\IeC {\'S}rodowisko sprz\IeC {\k e}towe i wykorzystane narz\IeC {\k e}dzia}{4}
 \contentsline {chapter}{\numberline {3} Realizacja projektu }{5}
 \contentsline {section}{\numberline {3.1} Schemat Urz\IeC {\k a}dzenia}{5}
 \contentsline {subsection}{\numberline {3.1.1}Zasilanie}{5}

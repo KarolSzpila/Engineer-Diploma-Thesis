@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  22 NOV 2017 04:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  24 NOV 2017 19:42
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -722,80 +722,78 @@ Overfull \hbox (12.00002pt too wide) in paragraph at lines 123--127
 
 [3 <./images/bds.png>]
 Rozdzia\PlPrIeC {\l } 2.
-[4
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 147.
+
+(G:\Programs\MiKTeX\tex\latex\base\omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 147.
+ [4
 
 ]
 Rozdzia\PlPrIeC {\l } 3.
-<schematics/power.png, id=30, 865.73438pt x 456.95718pt>
+<schematics/power.png, id=32, 865.73438pt x 456.95718pt>
 File: schematics/power.png Graphic file (type png)
 
 <use schematics/power.png>
-Package pdftex.def Info: schematics/power.png used on input line 151.
+Package pdftex.def Info: schematics/power.png used on input line 188.
 (pdftex.def)             Requested size: 455.24408pt x 240.2896pt.
 
 Underfull \vbox (badness 1888) has occurred while \output is active []
 
  [5
 
- <./schematics/power.png>] <schematics/uC.png, id=38, 712.16063pt x 568.37344pt
+ <./schematics/power.png>] <schematics/uC.png, id=39, 712.16063pt x 568.37344pt
 >
 File: schematics/uC.png Graphic file (type png)
 
 <use schematics/uC.png>
-Package pdftex.def Info: schematics/uC.png used on input line 159.
+Package pdftex.def Info: schematics/uC.png used on input line 196.
 (pdftex.def)             Requested size: 570.43561pt x 455.24408pt.
  [6 <./schematics/uC.png>]
-<schematics/conn.png, id=42, 1065.9825pt x 568.37344pt>
+<schematics/conn.png, id=43, 1065.9825pt x 568.37344pt>
 File: schematics/conn.png Graphic file (type png)
 
 <use schematics/conn.png>
-Package pdftex.def Info: schematics/conn.png used on input line 169.
+Package pdftex.def Info: schematics/conn.png used on input line 206.
 (pdftex.def)             Requested size: 455.24408pt x 242.73067pt.
 
-<schematics/display.png, id=43, 649.67719pt x 552.56438pt>
+<schematics/display.png, id=44, 649.67719pt x 552.56438pt>
 File: schematics/display.png Graphic file (type png)
 
 <use schematics/display.png>
-Package pdftex.def Info: schematics/display.png used on input line 177.
+Package pdftex.def Info: schematics/display.png used on input line 214.
 (pdftex.def)             Requested size: 455.24408pt x 387.20557pt.
  [7 <./schematics/conn.png>]
-<schematics/sdram.png, id=47, 733.23938pt x 441.14813pt>
+<schematics/sdram.png, id=48, 733.23938pt x 441.14813pt>
 File: schematics/sdram.png Graphic file (type png)
 
 <use schematics/sdram.png>
-Package pdftex.def Info: schematics/sdram.png used on input line 186.
+Package pdftex.def Info: schematics/sdram.png used on input line 223.
 (pdftex.def)             Requested size: 455.24408pt x 273.89943pt.
  [8 <./schematics/display.png>]
-<schematics/gps.png, id=51, 1029.09468pt x 346.29375pt>
+<schematics/gps.png, id=52, 1029.09468pt x 346.29375pt>
 File: schematics/gps.png Graphic file (type png)
 
 <use schematics/gps.png>
-Package pdftex.def Info: schematics/gps.png used on input line 195.
+Package pdftex.def Info: schematics/gps.png used on input line 232.
 (pdftex.def)             Requested size: 455.24408pt x 153.19402pt.
  [9 <./schematics/sdram.png> <./schematics/gps.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 249.
-
-
-(G:\Programs\MiKTeX\tex\latex\base\omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 249.
- [10]
-<plots/gpsZ0.png, id=66, 887.56593pt x 456.20438pt>
+[10] <plots/gpsZ0.png, id=66, 887.56593pt x 456.20438pt>
 File: plots/gpsZ0.png Graphic file (type png)
  <use plots/gpsZ0.png>
-Package pdftex.def Info: plots/gpsZ0.png used on input line 257.
+Package pdftex.def Info: plots/gpsZ0.png used on input line 294.
 (pdftex.def)             Requested size: 455.24408pt x 233.9907pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
 <pcb/gps.png, id=67, 929.72343pt x 423.08063pt>
 File: pcb/gps.png Graphic file (type png)
  <use pcb/gps.png>
-Package pdftex.def Info: pcb/gps.png used on input line 283.
+Package pdftex.def Info: pcb/gps.png used on input line 320.
 (pdftex.def)             Requested size: 426.79134pt x 194.21274pt.
 
 
@@ -805,7 +803,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: plots/usbzD.png Graphic file (type png)
 
 <use plots/usbzD.png>
-Package pdftex.def Info: plots/usbzD.png used on input line 310.
+Package pdftex.def Info: plots/usbzD.png used on input line 347.
 (pdftex.def)             Requested size: 455.24408pt x 275.21977pt.
 
 
@@ -815,20 +813,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: pcb/usb.png Graphic file (type png)
 
 <use pcb/usb.png>
-Package pdftex.def Info: pcb/usb.png used on input line 320.
+Package pdftex.def Info: pcb/usb.png used on input line 357.
 (pdftex.def)             Requested size: 256.0748pt x 171.62514pt.
  [13 <./plots/usbzD.png> <./pcb/usb.png>]
 <plots/timing.png, id=82, 651.18282pt x 118.19156pt>
 File: plots/timing.png Graphic file (type png)
  <use plots/timing.png>
-Package pdftex.def Info: plots/timing.png used on input line 359.
+Package pdftex.def Info: plots/timing.png used on input line 396.
 (pdftex.def)             Requested size: 284.52756pt x 51.64375pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 381--383
+Underfull \hbox (badness 10000) in paragraph at lines 418--420
 
  []
 
@@ -836,31 +834,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 381--383
 File: pcb/ltdc.png Graphic file (type png)
 
 <use pcb/ltdc.png>
-Package pdftex.def Info: pcb/ltdc.png used on input line 422.
+Package pdftex.def Info: pcb/ltdc.png used on input line 459.
 (pdftex.def)             Requested size: 455.24408pt x 408.3439pt.
  [16 <./pcb/ltdc.png>]
 <pcb/top.png, id=93, 487.06969pt x 588.69937pt>
 File: pcb/top.png Graphic file (type png)
  <use pcb/top.png>
-Package pdftex.def Info: pcb/top.png used on input line 434.
+Package pdftex.def Info: pcb/top.png used on input line 471.
 (pdftex.def)             Requested size: 455.24408pt x 550.23349pt.
  [17 <./pcb/top.png>] <pcb/gnd.png, id=98, 481.04718pt x 595.47469pt>
 File: pcb/gnd.png Graphic file (type png)
  <use pcb/gnd.png>
-Package pdftex.def Info: pcb/gnd.png used on input line 446.
+Package pdftex.def Info: pcb/gnd.png used on input line 483.
 (pdftex.def)             Requested size: 455.24408pt x 563.54431pt.
 
 [18 <./pcb/gnd.png>] <pcb/power.png, id=102, 478.78876pt x 595.47469pt>
 File: pcb/power.png Graphic file (type png)
 
 <use pcb/power.png>
-Package pdftex.def Info: pcb/power.png used on input line 458.
+Package pdftex.def Info: pcb/power.png used on input line 495.
 (pdftex.def)             Requested size: 455.24408pt x 566.19748pt.
  [19 <./pcb/power.png>]
 <pcb/bottom.png, id=106, 469.00218pt x 596.98032pt>
 File: pcb/bottom.png Graphic file (type png)
  <use pcb/bottom.png>
-Package pdftex.def Info: pcb/bottom.png used on input line 469.
+Package pdftex.def Info: pcb/bottom.png used on input line 506.
 (pdftex.def)             Requested size: 455.24408pt x 579.4619pt.
 
 [20 <./pcb/bottom.png>] [21]
@@ -901,9 +899,9 @@ pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fon
 ts/type1/public/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb
 ><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><G:/Programs/MiKTeX/fonts
 /type1/public/pl/plsy8.pfb>
-Output written on praca.pdf (24 pages, 1622264 bytes).
+Output written on praca.pdf (24 pages, 1626880 bytes).
 PDF statistics:
- 645 PDF objects out of 1000 (max. 8388607)
+ 652 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
