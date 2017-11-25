@@ -1,7 +1,7 @@
 \contentsline {chapter}{\numberline {1} Wst\IeC {\k e}p }{2}
 \contentsline {chapter}{\numberline {2} Cele i za\IeC {\l }o\IeC {\.z}enia projektowe }{4}
 \contentsline {section}{\numberline {2.1}\IeC {\'S}rodowisko sprz\IeC {\k e}towe i wykorzystane narz\IeC {\k e}dzia}{4}
-\contentsline {chapter}{\numberline {3} Realizacja projektu }{5}
+\contentsline {chapter}{\numberline {3} Architektura sprz\IeC {\k e}towa}{5}
 \contentsline {section}{\numberline {3.1} Schemat Urz\IeC {\k a}dzenia}{5}
 \contentsline {subsection}{\numberline {3.1.1}Zasilanie}{5}
 \contentsline {subsection}{\numberline {3.1.2}Mikrokontroler}{6}
@@ -16,6 +16,8 @@
 \contentsline {subsection}{\numberline {3.2.4}Interfejsy szybkie}{14}
 \contentsline {subsection}{\numberline {3.2.5}Warstwa zasilania}{16}
 \contentsline {subsection}{\numberline {3.2.6}Prezentacja PCB}{17}
-\contentsline {section}{\numberline {3.3}Architektura systemowa}{21}
-\contentsline {chapter}{\numberline {4} Podsumowanie }{22}
-\contentsline {chapter}{Bibliografia}{22}
+\contentsline {chapter}{\numberline {4} Architektura oprogramowania}{21}
+\contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{21}
+\contentsline {section}{\numberline {4.2}Model UML}{22}
+\contentsline {chapter}{\numberline {5} Podsumowanie }{24}
+\contentsline {chapter}{Bibliografia}{24}

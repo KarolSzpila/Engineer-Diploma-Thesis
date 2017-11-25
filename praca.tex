@@ -24,6 +24,7 @@
 \usepackage{tabularx}
 \usepackage{hhline}
 \usepackage{multirow}
+\usepackage{indentfirst}
 %pakiet wypisujący na marginesie etykiety równań i rysunków zdefiniowanych przez \label{}, chcąc wygenerować finalną wersję dokumentu wystarczy usunąć poniższą linię
 %\usepackage{showlabels}
 
@@ -158,26 +159,10 @@ Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnie
   \item Circuit Maker - wykonanie projektu PCB.
 \end{itemize}
 
+\chapter{ Architektura sprzętowa}
 
 
 
-
-
-
-
- 
-
-
-
-
-
-%
-
-
-
-
-%Jako radio do odbierania wiadomości ADS-B zostanie wykorzystany tuner DVB-T USB ze względu na niską cenę oraz gotowe biblioteki pozwalające łatwo przekształcić urządzenie w SDR (ang. Software Defined Radio). SDR to programowalne radio które można dostroić do obierania zadanej częstotliwości bez ingerencji w sprzęt. Wykorzystane zostaną do tego biblioteki STM32 USB Host i rtlsdr. Urządzenie zostanie wyposażone w wyświetlacz prezentując zebrane dane jako                                                                                                                                                                                                                                                                                                                                            obraz radaru z pozycją samolotu względem systemu oraz tabelą z informacjami dodatkowymi. Wykorzystana zostanie do tego biblioteka STemWin bedąca dedykowaną wersją emWin dla mikrokontrolerów ST.
-\chapter{ Realizacja projektu }
 \section{ Schemat Urządzenia}
 W tym rozdziale zostanie opisana czę\'s\'c sprzętowa projektu, czyli schemat urządzenia oraz projekt PCB, wykorzystane elementy oraz zewnętrzne urządzenia.
 \subsection{Zasilanie}
@@ -510,7 +495,48 @@ Poniżej przedstawiano obrazy wszystkich warstw z programu wykorzystanego do pro
 \end{center}
 \newpage
 
-\section{Architektura systemowa}
+\chapter{ Architektura oprogramowania}
+
+W tym rozdziale opisano strukturę programu wraz z modelem UML oraz opisem funkcjonalności poszczególnych klas. Przedstawiono wykorzystane wzorce projektowe, algorytmy i biblioteki. Opisano poszczególne elementy interfejsu graficznego oraz integrację oprogramowania z warstwą sprzętową.
+
+
+
+\section{Wzorzec projektowy MVC}
+Model Widok Kontroler (ang. Model View Controler) to wzorzec projektowy wykorzystywany przy tworzeniu aplikacji z interfejsem użytkownika. W MVC można wyróżnić trzy zasadnicze części:
+\begin{itemize}
+  \item Model - reprezentacja logiki biznesowej (struktura danych oraz wykonywane na nich działania).
+  \item Widok - warstwa prezentacji danych zawartych w modelu.
+  \item Kontroler - wykonuje operacje na modelu.zapewnia komunikację pomiędzy widokiem i modelem. Obsługuję zadania użytkownika i systemy dotyczące modelu.  
+\end{itemize}
+
+Wzorzec MVC zapewnia całkowitą niezależność modelu od widokiem, co ułatwia implementację obu części. Ponadto zapewnia przejrzystość projektu grupując klasy we wcześniej wymienione warstwy abstrakcji. Pozwala to ograniczyć liczbę powiązań pomiędzy komponentami. Poniżej przedstawiono diagram relacji dla wzorca MVC.
+
+
+\begin{center}\centering
+\vspace*{\fill}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{plots/mvc.png}
+    \caption{\textit{\scriptsize Relacje pomiędzy komponentami MVC.}}
+\end{figure}
+\vfill
+\end{center}
+
+\section{Model UML}
+
+Poniżej przedstawiono diagram UML reprezentując powiązania i interakcje pomiędzy poszczególnymi klasami.
+\vskip 0.55cm
+\begin{figure}[!h]
+    \centering
+    \includegraphics[height=\textwidth, angle=90]{plots/uml.png}
+    \caption{\textit{\scriptsize Relacje pomiędzy komponentami MVC.}}
+\end{figure}
+
+Poniżej opisano funkcjonalności wszystkich klas.
+\\
+
+
+Komunikacja pomiędzy komponentami odbywa się przy pomocy interfejsów. Każda klasa dziedziczy po swoim interfejsie w którym zadeklarowane są wszystkie metody niezbędne do komunikacji z obiektem. Pozwala to na odseparowanie rzeczywistej implementacji klasy. Dzięki temu dany komponent można łatwo zmieniać bez wpływania na te które z nim oddziałują. Podejście to ułatwia testowanie oprogramowania, ponieważ wewnętrzną logikę można zastąpić spreparowanymi danymi. Za przykład może posłużyć klasa obsługująca sensor, która zawsze zwraca przygotowany wcześniej odczyt. 
 \chapter{ Podsumowanie }
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  24 NOV 2017 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  25 NOV 2017 02:18
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -564,24 +564,27 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@dima=\skip58
 \bigstrutjot=\dimen134
 )
+(G:\Programs\MiKTeX\tex\latex\tools\indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
 \c@theorem=\count110
  (praca.aux)
 \openout1 = `praca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
 
 (G:\Programs\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -651,35 +654,35 @@ G,.JBIG2,.JB2,.eps]
 \@tempheadsep=\skip64
 \@tempoddsidemargin=\skip65
 \@tempevensidemargin=\skip66
-LaTeX Font Info:    Try loading font information for OML+plm on input line 75.
+LaTeX Font Info:    Try loading font information for OML+plm on input line 76.
 
 (G:\Programs\MiKTeX\tex\latex\polski\omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 75.
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 76.
 
 
 (G:\Programs\MiKTeX\tex\latex\polski\omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 75.
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 76.
 
 
 (G:\Programs\MiKTeX\tex\latex\polski\omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 75.
+(Font)              <12> on input line 76.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 75.
+(Font)              <8> on input line 76.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 75.
-LaTeX Font Info:    Try loading font information for U+msa on input line 75.
+(Font)              <6> on input line 76.
+LaTeX Font Info:    Try loading font information for U+msa on input line 76.
 
 (G:\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 75.
+LaTeX Font Info:    Try loading font information for U+msb on input line 76.
 
 (G:\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -704,7 +707,7 @@ Non-PDF special ignored!
  [1]
 Rozdzia\PlPrIeC {\l } 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
 
@@ -713,22 +716,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--86
 ] <images/bds.png, id=22, 615.80063pt x 456.20438pt>
 File: images/bds.png Graphic file (type png)
  <use images/bds.png>
-Package pdftex.def Info: images/bds.png used on input line 125.
+Package pdftex.def Info: images/bds.png used on input line 126.
 (pdftex.def)             Requested size: 455.24408pt x 337.26573pt.
 
-Overfull \hbox (12.00002pt too wide) in paragraph at lines 123--127
+Overfull \hbox (12.00002pt too wide) in paragraph at lines 124--128
  [][] 
  []
 
 [3 <./images/bds.png>]
 Rozdzia\PlPrIeC {\l } 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 147.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
 
 (G:\Programs\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 147.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
  [4
 
 ]
@@ -737,7 +740,7 @@ Rozdzia\PlPrIeC {\l } 3.
 File: schematics/power.png Graphic file (type png)
 
 <use schematics/power.png>
-Package pdftex.def Info: schematics/power.png used on input line 188.
+Package pdftex.def Info: schematics/power.png used on input line 173.
 (pdftex.def)             Requested size: 455.24408pt x 240.2896pt.
 
 Underfull \vbox (badness 1888) has occurred while \output is active []
@@ -749,51 +752,51 @@ Underfull \vbox (badness 1888) has occurred while \output is active []
 File: schematics/uC.png Graphic file (type png)
 
 <use schematics/uC.png>
-Package pdftex.def Info: schematics/uC.png used on input line 196.
+Package pdftex.def Info: schematics/uC.png used on input line 181.
 (pdftex.def)             Requested size: 570.43561pt x 455.24408pt.
  [6 <./schematics/uC.png>]
 <schematics/conn.png, id=43, 1065.9825pt x 568.37344pt>
 File: schematics/conn.png Graphic file (type png)
 
 <use schematics/conn.png>
-Package pdftex.def Info: schematics/conn.png used on input line 206.
+Package pdftex.def Info: schematics/conn.png used on input line 191.
 (pdftex.def)             Requested size: 455.24408pt x 242.73067pt.
 
 <schematics/display.png, id=44, 649.67719pt x 552.56438pt>
 File: schematics/display.png Graphic file (type png)
 
 <use schematics/display.png>
-Package pdftex.def Info: schematics/display.png used on input line 214.
+Package pdftex.def Info: schematics/display.png used on input line 199.
 (pdftex.def)             Requested size: 455.24408pt x 387.20557pt.
  [7 <./schematics/conn.png>]
 <schematics/sdram.png, id=48, 733.23938pt x 441.14813pt>
 File: schematics/sdram.png Graphic file (type png)
 
 <use schematics/sdram.png>
-Package pdftex.def Info: schematics/sdram.png used on input line 223.
+Package pdftex.def Info: schematics/sdram.png used on input line 208.
 (pdftex.def)             Requested size: 455.24408pt x 273.89943pt.
  [8 <./schematics/display.png>]
 <schematics/gps.png, id=52, 1029.09468pt x 346.29375pt>
 File: schematics/gps.png Graphic file (type png)
 
 <use schematics/gps.png>
-Package pdftex.def Info: schematics/gps.png used on input line 232.
+Package pdftex.def Info: schematics/gps.png used on input line 217.
 (pdftex.def)             Requested size: 455.24408pt x 153.19402pt.
  [9 <./schematics/sdram.png> <./schematics/gps.png>]
 [10] <plots/gpsZ0.png, id=66, 887.56593pt x 456.20438pt>
 File: plots/gpsZ0.png Graphic file (type png)
  <use plots/gpsZ0.png>
-Package pdftex.def Info: plots/gpsZ0.png used on input line 294.
+Package pdftex.def Info: plots/gpsZ0.png used on input line 279.
 (pdftex.def)             Requested size: 455.24408pt x 233.9907pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
 <pcb/gps.png, id=67, 929.72343pt x 423.08063pt>
 File: pcb/gps.png Graphic file (type png)
  <use pcb/gps.png>
-Package pdftex.def Info: pcb/gps.png used on input line 320.
+Package pdftex.def Info: pcb/gps.png used on input line 305.
 (pdftex.def)             Requested size: 426.79134pt x 194.21274pt.
 
 
@@ -803,7 +806,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: plots/usbzD.png Graphic file (type png)
 
 <use plots/usbzD.png>
-Package pdftex.def Info: plots/usbzD.png used on input line 347.
+Package pdftex.def Info: plots/usbzD.png used on input line 332.
 (pdftex.def)             Requested size: 455.24408pt x 275.21977pt.
 
 
@@ -813,20 +816,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: pcb/usb.png Graphic file (type png)
 
 <use pcb/usb.png>
-Package pdftex.def Info: pcb/usb.png used on input line 357.
+Package pdftex.def Info: pcb/usb.png used on input line 342.
 (pdftex.def)             Requested size: 256.0748pt x 171.62514pt.
  [13 <./plots/usbzD.png> <./pcb/usb.png>]
 <plots/timing.png, id=82, 651.18282pt x 118.19156pt>
 File: plots/timing.png Graphic file (type png)
  <use plots/timing.png>
-Package pdftex.def Info: plots/timing.png used on input line 396.
+Package pdftex.def Info: plots/timing.png used on input line 381.
 (pdftex.def)             Requested size: 284.52756pt x 51.64375pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 418--420
+Underfull \hbox (badness 10000) in paragraph at lines 403--405
 
  []
 
@@ -834,44 +837,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 418--420
 File: pcb/ltdc.png Graphic file (type png)
 
 <use pcb/ltdc.png>
-Package pdftex.def Info: pcb/ltdc.png used on input line 459.
+Package pdftex.def Info: pcb/ltdc.png used on input line 444.
 (pdftex.def)             Requested size: 455.24408pt x 408.3439pt.
  [16 <./pcb/ltdc.png>]
 <pcb/top.png, id=93, 487.06969pt x 588.69937pt>
 File: pcb/top.png Graphic file (type png)
  <use pcb/top.png>
-Package pdftex.def Info: pcb/top.png used on input line 471.
+Package pdftex.def Info: pcb/top.png used on input line 456.
 (pdftex.def)             Requested size: 455.24408pt x 550.23349pt.
  [17 <./pcb/top.png>] <pcb/gnd.png, id=98, 481.04718pt x 595.47469pt>
 File: pcb/gnd.png Graphic file (type png)
  <use pcb/gnd.png>
-Package pdftex.def Info: pcb/gnd.png used on input line 483.
+Package pdftex.def Info: pcb/gnd.png used on input line 468.
 (pdftex.def)             Requested size: 455.24408pt x 563.54431pt.
 
 [18 <./pcb/gnd.png>] <pcb/power.png, id=102, 478.78876pt x 595.47469pt>
 File: pcb/power.png Graphic file (type png)
 
 <use pcb/power.png>
-Package pdftex.def Info: pcb/power.png used on input line 495.
+Package pdftex.def Info: pcb/power.png used on input line 480.
 (pdftex.def)             Requested size: 455.24408pt x 566.19748pt.
  [19 <./pcb/power.png>]
 <pcb/bottom.png, id=106, 469.00218pt x 596.98032pt>
 File: pcb/bottom.png Graphic file (type png)
  <use pcb/bottom.png>
-Package pdftex.def Info: pcb/bottom.png used on input line 506.
+Package pdftex.def Info: pcb/bottom.png used on input line 491.
 (pdftex.def)             Requested size: 455.24408pt x 579.4619pt.
 
-[20 <./pcb/bottom.png>] [21]
+[20 <./pcb/bottom.png>]
 Rozdzia\PlPrIeC {\l } 4.
+<plots/mvc.png, id=110, 623.32875pt x 158.5925pt>
+File: plots/mvc.png Graphic file (type png)
+ <use plots/mvc.png>
+Package pdftex.def Info: plots/mvc.png used on input line 519.
+(pdftex.def)             Requested size: 455.24408pt x 115.82962pt.
+
+<plots/uml.png, id=112, 1136.245pt x 864.22874pt>
+File: plots/uml.png Graphic file (type png)
+ <use plots/uml.png>
+Package pdftex.def Info: plots/uml.png used on input line 531.
+(pdftex.def)             Requested size: 598.53139pt x 455.24408pt.
+ [21
+
+ <./plots/mvc.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 535--537
+
+ []
+
+[22 <./plots/uml.png>] [23]
+Rozdzia\PlPrIeC {\l } 5.
 No file praca.bbl.
-[22
+[24
 
 ] (praca.aux) ) 
 Here is how much of TeX's memory you used:
- 3591 strings out of 493323
- 44196 string characters out of 3142971
- 112410 words of memory out of 3000000
- 7005 multiletter control sequences out of 15000+200000
+ 3607 strings out of 493323
+ 44521 string characters out of 3142971
+ 112470 words of memory out of 3000000
+ 7016 multiletter control sequences out of 15000+200000
  21203 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,15n,25p,1519b,353s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -899,9 +922,9 @@ pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fon
 ts/type1/public/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb
 ><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><G:/Programs/MiKTeX/fonts
 /type1/public/pl/plsy8.pfb>
-Output written on praca.pdf (24 pages, 1626880 bytes).
+Output written on praca.pdf (26 pages, 1781562 bytes).
 PDF statistics:
- 652 PDF objects out of 1000 (max. 8388607)
+ 675 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
