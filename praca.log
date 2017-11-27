@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  27 NOV 2017 01:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  27 NOV 2017 18:44
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -588,7 +588,26 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitdp@description=\count109
 )
 \c@theorem=\count110
- (praca.aux)
+ (praca.aux
+
+LaTeX Warning: Label `tab:adsb' multiply defined.
+
+
+LaTeX Warning: Label `tab:adsb' multiply defined.
+
+
+LaTeX Warning: Label `tab:adsbFrame' multiply defined.
+
+
+LaTeX Warning: Label `tab:adsb' multiply defined.
+
+
+LaTeX Warning: Label `tab:adsb' multiply defined.
+
+
+LaTeX Warning: Label `tab:adsb' multiply defined.
+
+)
 \openout1 = `praca.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
@@ -605,8 +624,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
-
-(G:\Programs\MiKTeX\tex\context\base\supp-pdf.mkii
+ (G:\Programs\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count111
 \scratchdimen=\dimen141
@@ -941,32 +959,49 @@ File: plots/guiTask.png Graphic file (type png)
 Package pdftex.def Info: plots/guiTask.png used on input line 650.
 (pdftex.def)             Requested size: 184.9429pt x 397.34149pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 656--659
+
+ []
+
 [27 <./plots/usbTask.png> <./plots/guiTask.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 668--670
+
+ []
+
+[28]
+Overfull \hbox (5.40645pt too wide) in paragraph at lines 739--747
+ [] 
+ []
+
+[29] [30] [31]
 Rozdzia\PlPrIeC {\l } 5.
-[28
+[32
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
 No file praca.bbl.
-[29
+[33
 
 ] (praca.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 4858 strings out of 493323
- 67446 string characters out of 3142971
- 138310 words of memory out of 3000000
- 8255 multiletter control sequences out of 15000+200000
- 21902 words of font info for 49 fonts, out of 3000000 for 9000
+ 4874 strings out of 493323
+ 67601 string characters out of 3142971
+ 146379 words of memory out of 3000000
+ 8265 multiletter control sequences out of 15000+200000
+ 24218 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,15n,40p,1519b,376s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-ecbi1200.pk>{G:/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{G:/Programs/MiKTeX
-/fonts/enc/dvips/pl/plms.enc}{G:/Programs/MiKTeX/fonts/enc/dvips/pl/plme.enc}{G
-:/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc} <C:\Users\Karol\AppData\Local\Mi
+{G:/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc} <C:\Users\Karol\AppData\Loca
+l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk>{G:/Programs/MiKTeX
+/fonts/enc/dvips/pl/plmi.enc}{G:/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}{G
+:/Programs/MiKTeX/fonts/enc/dvips/pl/plme.enc} <C:\Users\Karol\AppData\Local\Mi
 KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\Karol\AppDat
 a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0800.pk> <C:\Users\Ka
 rol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C
@@ -985,12 +1020,12 @@ pi600\ecrm2074.pk><G:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ><G:/Programs/MiKTeX/fonts/type1/public/pl/plex10.pfb><G:/Programs/MiKTeX/fonts
 /type1/public/pl/plmi12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi6.pfb
 ><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fonts/
-type1/public/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><G
-:/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><G:/Programs/MiKTeX/fonts/ty
-pe1/public/pl/plsy8.pfb>
-Output written on praca.pdf (31 pages, 1874989 bytes).
+type1/public/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><G
+:/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><G:/Programs/MiKTeX/fonts/type
+1/public/pl/plsy10.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
+Output written on praca.pdf (35 pages, 1903491 bytes).
 PDF statistics:
- 761 PDF objects out of 1000 (max. 8388607)
+ 782 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

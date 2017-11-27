@@ -26,7 +26,7 @@
 \usepackage{multirow}
 \usepackage{indentfirst}
 \usepackage{enumitem}
-
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \usepackage[justification=centering]{caption}
 %pakiet wypisujący na marginesie etykiety równań i rysunków zdefiniowanych przez \label{}, chcąc wygenerować finalną wersję dokumentu wystarczy usunąć poniższą linię
 %\usepackage{showlabels}
@@ -653,8 +653,256 @@ Poniżej przedstawiono schematy blokowe poszczególnych zadań.
 \end{figure}
 
 \section{Wykrywanie i dekodowanie wiadomości ADS-B}
+Wiadomości Mode S mają długość 56 lub 112 bitów w zależności od formatu. Przed wysłaniem dane są poddawane modulacji położenia impulsu z częstotliwością sygnału zegarowego 1Mhz. Krótki odstęp pomiędzy stanami wysokimi oznacza logiczne 1 natomiast długi 0. 
+Każdy bit jest kodowany co $1\mu$s. Na początku wiadomości dodawana jest preambuła o długości $8\mu$s składająca się z czterech impulsów o długości $0.5\mu$s w odstępach kolejno $0.5\mu$s, $2,5\mu$s, $0,5\mu$s. Tak przygotowana ramka jest wysyłana na częstotliwości 1090Mhz. 
+\\
 
-Wiadomość ADS-B wydobyta z fali nośnej składa się z preambuły preambuły 
+
+Układ SDR został skonfigurowany, by wydzielać pakiety z fali nośnej o częstotliwość 1090Mhz. Otrzymany sygnał
+jest potem próbkowany z częstotliwością 2Mhz przez dwa 8 bitowe przetworniki ADC. Przed jednym z układów następuje przesunięcie sygnału w fazie o -90$^\circ$. Dzięki temu pasmo przenoszenie również wynosi 2Mhz co pozwala na poprawne próbkowanie impulsów o okresie $0.5\mu$. Dane otrzymane z SDR są w postaci I/Q. Para próbek I/Q stanowi liczbę rzeczywistą gdzie gdzie I to chwilowa amplituda sygnału a to Q to chwilowa amplituda sygnału przesuniętego w fazie o -90$^\circ$ względem I. Chwilowa amplituda nadanego sygnału to moduł liczby zespolonej I/Q obliczony z następującego wzoru
+\begin{equation}
+\label{eq:amplitude}
+A = \sqrt{I^2 + Q^2}
+\end{equation}
+
+Aby wykryć  pakiet należy przeliczyć ciąg próbek I/Q na amplitudę sygnału korzystając ze wzoru ~\ref{eq:amplitude}. Następnie znaleźć ciąg impulsów odpowiadający preambule oraz zdekodować wiadomości przy pomocy demodulacji PPM. Aby potwierdzić poprawność ramki należy obliczyć sumę CRC i porównać z odebraną wartością.
+\\
+
+
+Do ADS-B należą wiadomości Mode S o parametrze Downlik format równym 17. Poniżej przedstawiono strukturę pakietu ADS-B.
+\begin{table}[htb]
+\caption{\textit{ Struktura wiadomości ADS-B}}
+\label{tab:adsbFrame}
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+Rozmiar [bit] & zawartość\\
+\hline
+5 & Downlink format\\
+\hline
+3 & Posiadany system\\
+\hline
+24 & Adres ICAO\\
+\hline
+5 & Typ wiadomości\\
+\hline
+51 & Dane\\
+\hline
+24 & Suma kontrola CRC\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\noindent
+W zależnosci od typu wiadomość może zawierać następujące informacje.
+
+\begin{table}[ph]
+\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
+\label{tab:adsb}
+  \centering
+  \def\arraystretch{1.3}% 
+  \begin{tabular}{|c|c|c|}
+  \hline
+  
+  \multicolumn{1}{|c|}{Typ} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-2}
+   \multirow{2}{*}{1 - 4} & Identyfikator samolotu i  \\\hhline{~~} 
+                 &  typ transpondera    \\\cline{1-2}
+  \multicolumn{1}{|c|}{5 - 8} & \multicolumn{1}{c|}{Pozycja naziemna} \\\cline{1-2}
+  \multirow{2}{*}{9 - 18} & Pozycja powietrzna i\\\hhline{~~} 
+                 &  wysokość barometryczna    \\\cline{1-2}
+  \multicolumn{1}{|c|}{9} & \multicolumn{1}{c|}{Prędkości} \\\cline{1-2}
+    \multirow{2}{*}{20 - 22} & Pozycja powietrzna i\\\hhline{~~} 
+                 &  wysokość GNSS    \\\cline{1-2}
+ \multicolumn{1}{|c|}{21 - 31} & \multicolumn{1}{c|}{Zarezerwowane} \\\cline{1-2}          
+ \end{tabular}
+\end{table}
+
+Identyfikator samolotu (ang. callsign) jest przechowywany w wiadomości jako ciąg ośmiu 6 bitowych indeksów. Poszczególne znaki są odczytywane z tablicy 
+
+\begin{table}[ph]
+\label{tab:adsb}
+  \centering
+  \def\arraystretch{1.3}% 
+  \begin{tabular}{c}
+       \#ABCDEFGHIJKLMNOPQRSTUVWXYZ\#\#\#\#\#\\
+\_\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#0123456789\#\#\#\#\#\#
+ \end{tabular}
+\end{table}
+
+\noindent
+gdzie: \# - znak nieużywany, \_ - spacja
+\newpage
+\begin{table}[htb]
+\caption{\textit{ Struktura danych wiadomości typu 1-4}}
+\label{tab:adsbFrame}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+Rozmiar [bit] & 3 & 6 & 6 & 6 & 6 & 6 & 6\\
+\hline
+Zawartość & \begin{tabular}{c}Rodzaj \\transpondera\end{tabular} & Znak 1 & Znak 2 & Znak 3 & Znak 4 & Znak 5 & Znak 6\\
+%Zawartość  
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Pozycja statku powietrznego jest zakodowana w formacie CPR (ang. Compact Position Reporting). Wyróżniamy dwie metody dekodowania wiadomość. GUP (ang. Globally Unambiguous Position), która potrzebuje do dwóch kolejnych wiadomości i LUP (ang. Locally Unambiguous Position), gdzie wymagana jest pozycja referencyjna. Ze względu na ograniczone możliwość anteny tunera w projekcie wykorzystano metodę LUP. Poniżej przedstawiono algorytm dekodowania.
+
+\noindent
+Znaczenie użytych symboli
+\begin{itemize}
+\item NZ to ustalona liczba stref szerokość geograficznych wynosząca 15
+\item Lat$_{ref}$ - referencyjna szerokość geograficzna
+\item Lon$_{ref}$ - referencyjna długość geograficzna
+\item Lat$_{CPR}$ - zadokowana szerokość geograficzna
+\item Lon$_{CPR}$ - zadokowana długość geograficzna
+\item Lat - zdekodowano szerokość geograficzna
+\item Lon - zdekodowana długość geograficzna
+\end{itemize}
+
+
+\begin{equation}
+dLat= \left\{ \begin{array}{ll}
+\frac{360}{4NZ} = \frac{360}{60}, & \textrm{gdy wiadomosć parzysta}\\
+\frac{360}{4NZ - 1} = \frac{360}{59}, & \textrm{gdy wiadomosć nieparzysta}\
+\end{array} \right.
+\end{equation}
+
+\begin{equation}
+j = \floor{\frac{Lat_{ref}}{dLat}} + \floor{\frac{Lat_{ref} \% dlat}{dLat} - Lat_{CPR} + \frac{1}{2}}
+\end{equation}
+
+\begin{equation}
+Lat = dLat \cdot (j + Lat_{CPR})
+\end{equation}
+
+\begin{equation}
+NF(Lat) = \floor{\frac{2\pi}{arccos(1 - \frac{1 - cos(\frac{2\pi}{2NZ})}{cos^2(\frac{\pi}{180} \cdot Lat)})}}
+\end{equation}
+
+\begin{equation}
+dLon= \left\{ \begin{array}{ll}
+\frac{360}{NL(Lat)}, & \textrm{gdy NL(Lat) > 0}\\
+360 , & \textrm{gdy NL(Lat) = 0}\
+\end{array} \right.
+\end{equation}
+
+\begin{equation}
+m = \floor{\frac{Lon_{ref}}{dLon}} + \floor{\frac{Lon_{ref} \% dLon}{dLon - Lon_{CPR} + \frac{1}{2}}}
+\end{equation}
+
+\begin{equation}
+Lon = dLon \cdot (m + Lon_{CPR})
+\end{equation}
+
+Dekodowanie poziomo lotu wymaga usunięcia z zakodowanej wartość 7. bitu (flagi Q), odebrana wartość jest wielokrotnością 100 lub 25 stóp. Wartość końcowa wyraża się następującym wzorem:
+
+\begin{equation}
+Alt= \left\{ \begin{array}{ll}
+100 * N - 1000, & \textrm{gdy Q = 0}\\
+25 * N - 1000, & \textrm{gdy Q = 1}\\
+\end{array} \right.
+\end{equation}
+\noindent
+gdzie N to pole z ramki po uśnięciu bitu Q.
+
+
+\begin{equation}
+dV_{EW}= \left\{ \begin{array}{ll}
+V_{EW} - 1, & \textrm{gdy S$_{EW}$ = 0}\\
+-(V_{EW} - 1), & \textrm{gdy S${EW}$ = 1}\\
+\end{array} \right.
+\end{equation}
+
+\begin{equation}
+dV_{SN}= \left\{ \begin{array}{ll}
+V_{SN} - 1, & \textrm{gdy S$_{SN}$ = 0}\\
+-(V_{SN} - 1), & \textrm{gdy S$_{SN}$ = 1}\\
+\end{array} \right.
+\end{equation}
+
+\begin{equation}
+v = \sqrt{V_{EW}^2 + V_{SN}^2}
+\end{equation}
+
+\begin{equation}
+h = arctan2(V_{EW},V_{SN}) \cdot \frac{180}{\pi}
+\end{equation}
+
+\begin{equation}
+h = \frac{dh}{1024} \cdot 360
+\end{equation}
+\begin{table}[ph]
+\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
+\label{tab:adsb}
+  \centering
+  \def\arraystretch{1.3}% 
+  \begin{tabular}{|c|c|c|}
+  \hline
+  
+  \multicolumn{1}{|c|}{Rozmiar [bit]} & \multicolumn{1}{c|}{Nazwa} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
+  \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{SS} & \multicolumn{1}{c|}{Status lotu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{NIC$_b$} & \multicolumn{1}{c|}{flaga dokładności pozycji}\\\cline{1-3}
+  \multicolumn{1}{|c|}{12} & \multicolumn{1}{c|}{ALT} & \multicolumn{1}{c|}{wysokość barometryczna lub GNSS}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{T} & \multicolumn{1}{c|}{flaga synchronizacji z czasem UTC}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{F} & \multicolumn{1}{c|}{flaga parzystości ramki}\\\cline{1-3}
+  \multicolumn{1}{|c|}{17} & \multicolumn{1}{c|}{Lat$_{raw}$} & \multicolumn{1}{c|}{zakodowana szerokość geograficzna w formacie CPR}\\\cline{1-3}
+  \multicolumn{1}{|c|}{17} & \multicolumn{1}{c|}{Lon$_{raw}$} & \multicolumn{1}{c|}{zakodowana długość geograficzna w formacie CPR}\\\cline{1-3}   
+ \end{tabular}
+\end{table}
+
+\begin{table}[ph]
+\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
+\label{tab:adsb}
+  \centering
+  \def\arraystretch{1.3}% 
+  \begin{tabular}{|c|c|c|}
+  \hline
+  
+  \multicolumn{1}{|c|}{Rozmiar [bit]} & \multicolumn{1}{c|}{Nazwa} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{IC} & \multicolumn{1}{c|}{flaga zmiany pułapu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{RES-A} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
+  \multicolumn{1}{|c|}{3} & \multicolumn{1}{c|}{NAC} & \multicolumn{1}{c|}{niepewność prędkości}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{EW}$} & \multicolumn{1}{c|}{znak prędkości Wschód-Zachód}\\\cline{1-3}
+  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{S$_{EW}$} & \multicolumn{1}{c|}{prędkość Wschód-Zachód}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{NS}$} & \multicolumn{1}{c|}{znak prędkości Północ-Południe}\\\cline{1-3}
+  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{S$_{NS}$} & \multicolumn{1}{c|}{prędkość Północ-Południe}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr$_{src}$} & \multicolumn{1}{c|}{Flaga typu wysokości Barometryczna lub GNSS}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Vr}$} & \multicolumn{1}{c|}{znak zmiany pułapu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr} & \multicolumn{1}{c|}{prędkość zmiany pułapu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{RES-B} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Diff}$} & \multicolumn{1}{c|}{znak różnicy wysokości barometrycznej i GNSS}\\\cline{1-3}
+  \multicolumn{1}{|c|}{7} & \multicolumn{1}{c|}{Diff} & \multicolumn{1}{c|}{różnica wysokości barometrycznej i GNSS}\\\cline{1-3}
+       
+ \end{tabular}
+\end{table}
+
+\begin{table}[ph]
+\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
+\label{tab:adsb}
+  \centering
+  \def\arraystretch{1.3}% 
+  \begin{tabular}{|c|c|c|}
+  \hline
+  
+  \multicolumn{1}{|c|}{Rozmiar [bit]} & \multicolumn{1}{c|}{Nazwa} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{IC} & \multicolumn{1}{c|}{flaga zmiany pułapu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{RES-A} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
+  \multicolumn{1}{|c|}{3} & \multicolumn{1}{c|}{NAC} & \multicolumn{1}{c|}{niepewność prędkości}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{hdg}$} & \multicolumn{1}{c|}{flaga dostępności kursu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{Hdg} & \multicolumn{1}{c|}{kurs}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{AS$_t$} & \multicolumn{1}{c|}{typ prędkości powietrznej}\\\cline{1-3}
+  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{AS} & \multicolumn{1}{c|}{prędkość powietrzna}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr$_{src}$} & \multicolumn{1}{c|}{Flaga typu wysokości Barometryczna lub GNSS}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Vr}$} & \multicolumn{1}{c|}{znak zmiany pułapu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr} & \multicolumn{1}{c|}{prędkość zmiany pułapu}\\\cline{1-3}
+  \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{RES-B} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Diff}$} & \multicolumn{1}{c|}{znak różnicy wysokości barometrycznej i GNSS}\\\cline{1-3}
+  \multicolumn{1}{|c|}{7} & \multicolumn{1}{c|}{Diff} & \multicolumn{1}{c|}{różnica wysokości barometrycznej i GNSS}\\\cline{1-3}
+       
+ \end{tabular}
+\end{table}
 
 
 \chapter{Interfejs użytkownika}
