@@ -16,8 +16,11 @@
 \contentsline {subsection}{\numberline {3.2.4}Interfejsy szybkie}{14}
 \contentsline {subsection}{\numberline {3.2.5}Warstwa zasilania}{16}
 \contentsline {subsection}{\numberline {3.2.6}Prezentacja PCB}{17}
-\contentsline {chapter}{\numberline {4} Architektura oprogramowania}{21}
-\contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{21}
-\contentsline {section}{\numberline {4.2}Model UML}{22}
-\contentsline {chapter}{\numberline {5} Podsumowanie }{24}
-\contentsline {chapter}{Bibliografia}{24}
+\contentsline {chapter}{\numberline {4} Architektura oprogramowania}{22}
+\contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{22}
+\contentsline {section}{\numberline {4.2}Model UML}{23}
+\contentsline {section}{\numberline {4.3}Procesy w systemie operacyjnym}{25}
+\contentsline {section}{\numberline {4.4}Wykrywanie i dekodowanie wiadomo\IeC {\'s}ci ADS-B}{27}
+\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{28}
+\contentsline {chapter}{\numberline {6} Podsumowanie }{29}
+\contentsline {chapter}{Bibliografia}{29}

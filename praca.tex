@@ -11,7 +11,7 @@
 \usepackage[T1]{fontenc} %poprawne składanie polskich czcionek
 %pakiety do grafiki
 \usepackage{graphicx}
-\usepackage{subfigure}
+\usepackage{subcaption}
 \usepackage{psfrag}
 
 %pakiety dodające dużo dodatkowych poleceń matematycznych
@@ -25,6 +25,9 @@
 \usepackage{hhline}
 \usepackage{multirow}
 \usepackage{indentfirst}
+\usepackage{enumitem}
+
+\usepackage[justification=centering]{caption}
 %pakiet wypisujący na marginesie etykiety równań i rysunków zdefiniowanych przez \label{}, chcąc wygenerować finalną wersję dokumentu wystarczy usunąć poniższą linię
 %\usepackage{showlabels}
 
@@ -494,7 +497,8 @@ Poniżej przedstawiano obrazy wszystkich warstw z programu wykorzystanego do pro
 \vfill
 \end{center}
 \newpage
-
+zdjecia płytki
+\newpage
 \chapter{ Architektura oprogramowania}
 
 W tym rozdziale opisano strukturę programu wraz z modelem UML oraz opisem funkcjonalności poszczególnych klas. Przedstawiono wykorzystane wzorce projektowe, algorytmy i biblioteki. Opisano poszczególne elementy interfejsu graficznego oraz integrację oprogramowania z warstwą sprzętową.
@@ -532,13 +536,131 @@ Poniżej przedstawiono diagram UML reprezentując powiązania i interakcje pomi�
     \caption{\textit{\scriptsize Relacje pomiędzy komponentami MVC.}}
 \end{figure}
 
-Poniżej opisano funkcjonalności wszystkich klas.
+\noindent
+Poniżej opisano funkcjonalności klas we wszystkich przestrzeniach nazw.
 \\
 
 
-Komunikacja pomiędzy komponentami odbywa się przy pomocy interfejsów. Każda klasa dziedziczy po swoim interfejsie w którym zadeklarowane są wszystkie metody niezbędne do komunikacji z obiektem. Pozwala to na odseparowanie rzeczywistej implementacji klasy. Dzięki temu dany komponent można łatwo zmieniać bez wpływania na te które z nim oddziałują. Podejście to ułatwia testowanie oprogramowania, ponieważ wewnętrzną logikę można zastąpić spreparowanymi danymi. Za przykład może posłużyć klasa obsługująca sensor, która zawsze zwraca przygotowany wcześniej odczyt. 
-\chapter{ Podsumowanie }
+\noindent
+\textbf{\textit{Application}} - przestrzeń zawierająca klasy najwyższego poziomu odpowiedzialne na działanie aplikacji.
+\begin{itemize}[label={}]
+  \item \textbf{\textit{FlightRadarApp}} - główna klasa odpowiadająca za działanie i sterowanie aplikacją.
+  \item \textbf{\textit{InterruptMenager}} - klasa implementująca wywołania zwrotne dla obsługiwanych przerwań. Zapewnia synchronizacje pomiędzy systemem operacyjnym i procesami a odpowiednimi zdarzeniami sygnalizowanymi przez wywołania zwrotne.
+\end{itemize}
+\vskip 0.55cm
 
+\noindent
+\textbf{\textit{Model}} - przestrzeń która, zawiera klasy związane z realizacją modelu z MVC
+\begin{itemize}[label={}]
+  \item \textbf{\textit{AircraftRecord}} - klasa do przechowywania informacji o samolotach. Wpisy są zgrupowane w listę. Wezły są wyszukiwane według adresu ICAO. Odpowiada modelowi danyhc z MVC.
+  \item \textbf{\textit{FlightControl}} - implementuję logikę modelu, wraz z metodami dostępu i modyfikacji poszczególnych wpisów. Kontroluje czas życia poszczególnych węzłów oraz usuwa przeterminowane. Informuje kontroler o zmianach.
+\end{itemize}
+\vskip 0.55cm
+
+\noindent
+\textbf{\textit{Controler}} - przestrzeń nazw zawierająca klasy związane z realizacją kontrolera z MVC.
+\begin{itemize}[label={}]
+  \item \textbf{\textit{ADS\_BDecoder}} - klasa odbierająca od obiektu RTLSDR ciągi próbek sygnału radiowego. Odpowiedzialna za wykrywanie ramek od dekodowanie ich do typu ADS\_BMessage.
+  \item \textbf{\textit{ADS\_BMessage}} - unia reprezentują odebraną wiadomość. W zależności od parametru downlink format jest interpretowana jako 56 lub 112 bitowa ramka.
+  \item \textbf{\textit{FlightControlControler}} - reprezentacja kontrolera w MVC. Klasa jest odpowiedzialna na dodawanie i modyfikowanie wpisów w zależności od odebranych wiadomości. Zajmuje się również przetwarzaniem akcji systemu (przerwania od zegary odliczającego czas życia wpisu) i użytkownika (interakcja z panelem dotykowym). Przekazuje dane z modelu do widoku i informuje o potrzebie odświeżenia interfejsu.
+\end{itemize}
+\vskip 0.55cm
+
+\noindent
+\textbf{\textit{View}} - klasy realizujące funkcjonalność widoku z MVC
+\begin{itemize}[label={}]
+  \item \textbf{\textit{FlightControlView}} - realizacja widoku w MVC. Klasa jest odpowiedzialna za prezentację danych z modelu oraz przesyłania akcji użytkownika do kontrolera.
+\end{itemize}
+\vskip 0.55cm
+
+\noindent
+\textbf{\textit{Board}} - zawiera klasy będące wysokopoziomowymi interfejsami do obsługi urządzeń wchodzących w skład PCB. JEst odpowiedzialna za inicializację wszystkich klas z przestrzeni BoardSupport i Drivers.
+\begin{itemize}[label={}]
+  \item \textbf{\textit{BoardMenager}} - klasa zapewniająca komunikację pomiędzy aplikacją a sprzętem.
+  \item \textbf{\textit{Led}} - interfejs do obsługi LED znajdującej się na płytce.
+  \item \textbf{\textit{RTLSDR}} - klasa 
+  \item \textbf{\textit{GPS}} - zajmuję się przetwarzaniem wiadomości przychodzących od modułu GPS poprzez UART. Zapewnia dostęp do zdekodowanych współrzędnych geograficznych.
+  \item \textbf{\textit{Display}} - kontroler wyświetlacza realizujący wysokopoziomowe funkcjonalności takie jak menedżer okien i obsługa widżetów.
+\end{itemize}
+\vskip 0.55cm
+
+\noindent
+\textbf{\textit{Drivers}} - przestrzeń nazw zawierająca wszystkie sterowniki. Zaimplementowane zapewniają interfejs do biblioteki HAL odpowiedzialnej za konfigurację i obsługę sprzętu.
+\begin{itemize}[label={}]
+  \item \textbf{\textit{RCCDriver}} - konfiguracją linii zegarowych oraz pętli PLL (ang. Phase Locked Loop) dla peryferiów oraz rdzenia w mikrokontrolerze. 
+  \item \textbf{\textit{GPIODriver}} - konfiguracja pinów dla wszystkich interfejsów wraz z obsługą wyjść i zewnętrznych przerwań.
+  \item \textbf{\textit{USBDriver}} - sterownik do obsługi USB2.0 Full-Speed. Odpowiada za wykrywanie podłaczonych urządzeń oraz nawiązywnaia z nimi połączenia.
+  \item \textbf{\textit{UARTDriver}} - zapewnia obsługę interfejsu UART (ang.Universal Asynchronous Receiver-Transmitter).
+  \item \textbf{\textit{FMCDriver}} - konfiguracja kontrolera zewnętrznej pamięci mikrokontrolera. Wykorzystywany do komunikacji z układem SDRAM.
+  \item \textbf{\textit{LTDCDriver}} - obsługa kontrolera wyświetlacza LCD-TFT wraz z konfiguracją wyświetlanych warstw.  
+  \item \textbf{\textit{I2CDriver}} - klasa do obsługi interfejsu I2C.
+  \item \textbf{\textit{DMADriver}} - sterownik kontrolera DMA (ang Direct Memory Access). Wykorzystywany do przyspieszenia operacji renderowania kolejnych klatek dla wyświetlacza.
+\end{itemize}
+
+
+Komunikacja pomiędzy komponentami odbywa się przy pomocy interfejsów. Każda klasa dziedziczy po swoim interfejsie w którym zadeklarowane są wszystkie metody niezbędne do komunikacji z obiektem. Pozwala to na odseparowanie rzeczywistej implementacji klasy. Dzięki temu dany komponent można łatwo zmieniać bez wpływania na te które z nim oddziałują. Podejście to ułatwia testowanie oprogramowania, ponieważ wewnętrzną logikę można zastąpić spreparowanymi danymi. Za przykład może posłużyć klasa obsługująca sensor, która zawsze zwraca przygotowany wcześniej odczyt. 
+
+
+\section{Procesy w systemie operacyjnym}
+W projekcie wykorzystano system operacyjny FreeRTOS, co pozwoliło podzielić poszczególne części aplikacji na procesy. Wielozadaniowość jest potrzebna by jednocześnie obsługiwać interfejs użytkownika, zarządzać akwizycją danych oraz wykonywać obliczenia związane z logiką programu, tak by użytkownik miał wrażenie płynnego działania aplikacji. Mechanizm semaforów wykorzystano to synchronizacji zadań z przerwaniami sprzętowym, natomiast kolejki wykorzystano do przesyłania pomiędzy nimi. danych i zdarzeń. Ponadto użyto liczników programowych do odliczania czasu życia poszczególnych wpisów w modelu. Ponadto użyto liczników programowych do odliczania czasu życia poszczególnych wpisów w modelu.
+\newpage
+\noindent
+W systemie wydzielono następujące procesy:
+\begin{itemize}
+\item USBMonitorTask - odpowiedzialny za obsługę maszyny stanów USB oraz wykrywania i konfiguracje Tunera DVB-T jako SDR. 
+  
+\item RTLSDRDataAquisitionTask - proces zajmujący się obsługą komunikacji z SDR oraz wykrywaniem wiadomości ADS-B i przesyłaniem ich do FlightControlerTask poprzez kolejkę.
+    
+\item FlightControlerTask - zadanie zajmuje się dekodowaniem wiadomości ADS-B. Przekazuje zdarzenia systemowe, takie jak przepełnienia liczników, oraz zdekodowanie ramki do kontrolera MVC FlightControlControler.
+
+\item GUITask - proces obsługujący interfejs graficzy poprzez klasę FlightControlView.
+\end{itemize}
+\noindent
+Poniżej przedstawiono schematy blokowe poszczególnych zadań.
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}[c]{0.35\linewidth}
+\centering
+\includegraphics[width=3.99cm]{plots/modelTask.png}
+\caption{Schemat blokowy zadania FlightControlerTask}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.55\linewidth}
+\centering
+\vskip 2.5cm
+\includegraphics[width=6.85cm]{plots/dataTask.png}
+\vskip 3.55cm
+\caption{Schemat blokowy zadania RTLSDRDataAquisitionTask}
+\end{minipage}
+\end{figure}
+\newpage
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}[c]{0.45\linewidth}
+\centering
+\includegraphics[width=5cm]{plots/usbTask.png}
+\vskip 1.3cm
+\caption{Schemat blokowy zadania USBMonitorTask}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\linewidth}
+\centering
+\includegraphics[width=6.5cm]{plots/guiTask.png}
+\caption{Schemat blokowy zadania GUITask}
+\end{minipage}
+\end{figure}
+
+\section{Wykrywanie i dekodowanie wiadomości ADS-B}
+
+Wiadomość ADS-B wydobyta z fali nośnej składa się z preambuły preambuły 
+
+
+\chapter{Interfejs użytkownika}
+W tym rozdziale opisano poszczególne elementy interfejsu użytkownika wraz z opisem użytych widżetów i formatem prezentowanych danych.
+
+\chapter{ Podsumowanie }
 
 \addcontentsline{toc}{chapter}{Bibliografia} %utworzenie w spisie treści pozycji Bibliografia
 \bibliography{bibliografia} % wstawia bibliografię korzystając z pliku bibliografia.bib - dotyczy BibTeXa, jeżeli nie korzystamy z BibTeXa należy użyć otoczenia thebibliography
