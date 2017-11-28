@@ -3,24 +3,15 @@
 \contentsline {section}{\numberline {2.1}\IeC {\'S}rodowisko sprz\IeC {\k e}towe i wykorzystane narz\IeC {\k e}dzia}{4}
 \contentsline {chapter}{\numberline {3} Architektura sprz\IeC {\k e}towa}{5}
 \contentsline {section}{\numberline {3.1} Schemat Urz\IeC {\k a}dzenia}{5}
-\contentsline {subsection}{\numberline {3.1.1}Zasilanie}{5}
-\contentsline {subsection}{\numberline {3.1.2}Mikrokontroler}{6}
-\contentsline {subsection}{\numberline {3.1.3}Interfejsy komunikacyjne}{7}
-\contentsline {subsection}{\numberline {3.1.4}Wy\IeC {\'s}wietlacz}{7}
-\contentsline {subsection}{\numberline {3.1.5}SDRAM}{8}
-\contentsline {subsection}{\numberline {3.1.6}Modu\IeC {\l } GPS}{9}
 \contentsline {section}{\numberline {3.2} Wykonanie PCB }{10}
-\contentsline {subsection}{\numberline {3.2.1}Parametry PCB}{10}
-\contentsline {subsection}{\numberline {3.2.2}GPS}{10}
-\contentsline {subsection}{\numberline {3.2.3}USB}{12}
-\contentsline {subsection}{\numberline {3.2.4}Interfejsy szybkie}{14}
-\contentsline {subsection}{\numberline {3.2.5}Warstwa zasilania}{16}
-\contentsline {subsection}{\numberline {3.2.6}Prezentacja PCB}{17}
-\contentsline {chapter}{\numberline {4} Architektura oprogramowania}{22}
-\contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{22}
-\contentsline {section}{\numberline {4.2}Model UML}{23}
-\contentsline {section}{\numberline {4.3}Procesy w systemie operacyjnym}{25}
-\contentsline {section}{\numberline {4.4}Wykrywanie i dekodowanie wiadomo\IeC {\'s}ci ADS-B}{27}
-\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{32}
-\contentsline {chapter}{\numberline {6} Podsumowanie }{33}
-\contentsline {chapter}{Bibliografia}{33}
+\contentsline {subsection}{\numberline {3.2.1}USB}{12}
+\contentsline {subsection}{\numberline {3.2.2}Interfejsy szybkie}{14}
+\contentsline {subsection}{\numberline {3.2.3}Prezentacja PCB}{17}
+\contentsline {chapter}{\numberline {4} Architektura oprogramowania}{23}
+\contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{23}
+\contentsline {section}{\numberline {4.2}Model UML}{24}
+\contentsline {section}{\numberline {4.3}Procesy w systemie operacyjnym}{26}
+\contentsline {section}{\numberline {4.4}Wykrywanie i dekodowanie wiadomo\IeC {\'s}ci ADS-B}{28}
+\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{34}
+\contentsline {chapter}{\numberline {6} Podsumowanie }{35}
+\contentsline {chapter}{Bibliografia}{35}

@@ -26,7 +26,7 @@
 \usepackage{multirow}
 \usepackage{indentfirst}
 \usepackage{enumitem}
-\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \usepackage[justification=centering]{caption}
 %pakiet wypisujący na marginesie etykiety równań i rysunków zdefiniowanych przez \label{}, chcąc wygenerować finalną wersję dokumentu wystarczy usunąć poniższą linię
 %\usepackage{showlabels}
@@ -37,7 +37,7 @@
 \newtheorem{theorem}{Twierdzenie}[section] %nowe otoczenie do składania twierdzeń
 
 %dane do złożenia strony tytułowej
-\title{System lokalizacji samolot\.'ow z wykorzystaniem ADS-B}
+\title{System lokalizacji samolotów z wykorzystaniem ADS-B}
 \engtitle{Airplane tracking system using ADS-B}
 \author{Karol Szpila}
 \supervisor{\vfil dr in\.z. Krzysztof Halawa\\
@@ -85,28 +85,27 @@
 \let\cleardoublepage\clearpage %usuwa puste strony pomiaedzy rozdziałami
 
 \chapter{ Wstęp }
-ADS-B (ang. Automatic Dependent Surveillance–Broadcast) to system służący do śledzenia statków powietrznych wykorzystywany w kontroli ruchu powietrznego. Powstał, aby uzupełniać pracę PSR (ang. Primary Surveilance Radar) i w przyszłości całkowicie go zastąpić. PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od obiektu. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem, wrażliwość na ukształtowanie terenu oraz warunki pogodowe. ADS-B bazuje na lokalizacji przy pomocy satelit GPS. Statki powietrzne w sposób ciągły ustalają swoją pozycję oraz nadają drogą radiową swoje położenie, prędkość oraz identyfikator.
+ADS-B (ang. Automatic Dependent Surveillance–Broadcast) to system służący do śledzenia statków powietrznych wykorzystywany w kontroli ruchu powietrznego. Powstał, aby uzupełniać pracę PSR (ang. Primary Surveilance Radar) i w przyszłości całkowicie go zastąpić. PSR to radar aktywny bazujący na wysyłaniu fal elektromagnetycznych oraz pomiarze czasu powrotu fali odbitej od przeszkody. Wadą takich systemów jest brak informacji o wykrytym obiekcie poza jego lokalizacją i rozmiarem, wrażliwość na ukształtowanie terenu oraz warunki pogodowe. ADS-B bazuje na lokalizacji przy pomocy satelit GPS. Statki powietrzne w sposób ciągły ustalają swoją pozycję oraz nadają drogą radiową swoje położenie, prędkość oraz identyfikator.
 \\
 
 
-Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpytywania statku powietrznego o danym 24-bitowym adresie ICAO (ang International Civil Aviation Organization). SSR to wtórny radar dozorowania, uzupełniający prace PSR o dodatkowe informacje odebrane od statku powietrznego. Zapytania wysyłane są przez ATM (ang. Air Traffic Management) na częstotliwości 1030Mhz, natomiast odpowiedzi na 1090Mhz.ADS-B wykorzystuje Mode-S jako technologię do przesyłania informacji.
-
+Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpytywania statku powietrznego o danym 24-bitowym adresie ICAO (ang International Civil Aviation Organization). SSR to wtórny radar dozorowania, uzupełniający prace PSR o dodatkowe informacje odebrane od statku powietrznego. Zapytania wysyłane są przez ATM (ang. Air Traffic Management) na częstotliwości 1030Mhz, natomiast odpowiedzi na 1090Mhz. ADS-B wykorzystuje Mode-S jako technologię do przesyłania informacji.
 \begin{table}[ph]
-\caption{\textit{ Rodzaje wiadomości ADS-B}}
+\caption{\textit{ Rodzaje pakietów Mode-S}}
 \label{tab:adsb}
   \centering
   \def\arraystretch{1.3}% 
   \begin{tabular}{|c|c|c|}
   \hline
   \multicolumn{1}{|c|}{Rodzaj wiadomości} & \multicolumn{1}{c|}{Downlink Format} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
-  \multirow{4}{*}{ADS-B (56 bitów)} 
+  \multirow{4}{*}{Mode-S (56 bitów)} 
   				 & \multicolumn{1}{c|}{DF0} & \multicolumn{1}{c|}{Odpowiedz Short Air to Air ACAS} \\\cline{2-3}
                  & \multicolumn{1}{c|}{DF4} & \multicolumn{1}{c|}{Poziom lotu} \\\cline{2-3}
                  & \multicolumn{1}{c|}{DF5} & \multicolumn{1}{c|}{Identyfikator (Roll-call)} \\\cline{2-3}
-                 & \multicolumn{1}{c|}{DF11} & \multicolumn{1}{c|}{Mode-S odpowiedz All-call} \\\hline
-  \multirow{6}{*}{ADS-B (112 bitów)} 
+                 & \multicolumn{1}{c|}{DF11} & \multicolumn{1}{c|}{Odpowiedz All-call} \\\hline
+  \multirow{6}{*}{Mode-S (112 bitów)} 
   				 & \multicolumn{1}{c|}{DF16} & \multicolumn{1}{c|}{Odpowiedz Long Air to Air ACAS} \\\cline{2-3}
-                 & \multirow{5}{*}{DF17} & Pozycja powietrzna \\\hhline{~~~} 
+                 & \multirow{5}{*}{DF17 (ADS-B)} & Pozycja powietrzna \\\hhline{~~~} 
                  &                       & pozycja lądowa \\\hhline{~~~} 
                  &                       & status \\\hhline{~~~} 
                  &                       & ID i rodzaj samolotu  \\\hhline{~~~} 
@@ -118,8 +117,7 @@ Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpy
 \end{table}
 \newpage
 
-Powyższa tabela prezentuje podział wiadomości ADS-B ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wiadomosci można podzielić według długości bloku danych na normalne o długości 56 bitów i rozszerzone 112 bitowe.DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System).Wyróżniamy odpowiedz Short air to air ACAS (DF0), odbierane przez stacje ATM, oraz Long air to air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Statki wysyłające ramkę DF5 potwierdzają, że są wyposarzone w transponder ADS-B. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, uzyskiwanie na zapytanie kontroli naziemnej, które zawierają dodatkowe informacja niedostępne w Mode-S ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymaną odpowiedź DF20 i DF21, poniewąż nie zawiera on wysłanego BDS. Poniżej przedstawiono tabelę z wymienionymi wcześniej BDS.
-
+Powyższa tabela prezentuje podział wiadomości Mode-S ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wyróżniamy wiadomości krótkie o długości 56 bitów i rozszerzone 112 bitowe.DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System). ACAS to system zapobiegania kolizji w kontroli ruchu powietrznego. Wyróżniamy odpowiedz Short Air to Air ACAS (DF0), odbierane przez stacje ATM, oraz Long Air to Air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Uczestnicy ruchu wysyłający ramkę DF5 potwierdzają, że są wyposarzone w transponder Mode-S. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, które zawierają dodatkowe informacja niedostępne w ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymany pakiet DF20 i DF21, ponieważ nie zawiera ona wysłanego BDS. Poniżej przedstawiono tabelę z parametrami odpowiadającymi poszczególnym BDS.
 \begin{table}[ph]
 \caption{\textit{ BDS dla wiadomości DF20 i DF21}}
 
@@ -130,31 +128,29 @@ Powyższa tabela prezentuje podział wiadomości ADS-B ze względu na rozmiar bl
  \end{tabular}
 \end{table}
 
-Wiadomość ADS-B i Mode-S EHS można odbierać przy pomocy dowolnego odbiornika dostrojonego do częstotliwości 1090MHz. Tunery z układem RTL2832U można łatwo przekształcić w SDR (ang. Software Defined Radio) SDR to system komunikacji radiowej w którym strojenie odbywa się poprzez pogram bez ingerencji w sprzęt. Wspomniany odbiornik jest znacznie tańszy od profesjonalnych rozwiązań, co spopularyzowało ADS-B w zastosowaniach amatorskich. 
-
-
-
-%Transfer danych w Mode-S odbywa się z prędkoscią 1Mb/s, a ramki są modulowanie przy pomocy PPM (ang Pulse Position Modulation). PPM w przypadku sygnału cyfrowego polega na 
+Wiadomość Mode-S można odbierać przy pomocy dowolnego odbiornika dostrojonego na częstotliwości 1090MHz. Tunery z układem RTL2832U można łatwo przekształcić w SDR (ang. Software Defined Radio) SDR to system komunikacji radiowej w którym parametry odbiornika są konfigurowane poprzez pogram bez ingerencji w sprzęt. Wspomniany odbiornik jest znacznie tańszy od profesjonalnych rozwiązań, co spopularyzowało ADS-B w zastosowaniach amatorskich. 
 
 
 
 \chapter{ Cele i założenia projektowe }
-Celem niniejszej pracy jest stworzenie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w transpondery ADS-B. W systemie można wyróżnić dwie zasadnicze części: 
-Komunikacji radiowej, odpowiedzialna za wykrywanie, zbieranie i dekodowanie wiadomości oraz prezentacji danych, której celem jest przedstawienie informacji w przystępny sposób poprzez interfejs graficzny. Urządzenie można wykorzystać jako alternatywa dla drogich i profesjonalny urządzeń w przypadku zastosowań amatorskich.
+Celem niniejszej pracy jest stworzenie prototypu systemu pozwalającego na lokalizację oraz zbieranie informacji o  statkach powietrznych wyposażonych w transpondery ADS-B. W systemie można wyróżnić dwie zasadnicze części.
+Wewnętrzną odpowiedzialna za wykrywanie, zbieranie i dekodowanie wiadomości oraz wizualną, zajmującą się prezentacją danych oraz interakcją z użytkownikiem. Urządzenie można wykorzystać jako alternatywa dla drogich i profesjonalny systemów w przypadku zastosowań amatorskich.
 
 \section{Środowisko sprzętowe i wykorzystane narzędzia}
 W tym podrozdziale zostaną przedstawiono wykorzystanie w systemie urządzenia oraz środowisko programistyczne.
 \\
-Jako odbiornik radiowy zostanie wykorzystany tuner DVB-T z układem RTL2832U wyposażony w interfejs USB. Urządzenie można łatwo zamienić w SDR. Zdecydowano się na wykorzystanie mikrokontrolera firmy ST z serii STM32F767, ze względu na posiadanie peryferiów niezbędnych do obłożenia urządzeń w systemie, oraz dostępność narzędzi i oprogramowania. W projekcie wykorzystano wyświetlacz LCD-TFT o przekątnej 10.1 cala.
+Jako odbiornik radiowy zostanie wykorzystany tuner DVB-T z układem RTL2832U wyposażony w interfejs USB. Urządzenie można łatwo zamienić w SDR. Zdecydowano się na wykorzystanie mikrokontrolera firmy ST z serii STM32F767, ze względu na posiadanie peryferiów niezbędnych do obsługi urządzeń w systemie, oraz dostępność narzędzi i oprogramowania. W projekcie wykorzystano wyświetlacz LCD-TFT o przekątnej 10.1 cala.
+Zdecydowano się na wykorzystanie języków programowania C99 oraz C++ 2014.
 Poniżej wymieniono użyte biblioteki.
 \begin{itemize}
   \item librtl-sdr - obsługa Tunera DVB-T jako SDR.
-  \item STM32 USB host library - komunikacja mikrokontolera z radiem porzez interfejs USB.
-  \item STemWin - obsługa interfejsu graficznego.
-  \item dump1090 - dekodowanie wiadomości ADS-B
+  \item STM32 USB Host Library - komunikacja mikrokontrolera z radiem poprzez interfejs USB.
+  \item STemWin - obsługa wyświetlacza z panelem dotykowym.
+  \item HAL - konfiguracja i interakcja na niskim poziomie z warstwą sprzętową.
 \end{itemize}
 
-Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnienia wielowątkowości oraz mechanizmów do zarządzania zasobami sprzętowymi. Do programowania urządzenia użyto programatora ST-Link z zestawu uruchomieniowego STM32F429I-DISC1. Poniżej przedstawiono programy wykorzystanie przy rewitalizacji projektu.
+
+Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnienia wielozadaniowości oraz mechanizmów do zarządzania zasobami sprzętowymi. Do programowania urządzenia wykorzystano programatora ST-Link z zestawu uruchomieniowego STM32F429I-DISC1. Poniżej zaprezentowano wykorzystane środowisko programowe.
 
 \begin{itemize}
   \item Atollic True Studio - środowisko do programowania mikrokontrolerów.
@@ -167,17 +163,17 @@ Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnie
 
 
 \section{ Schemat Urządzenia}
-W tym rozdziale zostanie opisana czę\'s\'c sprzętowa projektu, czyli schemat urządzenia oraz projekt PCB, wykorzystane elementy oraz zewnętrzne urządzenia.
-\subsection{Zasilanie}
-Urządzenie jest zasilanie z zewnętrznego źródła 5V poprzez port USB typu mini A. Pozwala to na podłącznie PCB zarówno do sieci przy pomocy ładowarki do telefonu jak i z komputera czy z przenośnego power banku. Ponieważ układy takie jak mikrokontroler czy pamieć SDRAM potrzebują napięcia 3.3V zastosowano stabilizator LM1117 Poniżej przedstawiono schemat podłączania.
+W tym rozdziale zostanie opisana część sprzętowa projektu, czyli schemat urządzenia oraz projekt PCB, wykorzystane elementy oraz zewnętrzne urządzenia.
+\subsection*{Zasilanie}
+Urządzenie jest zasilanie z zewnętrznego źródła 5V poprzez port USB typu mini A. Pozwala to na podłączenie PCB zarówno do sieci przy pomocy ogólnodostępnych przetwornic lub akumulatorów z wyjściem USB.Stabilizator LM1117 wykorzysto bo obniżenia napięcia zasilania do wartości 3,3V przy jakiej pracują ukłądy scalone znajdujące się na PCB.Poniżej przedstawiono schemat podłączania.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/power.png}
-    \caption{\textit{\scriptsize Schemat zasilania płZytki PCB}}
+    \caption{\textit{\scriptsize Schemat części zasilania PCB}}
 \end{figure}
-\subsection{Mikrokontroler}
-Wykorzystany mikrokontroler to STM32F767ZIT6. Układ został wybrany ze względu na zmieszczenie w najmniejszej obudowie wszystkich wymaganych układów peryferiów takich jak: kontroler LDTC do sprzętowej obsługi wyświetlacza LCD, kontroler pozwalający obsłużyć zewnętrzną pamięcią SDRAM i interfejsy komunikacyjne USB, I2C i UART. Poniżej przedstawiono schemat podłączenia.
+\subsection*{Mikrokontroler}
+Wykorzystany mikrokontroler to STM32F767ZIT6. Układ został wybrany ze względu na zmieszczenie w najmniejszej obudowie wszystkich wymaganych układów peryferiów takich jak: układ LDTC do sprzętowej obsługi wyświetlacza LCD, kontroler zewnętrznej pamięci pozwalający obsłużyć SDRAM i interfejsy komunikacyjne USB, I2C oraz UART. Poniżej przedstawiono schemat podłączenia.
 
 \begin{figure}[!h]
     \centering
@@ -185,25 +181,25 @@ Wykorzystany mikrokontroler to STM32F767ZIT6. Układ został wybrany ze względu
     \caption{\textit{\scriptsize Schemat podłączenia mikrokontrolera STM32f767ZIT6}}
 \end{figure}
 
-\subsection{Interfejsy komunikacyjne}
-System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do przechowywania skompresowanych obrazów do tła GUI lub co planowane jest w przyszłości map pozwalających lepiej orientować się w terenie na podstawie obrazu z radaru. Do programowania mikrokontrolera wykorzystany został dedykowany dwuprzeowodowy interfejs SWD zgodny z ST-Link. Ostatni zostanie omówiony interfejs USB do komunikacji z SDR (eng Software Defined Radio). Interfejs został wyprowadzony poprzez gniazdo Micro USB-B pozwalając w ten sposób zaoszczędzić miejsca na PCB. System jako Host USB będzie zasilać podłączony układy których pobór nie powinien przekroczyć, zgodznie ze stangardem USB2.0 500mA ,dlatego zastosowano power switch STMPS2141STR. W przypadku podania stanu wysokiego na pin USB PSO switch zostanie właczony. Jeżeli nie występują żadne sytuacje nieporządne takie jak przetężenie prądowe czy zwarcie, zapali się zielona dioda sygnalizująca poprawnie działanie zasilania. W przypadku jakichkolwiek problemów prąd zostanie natychmiast odcięty a układ wystawi wysoki stan na pin FAULT informując mikrokontroler i zapalając czerwona diodę. W celu zabezpieczania interfejsu przed nieporządanymi wyładowaniami elektrostatycznymi związanymi z dotykaniem urządzenia czy wkładaniem urządzenia do gniazda zastosowano układ ochrony ESD (ang . Electro Static Discharge ) STMECMF02-4CMX8 dedykowany dla USB2.0. Poniżej przedstawiono schemat połacznia na PCB.
+\subsection*{Interfejsy komunikacyjne}
+System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do przechowywania skompresowanych obrazów do tła GUI lub map pozwalających lepiej orientować się w terenie na podstawie obrazu z radaru. Do programowania mikrokontrolera wykorzystany został dedykowany interfejs SWD zgodny z ST-Link.USB wykorzystano do komunikacji z SDR (eng Software Defined Radio). Interfejs został wyprowadzony poprzez gniazdo Micro USB-B pozwalając w ten sposób zaoszczędzić miejsca na PCB. System jako Host będzie zasilać podłączony układy którego pobór nie powinien przekroczyć, zgodznie ze standardem USB2.0, 500mA . Z tego powodu zastosowano przełącznik STMPS2141STR. W przypadku podania stanu wysokiego na pin USB PSO układ zostanie włączony. Jeżeli nie występują żadne sytuacje nieporządne takie jak przetężenie prądowe czy zwarcie, zapali się zielona dioda sygnalizująca poprawnie działanie. W przypadku jakichkolwiek problemów prąd zostanie natychmiast odcięty a układ wystawi wysoki stan na pin FAULT informując o tym mikrokontroler i zapalając czerwona diodę. W celu zabezpieczania interfejsu przed niepożądanymi wyładowaniami elektrostatycznymi związanymi z dotykaniem urządzenia czy wkładaniem urządzenia do gniazda zastosowano układ ochrony ESD (ang . Electro Static Discharge ) STMECMF02-4CMX8, który pełni również funkcję filtru EMI, (ang. Electroagnecitc Interferences)dedykowany dla USB2.0. Poniżej przedstawiono schemat połączenia układów.
  %sprawdzic czy prawda z h na faul
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/conn.png}
-    \caption{\textit{\scriptsize Schemat podłączenia zewnętrych interfejsów}}
+    \caption{\textit{\scriptsize Schemat podłączenia zewnętrznych interfejsów}}
 \end{figure}
 
-\subsection{Wyświetlacz}
-Zgodnie z założeniem, system ma posiadać interfejs graficzny dla użytkownika. Do tego celu wybrano wyświetlacz HY101CTP o przekątnej 10,1" i rozdzielczości 1024 na 600 pikseli. Matryca jest sterowana poprzez MIPI-DPI (ang. Mobile Industry Processor Interface - Display Parell Interface) 24bity na pikesl przy użyciu wbudowanego w układ STM32F7 kontrolara LTDC. Panel dotykowy komunikuje się z mikrokontrolerem poprzez interfejs I2C. Rezystory R3 i R8 mają za zadanie wymusić stan wysoki na liniach, ponieważ są sterownie w trybie otwartego drenu. W tej konfiguracji można tylko zewrzeć linie do masy zmieniając stan wysoki na niski. Pozwoliło to wyeliminować sytuacje w której linia na jednym końcu jest zwarta do masy a na drugim do zasilania co doprowadziło by do zwarcia i gwałtownego wzrostu mocy mogącego uszkodzić układ.
+\subsection*{Wyświetlacz}
+Zgodnie z założeniem, system ma posiadać interfejs  użytkownika. Do tego celu wybrano wyświetlacz HY101CTP z pojemnościowym panelem dotykowym. Przekątna wynosi 10,1",a rozdzielczośś to 1024 na 600 pikseli. Matryca jest sterowana poprzez MIPI-DPI (ang. Mobile Industry Processor Interface - Display Parell Interface). Interfejs składa się z 24 linii reprezentujących kolojno 8-bitowe wartość składowych RGB piksela, linii synchronizacji poziomej HSYNC i pionowej VSYNC, włączenia danych DE oraz sygnału zegarowego PCLK. Ponadto wyświetlacz posiada pin DISP\_ON do włączania podświetlenia oraz BL\_ADJ służącego do sterowania jasnącią poprzez sygnał PWM. Panel dotykowy komunikuje się z mikrokontrolerem poprzez interfejs I2C. Rezystory R3 i R8 mają za zadanie wymusić stan wysoki na liniach, ponieważ są sterownie w trybie otwartego drenu. W tej konfiguracji można tylko zewrzeć linie do masy zmieniając stan wysoki na niski. Pozwoliło to wyeliminować sytuacje w której linia na jednym końcu jest zwarta do masy a na drugim do zasilania co doprowadziło by do zwarcia i gwałtownego wzrostu mocy mogącego uszkodzić układ.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/display.png}
     \caption{\textit{\scriptsize Schemat podłączenia wyswietlacza}}
 \end{figure}
 
-\subsection{SDRAM}
+\subsection*{SDRAM}
 Do działania interfejsu graficznego potrzebna jest pamięć do przechowywania ramek wysyłanych do wyświetlacza poprzez interfejs MIPI-DPI. Założono iż warstwy będą przechowywane w pamięci w formacie ARGB8888 (po bajcie na każdy kolor i kanał alfa). Kontroler LTDC jest w stanie sprzętowo mieszać dwie warstwy w wynikową która jest wysyłana do wyświetlacza. Zdecydowano, że potrzeba pamięci wystarczająco dużej, by zmieścić trzy bufory. Pierwsza warstwa byłaby przeznaczony na tło, które jest niezmienne podczas działania urządzenia. Dwie pozostałe warstwy służyłby do naprzemiennej prezentacji zmiennych danych takich jak położenie statku powietrznego. Będzie to implementacja mechanizmu podwójnego buforowania pozwalająca wyeliminować migotanie matrycy podczas modyfikacji bufora aktualnie wyświetlanego. Trzy warstwa o rozmiarze 1024 na 600 piskeli w formacie ARGB8888 zajmą 57600 Kb. W pracy zdecydowano się wykorzystać układ IS42S16400J-7TLI posiadający 65536 Kb pamięci. Poniżej przedstawiono schemat połączenia z mikrokontrolerem.
 
 \begin{figure}[!h]
@@ -212,9 +208,8 @@ Do działania interfejsu graficznego potrzebna jest pamięć do przechowywania r
     \caption{\textit{\scriptsize Schemat podłączenia zewnętrzej pamięci SDRAM}}
 \end{figure}
 
-\subsection{Moduł GPS}
-Aby system był w stanie popranie obliczyć odległość od namierzonego statu powietrznego i poprawnie zaznaczyć jego pozycję na radarze, potrzebna znać pozycje urządzenia. Do tego zadania wybrano układ NEO-6M-0-001 z zewnętrzną aktywną anteną. Do układu została podłączono zewnętrza bateria podtrzymująca zasilanie. Dzieki temu urządzenie może uruchomić poprzez ciepły start, co pozwala zaoszczędzić czas potrzebny na znalezienie odpowiedniej liczby satelit Do komunikacji z mikrokontrolerem wybrano interfejs UART.
-
+\subsection*{Moduł GPS}
+Aby system był w stanie popranie obliczyć odległość od namierzonego statu powietrznego i poprawnie zaznaczyć jego pozycję na radarze, potrzebna znać pozycje urządzenia. Do tego zadania wybrano układ NEO-6M-0-001 z zewnętrzną aktywną anteną. Do układu została podłączono zewnętrza bateria podtrzymująca zasilanie. Dzieki temu urządzenie może uruchomić poprzez ciepły start, co pozwala zaoszczędzić czas potrzebny na znalezienie odpowiedniej liczby satelit Do komunikacji z mikrokontrolerem wybrano 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/gps.png}
@@ -223,16 +218,17 @@ Aby system był w stanie popranie obliczyć odległość od namierzonego statu p
 \newpage
 
 \section{ Wykonanie PCB }
-W tym rozdziale szczegółowo opisano projekt oraz parametry wykonanego PCB. Pokazano obliczenia uzasadniające decyzje projektowe oraz ograniczenia wynikające z technologi produkcji i zastosowanych układów. 
+W tym rozdziale szczegółowo opisano projekt oraz wykonanie PCB wtaz z obliczeniami. Opisano decyzję projektowe wynikajcie z ograniczeń technologi oraz występowania niepożądanych zjawisk fizycznych.
 
-\subsection{Parametry PCB} \label{pcbSection}
+\subsection*{Parametry PCB} \label{pcbSection}
 W projekcie PCB zdecydowano się na wykonanie technologia czterowarstwową. Pozwoliło to zmniejszyć rozmiary urządzenia oraz zapewnić dobre ekranowanie dla pomiędzy warstwami sygnałowymi. Ograniczyło to przesłuchy pomiędzy warstwami. Ponadto ciągłość warstw referencyjnych (masy i zasilania) pozwala by prądy powrotne przepływało możliwe najkrótszą drogą o najmniejszej impedancji zmniejszając emisje EMC. Poniżej przedstawiono tabele z układem warstw PCB.
 
 \begin{table}[htb]
-
+\def\arraystretch{1.3}% 
 \caption{\textit{ Kolejność i grubość warst PCB}}
 \label{tab:pcbStack}
 \begin{center}
+\def\arraystretch{1.3}% 
 \begin{tabular}{ |c|c|c|c| }
 \hline
 Warstwa& grubość [mm] & grubość [mil] \\ 
@@ -257,7 +253,7 @@ sygnały & 0.03556 & 1,4 \\
 
 Warstwy przewodzące wykonane są z miedzi natomiast jako dielektryk wykorzystano materiał FR-408 o stałej dielektrycznej \textbf{$\varepsilon_r$} = 3.66
 
-\subsection{GPS}
+\subsection*{Dopanowanie impedancji}
 Zgodnie z notą katalogową układu NEO-6M-0-001, ścieka antenowa powinna mieć impedancję dopasowaną do Z\textsubscript{0} = 50\textbf{$\Omega$}, którą obliczono z następującego wzoru :
 \begin{equation}
 Z_0= \frac{87}{\sqrt{\varepsilon_r + 1.41}}\ln{\left(\frac{5.98H}{0.8W + T}\right)} \label{eq:gps_z0}
@@ -413,7 +409,7 @@ $$
  Poniżej przedstawiono tabelę z czasami ustalania dla wszystkich sygnałów interfejsu odczytanych z noty ukłądu IS42S16400J-7TLI.
 
 \begin{table}[htb]
-
+\def\arraystretch{1.3}% 
 \caption{\textit{ Czasy ustalania dla wszystkich sygnałów układu SDRAM}}
 \label{tab:sdramTiming}
 \begin{center}
@@ -438,8 +434,6 @@ $$
 t_{max} = 4167ps - 1500ps = 2667ps
 $$
 Ponownie $t_{max}= 2667ps >= t=16,21$, zatem ograniczenia czasowe nie zostały przekroczone.
-
-
 Poniżej przedstawiono zbliżenie na projekt PCB, gdzie można zauważyć meandry na ścieżkach,których celem jest wyrównanie różnicy długości pomiędzy ścieżkami sygnałowymi.
 
 \begin{figure}[!h]
@@ -448,57 +442,71 @@ Poniżej przedstawiono zbliżenie na projekt PCB, gdzie można zauważyć meandr
     \caption{\textit{\scriptsize Przykład dopasowania długości ścieżek na PCB}}
 \end{figure}
 
-\subsection{Warstwa zasilania}
+\subsection*{Warstwa zasilania}
 Większość układów na PCB jest zasilana napięciem 3,3V. Jednak interfejs USB i podświetlenie wyświetlacza wymaga napięciem 5V. Wymagało to odpowiedniego podzielania warstwy trzeciej. Zadbano o to żeby żadne ścieżki sygnałów wrażliwych na zakłócenia nie przechodziły nad przerwą pomiędzy polem zasilanie 3,3V i 5V. Nieciągłość warstwy referencyjne powoduje powstawanie pętli prądowych, ponieważ prąd powrotny szuka innej dostępnej ścieżki powrotu. Zjawisko to może powodować wzrost zakłóceń elektromagnetycznych emitowanych przez urządzenie. Warstwę przedstawia obraz ~\ref{fig:power} w podrozdziale \ref{pcbOverview}.
 \subsection{Prezentacja PCB} \label{pcbOverview}
 Poniżej przedstawiano obrazy wszystkich warstw z programu wykorzystanego do projektu oraz zdjęcie gotowego PCB.
+
+
 \begin{center}\centering
-\vspace*{\fill}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{pcb/top.png}
     \caption{\textit{\scriptsize Układ warstwy 1.}}
 \end{figure}
-\vfill
 \end{center}
-\newpage
+
 
 \begin{center}\centering
-\vspace*{\fill}
 \begin{figure}[!h]
+\vskip 2cm
     \centering
-   	
     \includegraphics[width=\textwidth]{pcb/gnd.png}
     \caption{\textit{\scriptsize Układ warstwy 2.}}
 \end{figure}
-\vfill
 \end{center}
-\newpage
 
 \begin{center}\centering
-\vspace*{\fill}
 \begin{figure}[!h]
+\vskip 2cm
     \centering
     \label{fig:power}
     \includegraphics[width=\textwidth]{pcb/power.png}
     \caption{\textit{\scriptsize Układ warstwy 3.}}
 \end{figure}
-\vfill
 \end{center}
-\newpage
+
 
 \begin{center}\centering
-\vspace*{\fill}
 \begin{figure}[!h]
+\vskip 2cm
     \centering
     \includegraphics[width=\textwidth]{pcb/bottom.png}
     \caption{\textit{\scriptsize Układ warstwy 4.}}
 \end{figure}
-\vfill
 \end{center}
-\newpage
-zdjecia płytki
-\newpage
+
+
+\begin{center}\centering
+\begin{figure}[!h]
+\vskip 1cm
+    \centering
+    \includegraphics[width=\textwidth]{images/bottomPcb.jpg}
+    \caption{\textit{\scriptsize Zdjęcie spodu PCB.}}
+\end{figure}
+\end{center}
+
+
+
+\begin{center}\centering
+\begin{figure}[!h]
+\vskip 1cm
+    \centering
+    \includegraphics[width=\textwidth]{images/bottomPcb.jpg}
+    \caption{\textit{\scriptsize Zdjęcie spodu PCB.}}
+\end{figure}
+\end{center}
+
 \chapter{ Architektura oprogramowania}
 
 W tym rozdziale opisano strukturę programu wraz z modelem UML oraz opisem funkcjonalności poszczególnych klas. Przedstawiono wykorzystane wzorce projektowe, algorytmy i biblioteki. Opisano poszczególne elementy interfejsu graficznego oraz integrację oprogramowania z warstwą sprzętową.
@@ -653,34 +661,37 @@ Poniżej przedstawiono schematy blokowe poszczególnych zadań.
 \end{figure}
 
 \section{Wykrywanie i dekodowanie wiadomości ADS-B}
+\subsection*{Wykrywanie Mode-S}
 Wiadomości Mode S mają długość 56 lub 112 bitów w zależności od formatu. Przed wysłaniem dane są poddawane modulacji położenia impulsu z częstotliwością sygnału zegarowego 1Mhz. Krótki odstęp pomiędzy stanami wysokimi oznacza logiczne 1 natomiast długi 0. 
-Każdy bit jest kodowany co $1\mu$s. Na początku wiadomości dodawana jest preambuła o długości $8\mu$s składająca się z czterech impulsów o długości $0.5\mu$s w odstępach kolejno $0.5\mu$s, $2,5\mu$s, $0,5\mu$s. Tak przygotowana ramka jest wysyłana na częstotliwości 1090Mhz. 
+Każdy bit jest kodowany co $1\mu$s. Na początku wiadomości dodawana jest preambuła o długości $8\mu$s składająca się z czterech impulsów o długości $0.5\mu$s w odstępach kolejno $0.5\mu$s, $2,5\mu$s, $0,5\mu$s. Tak przygotowany pakiet jest wysyłany na częstotliwości 1090Mhz.
+
+
+SDR został skonfigurowany, by wydzielać sygnał z fali nośnej o częstotliwość 1090Mhz.
+Na jego wyjściu otrzymujemy przebieg o częstotliwości $f=2Mhz$, ponieważ poszczególne impulsy trwają 0,5$\mu$s. Z godnie z twierdzeniem Kotielnikowa-Shannona do poprawnego odtworzenia sygnału potrzebujemy próbkować go z częstotliwością co najmniej $2f$. W SDR próbki są pobierane przez dwa 8 bitowe przetworniki ADC.Przed jednym z układów następuje przesunięcie sygnału w fazie o -90$^\circ$. Dzięki temu dla częstotliwości próbkowania 2Mhz pasmo przenoszenie jest dwukrotnie szersze i również wynosi 2Mhz. Dane otrzymane z SDR są w postaci I/Q. Para próbek I/Q stanowi liczbę rzeczywistą gdzie gdzie I to chwilowa amplituda sygnału a to Q to chwilowa amplituda sygnału przesuniętego w fazie o -90$^\circ$ względem I. Chwilowa amplituda nadanego sygnału to moduł liczby zespolonej I/Q obliczony z następującego wzoru
 \\
-
-
-Układ SDR został skonfigurowany, by wydzielać pakiety z fali nośnej o częstotliwość 1090Mhz. Otrzymany sygnał
-jest potem próbkowany z częstotliwością 2Mhz przez dwa 8 bitowe przetworniki ADC. Przed jednym z układów następuje przesunięcie sygnału w fazie o -90$^\circ$. Dzięki temu pasmo przenoszenie również wynosi 2Mhz co pozwala na poprawne próbkowanie impulsów o okresie $0.5\mu$. Dane otrzymane z SDR są w postaci I/Q. Para próbek I/Q stanowi liczbę rzeczywistą gdzie gdzie I to chwilowa amplituda sygnału a to Q to chwilowa amplituda sygnału przesuniętego w fazie o -90$^\circ$ względem I. Chwilowa amplituda nadanego sygnału to moduł liczby zespolonej I/Q obliczony z następującego wzoru
 \begin{equation}
 \label{eq:amplitude}
 A = \sqrt{I^2 + Q^2}
 \end{equation}
-
-Aby wykryć  pakiet należy przeliczyć ciąg próbek I/Q na amplitudę sygnału korzystając ze wzoru ~\ref{eq:amplitude}. Następnie znaleźć ciąg impulsów odpowiadający preambule oraz zdekodować wiadomości przy pomocy demodulacji PPM. Aby potwierdzić poprawność ramki należy obliczyć sumę CRC i porównać z odebraną wartością.
+\\
+Aby wykryć pakiet należy przeliczyć ciąg próbek I/Q na kolejne wartości amplitudy, według wzoru ~\ref{eq:amplitude}. Następnie znaleźć ciąg w sygnale preambułę oraz zdekodować wiadomości przy pomocy demodulacji PPM. Aby potwierdzić poprawność ramki należy obliczyć sumę CRC i porównać z odebraną wartością.
 \\
 
+\subsection*{Dekodowanie ADS-B}
+ADS-B to wiadomości Mode-S o parametrze Downlink format równym 17. Poniżej przedstawiono strukturę pakietu ADS-B.
 
-Do ADS-B należą wiadomości Mode S o parametrze Downlik format równym 17. Poniżej przedstawiono strukturę pakietu ADS-B.
 \begin{table}[htb]
+\def\arraystretch{1.3}% 
 \caption{\textit{ Struktura wiadomości ADS-B}}
 \label{tab:adsbFrame}
 \begin{center}
 \begin{tabular}{ |c|c| }
 \hline
-Rozmiar [bit] & zawartość\\
+Rozmiar [bit] & Zawartość\\
 \hline
 5 & Downlink format\\
 \hline
-3 & Posiadany system\\
+3 & Wersja systemu Mode-S\\
 \hline
 24 & Adres ICAO\\
 \hline
@@ -696,30 +707,35 @@ Rozmiar [bit] & zawartość\\
 \noindent
 W zależnosci od typu wiadomość może zawierać następujące informacje.
 
-\begin{table}[ph]
-\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
-\label{tab:adsb}
-  \centering
-  \def\arraystretch{1.3}% 
-  \begin{tabular}{|c|c|c|}
-  \hline
-  
-  \multicolumn{1}{|c|}{Typ} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-2}
-   \multirow{2}{*}{1 - 4} & Identyfikator samolotu i  \\\hhline{~~} 
-                 &  typ transpondera    \\\cline{1-2}
-  \multicolumn{1}{|c|}{5 - 8} & \multicolumn{1}{c|}{Pozycja naziemna} \\\cline{1-2}
-  \multirow{2}{*}{9 - 18} & Pozycja powietrzna i\\\hhline{~~} 
-                 &  wysokość barometryczna    \\\cline{1-2}
-  \multicolumn{1}{|c|}{9} & \multicolumn{1}{c|}{Prędkości} \\\cline{1-2}
-    \multirow{2}{*}{20 - 22} & Pozycja powietrzna i\\\hhline{~~} 
-                 &  wysokość GNSS    \\\cline{1-2}
- \multicolumn{1}{|c|}{21 - 31} & \multicolumn{1}{c|}{Zarezerwowane} \\\cline{1-2}          
- \end{tabular}
+\begin{table}[htb]
+\def\arraystretch{1.3}% 
+\caption{\textit{ Struktura wiadomości ADS-B}}
+\label{tab:adsbFrame}
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+Typ & Zawartość\\
+\hline
+1 - 4 & Identyfikator samolotu i typ transpondera\\
+\hline
+5 - 8 & Pozycja naziemna\\
+\hline
+9 - 18 &  Pozycja powietrzna i wysokość barometryczna\\
+\hline
+9 & Prędkość\\
+\hline
+20-22 &  Pozycja powietrzna i wysokość GNSS\\
+\hline
+23-31 & Zarezerwowane\\
+\hline
+\end{tabular}
+\end{center}
 \end{table}
 
-Identyfikator samolotu (ang. callsign) jest przechowywany w wiadomości jako ciąg ośmiu 6 bitowych indeksów. Poszczególne znaki są odczytywane z tablicy 
+\newpage
+Identyfikator samolotu (ang. callsign) jest przechowywany w wiadomości jako ciąg ośmiu 6 bitowych indeksów. Poszczególne znaki są odczytywane z poniższej tablicy 
 
-\begin{table}[ph]
+\begin{table}[htb]
 \label{tab:adsb}
   \centering
   \def\arraystretch{1.3}% 
@@ -731,9 +747,9 @@ Identyfikator samolotu (ang. callsign) jest przechowywany w wiadomości jako ci�
 
 \noindent
 gdzie: \# - znak nieużywany, \_ - spacja
-\newpage
 \begin{table}[htb]
-\caption{\textit{ Struktura danych wiadomości typu 1-4}}
+\def\arraystretch{1.3}% 
+\caption{\textit{ Struktura pakietu ADS-B typu 1-4}}
 \label{tab:adsbFrame}
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|c|c| }
@@ -747,93 +763,11 @@ Zawartość & \begin{tabular}{c}Rodzaj \\transpondera\end{tabular} & Znak 1 & Zn
 \end{center}
 \end{table}
 
-Pozycja statku powietrznego jest zakodowana w formacie CPR (ang. Compact Position Reporting). Wyróżniamy dwie metody dekodowania wiadomość. GUP (ang. Globally Unambiguous Position), która potrzebuje do dwóch kolejnych wiadomości i LUP (ang. Locally Unambiguous Position), gdzie wymagana jest pozycja referencyjna. Ze względu na ograniczone możliwość anteny tunera w projekcie wykorzystano metodę LUP. Poniżej przedstawiono algorytm dekodowania.
+Pozycja statku powietrznego jest zakodowana w formacie CPR (ang. Compact Position Reporting). Wyróżniamy dwie metody dekodowania takich wiadomość. GUP (ang. Globally Unambiguous Position), która potrzebuje do dwóch kolejnych wiadomości i LUP (ang. Locally Unambiguous Position), gdzie wymagana jest pozycja referencyjna, np. lokalizacja odbiornika radiowego, która nie może być odalona od statku powietrznego o więcej niż 180Nm. Ze względu na ograniczone możliwość anteny tunera w projekcie wykorzystano metodę LUP.
+Poniżej przedstawiono strukturę pakietu ADS-B dla wiadomości z pozycją.
 
-\noindent
-Znaczenie użytych symboli
-\begin{itemize}
-\item NZ to ustalona liczba stref szerokość geograficznych wynosząca 15
-\item Lat$_{ref}$ - referencyjna szerokość geograficzna
-\item Lon$_{ref}$ - referencyjna długość geograficzna
-\item Lat$_{CPR}$ - zadokowana szerokość geograficzna
-\item Lon$_{CPR}$ - zadokowana długość geograficzna
-\item Lat - zdekodowano szerokość geograficzna
-\item Lon - zdekodowana długość geograficzna
-\end{itemize}
-
-
-\begin{equation}
-dLat= \left\{ \begin{array}{ll}
-\frac{360}{4NZ} = \frac{360}{60}, & \textrm{gdy wiadomosć parzysta}\\
-\frac{360}{4NZ - 1} = \frac{360}{59}, & \textrm{gdy wiadomosć nieparzysta}\
-\end{array} \right.
-\end{equation}
-
-\begin{equation}
-j = \floor{\frac{Lat_{ref}}{dLat}} + \floor{\frac{Lat_{ref} \% dlat}{dLat} - Lat_{CPR} + \frac{1}{2}}
-\end{equation}
-
-\begin{equation}
-Lat = dLat \cdot (j + Lat_{CPR})
-\end{equation}
-
-\begin{equation}
-NF(Lat) = \floor{\frac{2\pi}{arccos(1 - \frac{1 - cos(\frac{2\pi}{2NZ})}{cos^2(\frac{\pi}{180} \cdot Lat)})}}
-\end{equation}
-
-\begin{equation}
-dLon= \left\{ \begin{array}{ll}
-\frac{360}{NL(Lat)}, & \textrm{gdy NL(Lat) > 0}\\
-360 , & \textrm{gdy NL(Lat) = 0}\
-\end{array} \right.
-\end{equation}
-
-\begin{equation}
-m = \floor{\frac{Lon_{ref}}{dLon}} + \floor{\frac{Lon_{ref} \% dLon}{dLon - Lon_{CPR} + \frac{1}{2}}}
-\end{equation}
-
-\begin{equation}
-Lon = dLon \cdot (m + Lon_{CPR})
-\end{equation}
-
-Dekodowanie poziomo lotu wymaga usunięcia z zakodowanej wartość 7. bitu (flagi Q), odebrana wartość jest wielokrotnością 100 lub 25 stóp. Wartość końcowa wyraża się następującym wzorem:
-
-\begin{equation}
-Alt= \left\{ \begin{array}{ll}
-100 * N - 1000, & \textrm{gdy Q = 0}\\
-25 * N - 1000, & \textrm{gdy Q = 1}\\
-\end{array} \right.
-\end{equation}
-\noindent
-gdzie N to pole z ramki po uśnięciu bitu Q.
-
-
-\begin{equation}
-dV_{EW}= \left\{ \begin{array}{ll}
-V_{EW} - 1, & \textrm{gdy S$_{EW}$ = 0}\\
--(V_{EW} - 1), & \textrm{gdy S${EW}$ = 1}\\
-\end{array} \right.
-\end{equation}
-
-\begin{equation}
-dV_{SN}= \left\{ \begin{array}{ll}
-V_{SN} - 1, & \textrm{gdy S$_{SN}$ = 0}\\
--(V_{SN} - 1), & \textrm{gdy S$_{SN}$ = 1}\\
-\end{array} \right.
-\end{equation}
-
-\begin{equation}
-v = \sqrt{V_{EW}^2 + V_{SN}^2}
-\end{equation}
-
-\begin{equation}
-h = arctan2(V_{EW},V_{SN}) \cdot \frac{180}{\pi}
-\end{equation}
-
-\begin{equation}
-h = \frac{dh}{1024} \cdot 360
-\end{equation}
-\begin{table}[ph]
+\begin{table}[htb]
+\def\arraystretch{1.3}% 
 \caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
 \label{tab:adsb}
   \centering
@@ -852,57 +786,174 @@ h = \frac{dh}{1024} \cdot 360
  \end{tabular}
 \end{table}
 
-\begin{table}[ph]
+Pozycja w formacie CPR to dwie wartości zmiennopozycyjne w zakresie od 0 do 1. W wiadomości są zakodowane jako 17 bitowe liczby całkowite w formacie Q1.17. Konwersja z formatu Q1.17 do CPR odbywa się według następującego wzoru.
+
+\begin{equation}
+L_{CPR} = \frac{L_{raw}}{2^{17}}
+\end{equation}
+gdzie:
+\begin{itemize}
+\item L$_{CPR}$ - zdekodowana długość lub szerokość geograficzna w foramcie CPR.
+\item L$_{raw}$ - długość lub szerokość geograficzna zakodowana w formacie Q1.17.
+\end{itemize}
+
+\noindent
+Poniżej przedstawiono algorytm dekodowania pozycji samolotu.
+\\
+
+
+\noindent
+Znaczenie użytych symboli:
+\begin{itemize}
+\item NZ to ustalona liczba stref szerokość geograficznych wynosząca 15.
+\item Lat$_{ref}$ - referencyjna szerokość geograficzna
+\item Lon$_{ref}$ - referencyjna długość geograficzna
+\item Lat$_{CPR}$ - szerokość geograficzna w formacie CPR
+\item Lon$_{CPR}$ - długość geograficzna w formacie CPR
+\item Lat - zdekodowano szerokość geograficzna
+\item Lon - zdekodowana długość geograficzna
+\end{itemize}
+
+
+\begin{equation}
+\renewcommand*{\arraystretch}{1.3}
+dLat= \left\{ \begin{array}{ll}
+
+\frac{360}{4NZ} = \frac{360}{60}, & \textrm{F = 0}\\
+\frac{360}{4NZ - 1} = \frac{360}{59}, & \textrm{F = 1}\\
+
+\end{array} \right.
+\end{equation}
+\\
+gdzie: F to flaga parzystości wiadomości.
+\begin{equation}
+mod(x, y) = x - y\floor{\frac{x}{y}}
+\end{equation}
+
+\begin{equation}
+j = \floor{\frac{Lat_{ref}}{dLat}} + \floor{\frac{mod(Lat_{ref},dLat}{dLat} - Lat_{CPR} + \frac{1}{2}}
+\end{equation}
+
+\begin{equation}
+Lat = dLat \cdot \left(j + Lat_{CPR}\right)
+\end{equation}
+
+\begin{equation}
+NF(Lat) = \floor{\frac{2\pi}{\arccos\left(1 - \frac{1 - \cos\left(\frac{2\pi}{2NZ}\right)}{\cos^2\left(\frac{\pi}{180} \cdot Lat\right)}\right)}}
+\end{equation}
+\\
+\begin{equation}
+\renewcommand*{\arraystretch}{1.3}
+dLon= \left\{ \begin{array}{ll}
+
+\frac{360}{NL(Lat)}, & \textrm{gdy NL(Lat) > 0}\\
+360 , & \textrm{gdy NL(Lat) = 0}\\
+
+\end{array} \right.
+\end{equation}
+\\
+\begin{equation}
+m = \floor{\frac{Lon_{ref}}{dLon}} + \floor{\frac{mod(Lon_{ref},dLon)}{dLon - Lon_{CPR} + \frac{1}{2}}}
+\end{equation}
+\\
+\begin{equation}
+Lon = dLon \cdot \left(m + Lon_{CPR}\right)
+\end{equation}
+
+Pułap lotu jest zakodowany na polu ALT w wiadomości ADS-B. Zdekodowanie wymaga usunięcia z liczby 7. bitu (flagi Q),a następnie obliczenia według następującego wzoru:
+
+\begin{equation}
+\renewcommand*{\arraystretch}{1.3}
+A= \left\{ \begin{array}{ll}
+
+100N - 1000, & \textrm{gdy Q = 0}\\
+25N - 1000, & \textrm{gdy Q = 1}\\
+
+\end{array} \right.
+\end{equation}
+\newpage
+\noindent
+gdzie: 
+\begin{itemize}
+\item N - wartość pola ALT uśnięciu bitu Q.
+\item A - zdekodowany pułap lotu w stopach.
+\end{itemize}
+
+Wiadomości typu 9 dzielimy na dwa rodzaje. Z prędkością względem powierzchni ziemi (Subtype 1) lub powietrzną (Subtype 3). Poniżej przedstawiono format pakietu.
+
+\begin{table}[htb]
+\def\arraystretch{1.3}% 
 \caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
 \label{tab:adsb}
   \centering
   \def\arraystretch{1.3}% 
-  \begin{tabular}{|c|c|c|}
+  \begin{tabular}{|c|c|c|c|c|}
   \hline
+  \multicolumn{1}{|c|}{Rozmiar} & \multicolumn{2}{c|}{\multirow{2}{*}{Nazwa}} & \multicolumn{1}{c|}{\multirow{2}{*}{Zawartość (Subtype 1)}}  & \multicolumn{1}{c|}{\multirow{2}{*}{Zawartość (Subtype 3)}}\\
+  \multicolumn{1}{|c|}{[bit]} & \multicolumn{2}{c|}{} & \multicolumn{1}{c|}{}& \multicolumn{1}{c|}{}\\\cline{1-5}
   
-  \multicolumn{1}{|c|}{Rozmiar [bit]} & \multicolumn{1}{c|}{Nazwa} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{IC} & \multicolumn{1}{c|}{flaga zmiany pułapu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{RES-A} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
-  \multicolumn{1}{|c|}{3} & \multicolumn{1}{c|}{NAC} & \multicolumn{1}{c|}{niepewność prędkości}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{EW}$} & \multicolumn{1}{c|}{znak prędkości Wschód-Zachód}\\\cline{1-3}
-  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{S$_{EW}$} & \multicolumn{1}{c|}{prędkość Wschód-Zachód}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{NS}$} & \multicolumn{1}{c|}{znak prędkości Północ-Południe}\\\cline{1-3}
-  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{S$_{NS}$} & \multicolumn{1}{c|}{prędkość Północ-Południe}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr$_{src}$} & \multicolumn{1}{c|}{Flaga typu wysokości Barometryczna lub GNSS}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Vr}$} & \multicolumn{1}{c|}{znak zmiany pułapu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr} & \multicolumn{1}{c|}{prędkość zmiany pułapu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{RES-B} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Diff}$} & \multicolumn{1}{c|}{znak różnicy wysokości barometrycznej i GNSS}\\\cline{1-3}
-  \multicolumn{1}{|c|}{7} & \multicolumn{1}{c|}{Diff} & \multicolumn{1}{c|}{różnica wysokości barometrycznej i GNSS}\\\cline{1-3}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{IC} & \multicolumn{2}{c|}{Flaga zmiany pułapu}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{RES-A} & \multicolumn{2}{c|}{Rejestr zarezerwowany}\\\cline{1-5}
+  \multicolumn{1}{|c|}{3} & \multicolumn{2}{c|}{NAC} & \multicolumn{2}{c|}{Niepewność prędkości}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{EW}$} & \multicolumn{1}{c|}{S$_{Hdg}$} & \multicolumn{1}{c|}{Znak prędkości Wschód-Zachód} & \multicolumn{1}{c|}{Flaga dostępności kursu} \\\cline{1-5}
+  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{V$_{EW}$} & \multicolumn{1}{c|}{Hdg} & \multicolumn{1}{c|}{Prędkość Wschód-Zachód}& \multicolumn{1}{c|}{Kurs}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{NS}$} & \multicolumn{1}{c|}{AS$_t$} & \multicolumn{1}{c|}{Prędkości Północ-Południe} & \multicolumn{1}{c|}{Typ prędkości powietrznej}\\\cline{1-5}
+  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{V$_{NS}$} & \multicolumn{1}{c|}{AS}  & \multicolumn{1}{c|}{Prędkość powietrzna}& \multicolumn{1}{c|}{Prędkość powietrzna}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{Vr$_{src}$} & \multicolumn{2}{c|}{Flaga typu wysokości Barometryczna lub GNSS}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{S$_{Vr}$} & \multicolumn{2}{c|}{znak zmiany pułapu}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{Vr} & \multicolumn{2}{c|}{prędkość zmiany pułapu}\\\cline{1-5}
+  \multicolumn{1}{|c|}{2} & \multicolumn{2}{c|}{RES-B} & \multicolumn{2}{c|}{rejestr zarezerwowany}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{S$_{Diff}$} & \multicolumn{2}{c|}{znak różnicy wysokości barometrycznej i GNSS}\\\cline{1-5}
+  \multicolumn{1}{|c|}{7} & \multicolumn{2}{c|}{Diff} & \multicolumn{2}{c|}{różnica wysokości barometrycznej i GNSS}\\\cline{1-5}
        
  \end{tabular}
 \end{table}
 
-\begin{table}[ph]
-\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
-\label{tab:adsb}
-  \centering
-  \def\arraystretch{1.3}% 
-  \begin{tabular}{|c|c|c|}
-  \hline
-  
-  \multicolumn{1}{|c|}{Rozmiar [bit]} & \multicolumn{1}{c|}{Nazwa} & \multicolumn{1}{c|}{Zawartość} \\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{IC} & \multicolumn{1}{c|}{flaga zmiany pułapu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{RES-A} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
-  \multicolumn{1}{|c|}{3} & \multicolumn{1}{c|}{NAC} & \multicolumn{1}{c|}{niepewność prędkości}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{hdg}$} & \multicolumn{1}{c|}{flaga dostępności kursu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{Hdg} & \multicolumn{1}{c|}{kurs}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{AS$_t$} & \multicolumn{1}{c|}{typ prędkości powietrznej}\\\cline{1-3}
-  \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{AS} & \multicolumn{1}{c|}{prędkość powietrzna}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr$_{src}$} & \multicolumn{1}{c|}{Flaga typu wysokości Barometryczna lub GNSS}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Vr}$} & \multicolumn{1}{c|}{znak zmiany pułapu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{Vr} & \multicolumn{1}{c|}{prędkość zmiany pułapu}\\\cline{1-3}
-  \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{RES-B} & \multicolumn{1}{c|}{rejestr zarezerwowany}\\\cline{1-3}
-  \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{Diff}$} & \multicolumn{1}{c|}{znak różnicy wysokości barometrycznej i GNSS}\\\cline{1-3}
-  \multicolumn{1}{|c|}{7} & \multicolumn{1}{c|}{Diff} & \multicolumn{1}{c|}{różnica wysokości barometrycznej i GNSS}\\\cline{1-3}
-       
- \end{tabular}
-\end{table}
+
+Poniżej przedstawiono algorytmy dekodowania kursu i szybkości w zależności od typu wiadomości.
+\begin{itemize}
+\item v - szybkość statku w węzłach
+\item h - kurs statku w stopniach
+\end{itemize}
+
+\noindent
+Dla wiadomości ADS-B Subtype 1 algorytm wyglada nastepująco:
+\begin{equation}
+\renewcommand*{\arraystretch}{1.3}
+dV_{EW}= \left\{ \begin{array}{ll}
+V_{EW} - 1, & \textrm{gdy S$_{EW}$ = 0}\\
+-(V_{EW} - 1), & \textrm{gdy S$_{EW}$ = 1}\\
+\end{array} \right.
+\end{equation}
+
+\begin{equation}
+\renewcommand*{\arraystretch}{1.3}
+dV_{SN}= \left\{ \begin{array}{ll}
+V_{SN} - 1, & \textrm{gdy S$_{SN}$ = 0}\\
+-(V_{SN} - 1), & \textrm{gdy S$_{SN}$ = 1}\\
+\end{array} \right.
+\end{equation}
+\\
+\noindent
+Następnie można wyznaczyć kurs oraz szybkość statku według następujących wzorów.
+
+\begin{equation}
+v = \sqrt{dV_{EW}^2 + dV_{SN}^2}
+\end{equation}
+
+\begin{equation}
+h = arctan2(dV_{EW},dV_{SN}) \cdot \frac{180}{\pi}
+\end{equation}
+
+
+Dla wiadomosći wiadomości ADS-B Subtype 3 algorytm wygląd następująco
+\begin{equation}
+h = \frac{Hdg}{1024} \cdot 360, \textrm{gdy S$_{Hdg}$ = 1}
+\end{equation}
+
+\begin{equation}
+v = AS
+\end{equation}
 
 
 \chapter{Interfejs użytkownika}
