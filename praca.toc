@@ -4,9 +4,6 @@
 \contentsline {chapter}{\numberline {3} Architektura sprz\IeC {\k e}towa}{5}
 \contentsline {section}{\numberline {3.1} Schemat Urz\IeC {\k a}dzenia}{5}
 \contentsline {section}{\numberline {3.2} Wykonanie PCB }{10}
-\contentsline {subsection}{\numberline {3.2.1}USB}{12}
-\contentsline {subsection}{\numberline {3.2.2}Interfejsy szybkie}{14}
-\contentsline {subsection}{\numberline {3.2.3}Prezentacja PCB}{17}
 \contentsline {chapter}{\numberline {4} Architektura oprogramowania}{23}
 \contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{23}
 \contentsline {section}{\numberline {4.2}Model UML}{24}

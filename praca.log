@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  29 NOV 2017 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  1 DEC 2017 01:45
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -604,6 +604,9 @@ LaTeX Warning: Label `tab:adsb' multiply defined.
 
 LaTeX Warning: Label `tab:adsb' multiply defined.
 
+
+LaTeX Warning: Label `highSpeedDesign' multiply defined.
+
 )
 \openout1 = `praca.aux'.
 
@@ -780,299 +783,313 @@ File: schematics/power.png Graphic file (type png)
 <use schematics/power.png>
 Package pdftex.def Info: schematics/power.png used on input line 172.
 (pdftex.def)             Requested size: 455.24408pt x 240.2896pt.
-
-Underfull \vbox (badness 2150) has occurred while \output is active []
-
  [5
 
- <./schematics/power.png>] <schematics/uC.png, id=39, 712.16063pt x 568.37344pt
->
+ <./schematics/power.png>]
+<schematics/uC.png, id=38, 712.16063pt x 568.37344pt>
 File: schematics/uC.png Graphic file (type png)
-
-<use schematics/uC.png>
+ <use schematics/uC.png>
 Package pdftex.def Info: schematics/uC.png used on input line 180.
 (pdftex.def)             Requested size: 570.43561pt x 455.24408pt.
- [6 <./schematics/uC.png>]
-<schematics/conn.png, id=43, 1065.9825pt x 568.37344pt>
+
+[6 <./schematics/uC.png>]
+<schematics/conn.png, id=42, 1065.9825pt x 568.37344pt>
 File: schematics/conn.png Graphic file (type png)
 
 <use schematics/conn.png>
 Package pdftex.def Info: schematics/conn.png used on input line 190.
 (pdftex.def)             Requested size: 455.24408pt x 242.73067pt.
 
-<schematics/display.png, id=44, 649.67719pt x 552.56438pt>
+<schematics/display.png, id=43, 649.67719pt x 552.56438pt>
 File: schematics/display.png Graphic file (type png)
 
 <use schematics/display.png>
-Package pdftex.def Info: schematics/display.png used on input line 198.
+Package pdftex.def Info: schematics/display.png used on input line 199.
 (pdftex.def)             Requested size: 455.24408pt x 387.20557pt.
- [7 <./schematics/conn.png>] [8 <./schematics/display.png>] <schematics/sdram.p
-ng, id=51, 733.23938pt x 441.14813pt>
+ [7 <./schematics/conn.png>]
+<schematics/sdram.png, id=47, 733.23938pt x 441.14813pt>
 File: schematics/sdram.png Graphic file (type png)
 
 <use schematics/sdram.png>
-Package pdftex.def Info: schematics/sdram.png used on input line 207.
+Package pdftex.def Info: schematics/sdram.png used on input line 208.
 (pdftex.def)             Requested size: 455.24408pt x 273.89943pt.
 
-<schematics/gps.png, id=52, 1029.09468pt x 346.29375pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<schematics/gps.png, id=48, 1029.09468pt x 346.29375pt>
 File: schematics/gps.png Graphic file (type png)
 
 <use schematics/gps.png>
-Package pdftex.def Info: schematics/gps.png used on input line 215.
+Package pdftex.def Info: schematics/gps.png used on input line 216.
 (pdftex.def)             Requested size: 455.24408pt x 153.19402pt.
- [9 <./schematics/sdram.png> <./schematics/gps.png>]
-[10] <plots/gpsZ0.png, id=66, 887.56593pt x 456.20438pt>
+ [8 <./schematics/display.png>] [9 <./schematics/sdram.png> <./schematics/gps.p
+ng>] [10]
+<plots/gpsZ0.png, id=65, 887.56593pt x 456.20438pt>
 File: plots/gpsZ0.png Graphic file (type png)
  <use plots/gpsZ0.png>
-Package pdftex.def Info: plots/gpsZ0.png used on input line 278.
+Package pdftex.def Info: plots/gpsZ0.png used on input line 279.
 (pdftex.def)             Requested size: 455.24408pt x 233.9907pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
-<pcb/gps.png, id=67, 929.72343pt x 423.08063pt>
+<pcb/gps.png, id=66, 929.72343pt x 423.08063pt>
 File: pcb/gps.png Graphic file (type png)
  <use pcb/gps.png>
-Package pdftex.def Info: pcb/gps.png used on input line 304.
+Package pdftex.def Info: pcb/gps.png used on input line 305.
 (pdftex.def)             Requested size: 426.79134pt x 194.21274pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11 <./plots/gpsZ0.png>] <plots/usbzD.png, id=72, 928.97063pt x 561.59813pt>
+[11 <./plots/gpsZ0.png>] <plots/usbzD.png, id=71, 928.97063pt x 561.59813pt>
 File: plots/usbzD.png Graphic file (type png)
 
 <use plots/usbzD.png>
-Package pdftex.def Info: plots/usbzD.png used on input line 331.
+Package pdftex.def Info: plots/usbzD.png used on input line 332.
 (pdftex.def)             Requested size: 455.24408pt x 275.21977pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12 <./pcb/gps.png>] <pcb/usb.png, id=78, 356.0803pt x 238.64156pt>
+[12 <./pcb/gps.png>] <pcb/usb.png, id=77, 356.0803pt x 238.64156pt>
 File: pcb/usb.png Graphic file (type png)
 
 <use pcb/usb.png>
-Package pdftex.def Info: pcb/usb.png used on input line 341.
-(pdftex.def)             Requested size: 256.0748pt x 171.62514pt.
+Package pdftex.def Info: pcb/usb.png used on input line 342.
+(pdftex.def)             Requested size: 227.62204pt x 152.54799pt.
  [13 <./plots/usbzD.png> <./pcb/usb.png>]
-<plots/timing.png, id=82, 651.18282pt x 118.19156pt>
+<plots/timing.png, id=81, 651.18282pt x 118.19156pt>
 File: plots/timing.png Graphic file (type png)
  <use plots/timing.png>
-Package pdftex.def Info: plots/timing.png used on input line 380.
+Package pdftex.def Info: plots/timing.png used on input line 382.
 (pdftex.def)             Requested size: 284.52756pt x 51.64375pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 402--404
+Underfull \hbox (badness 10000) in paragraph at lines 404--406
 
  []
 
-[15 <./plots/timing.png>] <pcb/ltdc.png, id=89, 496.85625pt x 445.665pt>
+[15 <./plots/timing.png>] <pcb/ltdc.png, id=88, 496.85625pt x 445.665pt>
 File: pcb/ltdc.png Graphic file (type png)
 
 <use pcb/ltdc.png>
-Package pdftex.def Info: pcb/ltdc.png used on input line 441.
+Package pdftex.def Info: pcb/ltdc.png used on input line 444.
 (pdftex.def)             Requested size: 455.24408pt x 408.3439pt.
-
-
-Package caption Warning: \label without proper reference on input line 473.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:power' on page 16 undefined on input line 446.
-
-[16 <./pcb/ltdc.png>] <pcb/top.png, id=93, 487.06969pt x 588.69937pt>
+ [16 <./pcb/ltdc.png>]
+<pcb/top.png, id=92, 487.06969pt x 588.69937pt>
 File: pcb/top.png Graphic file (type png)
-
-<use pcb/top.png>
-Package pdftex.def Info: pcb/top.png used on input line 454.
+ <use pcb/top.png>
+Package pdftex.def Info: pcb/top.png used on input line 456.
 (pdftex.def)             Requested size: 455.24408pt x 550.23349pt.
- <pcb/gnd.png, id=94, 481.04718pt x 595.47469pt>
-File: pcb/gnd.png Graphic file (type png)
 
-<use pcb/gnd.png>
-Package pdftex.def Info: pcb/gnd.png used on input line 464.
+<pcb/gnd.png, id=93, 481.04718pt x 595.47469pt>
+File: pcb/gnd.png Graphic file (type png)
+ <use pcb/gnd.png>
+Package pdftex.def Info: pcb/gnd.png used on input line 466.
 (pdftex.def)             Requested size: 455.24408pt x 563.54431pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<pcb/power.png, id=95, 478.78876pt x 595.47469pt>
+<pcb/power.png, id=94, 478.78876pt x 595.47469pt>
 File: pcb/power.png Graphic file (type png)
  <use pcb/power.png>
-Package pdftex.def Info: pcb/power.png used on input line 474.
+Package pdftex.def Info: pcb/power.png used on input line 478.
 (pdftex.def)             Requested size: 455.24408pt x 566.19748pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<pcb/bottom.png, id=96, 469.00218pt x 596.98032pt>
+<pcb/bottom.png, id=95, 469.00218pt x 596.98032pt>
 File: pcb/bottom.png Graphic file (type png)
  <use pcb/bottom.png>
-Package pdftex.def Info: pcb/bottom.png used on input line 484.
+Package pdftex.def Info: pcb/bottom.png used on input line 488.
 (pdftex.def)             Requested size: 455.24408pt x 579.4619pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17 <./pcb/top.png>] <images/bottomPcb.jpg, id=101, 3131.7pt x 4175.6pt>
-File: images/bottomPcb.jpg Graphic file (type jpg)
+[17 <./pcb/top.png>] <images/topPcb.jpg, id=100, 2052.66875pt x 2414.01875pt>
+File: images/topPcb.jpg Graphic file (type jpg)
 
-<use images/bottomPcb.jpg>
-Package pdftex.def Info: images/bottomPcb.jpg used on input line 494.
-(pdftex.def)             Requested size: 455.24408pt x 606.9438pt.
+<use images/topPcb.jpg>
+Package pdftex.def Info: images/topPcb.jpg used on input line 498.
+(pdftex.def)             Requested size: 455.24408pt x 535.35863pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [18 <./pcb/gnd.png>]
+<images/bottomPcb.jpg, id=104, 1948.27875pt x 2478.25874pt>
 File: images/bottomPcb.jpg Graphic file (type jpg)
- <use images/bottomPcb.jpg>
-Package pdftex.def Info: images/bottomPcb.jpg used on input line 505.
-(pdftex.def)             Requested size: 455.24408pt x 606.9438pt.
+
+<use images/bottomPcb.jpg>
+Package pdftex.def Info: images/bottomPcb.jpg used on input line 509.
+(pdftex.def)             Requested size: 455.24408pt x 579.06316pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19 <./pcb/power.png>] [20 <./pcb/bottom.png>] [21 <./images/bottomPcb.jpg>]
-[22]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./pcb/power.png>] [20 <./pcb/bottom.png>] [21 <./images/topPcb.jpg>] [22 
+<./images/bottomPcb.jpg>]
 Rozdzia\PlPrIeC {\l } 4.
 <plots/mvc.png, id=117, 623.32875pt x 158.5925pt>
 File: plots/mvc.png Graphic file (type png)
  <use plots/mvc.png>
-Package pdftex.def Info: plots/mvc.png used on input line 531.
+Package pdftex.def Info: plots/mvc.png used on input line 535.
 (pdftex.def)             Requested size: 455.24408pt x 115.82962pt.
 
-<plots/uml.png, id=119, 1136.245pt x 864.22874pt>
+<plots/uml.png, id=119, 1136.245pt x 865.2325pt>
 File: plots/uml.png Graphic file (type png)
  <use plots/uml.png>
-Package pdftex.def Info: plots/uml.png used on input line 543.
-(pdftex.def)             Requested size: 598.53139pt x 455.24408pt.
+Package pdftex.def Info: plots/uml.png used on input line 547.
+(pdftex.def)             Requested size: 597.83789pt x 455.24408pt.
  [23
 
  <./plots/mvc.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 547--550
+Underfull \hbox (badness 10000) in paragraph at lines 551--554
 
  []
 
 [24 <./plots/uml.png>] [25] [26]
-<plots/modelTask.png, id=135, 238.8925pt x 943.525pt>
+<plots/modelTask.png, id=136, 238.8925pt x 943.525pt>
 File: plots/modelTask.png Graphic file (type png)
 
 <use plots/modelTask.png>
-Package pdftex.def Info: plots/modelTask.png used on input line 633.
+Package pdftex.def Info: plots/modelTask.png used on input line 637.
 (pdftex.def)             Requested size: 113.52664pt x 448.38058pt.
 
-<plots/dataTask.png, id=136, 387.4475pt x 547.04375pt>
+<plots/dataTask.png, id=137, 290.58563pt x 410.2828pt>
 File: plots/dataTask.png Graphic file (type png)
 
 <use plots/dataTask.png>
-Package pdftex.def Info: plots/dataTask.png used on input line 640.
-(pdftex.def)             Requested size: 194.90155pt x 275.19063pt.
+Package pdftex.def Info: plots/dataTask.png used on input line 644.
+(pdftex.def)             Requested size: 194.90155pt x 275.18855pt.
  [27 <./plots/modelTask.png> <./plots/dataTask.png>]
-<plots/usbTask.png, id=142, 196.735pt x 491.8375pt>
+<plots/usbTask.png, id=143, 196.735pt x 491.8375pt>
 File: plots/usbTask.png Graphic file (type png)
  <use plots/usbTask.png>
-Package pdftex.def Info: plots/usbTask.png used on input line 651.
+Package pdftex.def Info: plots/usbTask.png used on input line 655.
 (pdftex.def)             Requested size: 142.26378pt x 355.6537pt.
 
-<plots/guiTask.png, id=143, 256.96pt x 552.0625pt>
+<plots/guiTask.png, id=144, 256.96pt x 552.0625pt>
 File: plots/guiTask.png Graphic file (type png)
  <use plots/guiTask.png>
-Package pdftex.def Info: plots/guiTask.png used on input line 658.
+Package pdftex.def Info: plots/guiTask.png used on input line 662.
 (pdftex.def)             Requested size: 184.9429pt x 397.34149pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 669--672
+Underfull \hbox (badness 10000) in paragraph at lines 673--676
 
  []
 
 [28 <./plots/usbTask.png> <./plots/guiTask.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 675--679
+Underfull \hbox (badness 10000) in paragraph at lines 679--683
 
  []
 
 [29]
-Overfull \hbox (5.40645pt too wide) in paragraph at lines 755--763
+Overfull \hbox (5.40645pt too wide) in paragraph at lines 761--769
  [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 800--803
-
- []
-
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 843--845
+Underfull \hbox (badness 10000) in paragraph at lines 807--810
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 853--855
+Underfull \hbox (badness 10000) in paragraph at lines 831--833
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 857--859
+Underfull \hbox (badness 10000) in paragraph at lines 850--852
 
  []
 
-[31] [32] [33]
+
+Underfull \hbox (badness 10000) in paragraph at lines 868--870
+
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 872--874
+
+ []
+
+[32] [33]
 Rozdzia\PlPrIeC {\l } 5.
-[34
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 979--981
+
+ []
+
+<images/GUI.jpg, id=167, 3131.7pt x 4175.6pt>
+File: images/GUI.jpg Graphic file (type jpg)
+ <use images/GUI.jpg>
+Package pdftex.def Info: images/GUI.jpg used on input line 987.
+(pdftex.def)             Requested size: 341.42978pt x 455.24408pt.
+
+Underfull \vbox (badness 1975) has occurred while \output is active []
+
+ [34
+
+ <./images/GUI.jpg>] [35]
 Rozdzia\PlPrIeC {\l } 6.
 No file praca.bbl.
-[35
+[36
+
+] [37
 
 ] (praca.aux)
-
-LaTeX Warning: There were undefined references.
-
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4879 strings out of 493323
- 67710 string characters out of 3142971
- 141378 words of memory out of 3000000
- 8268 multiletter control sequences out of 15000+200000
- 24218 words of font info for 55 fonts, out of 3000000 for 9000
+ 4890 strings out of 493323
+ 67908 string characters out of 3142971
+ 141357 words of memory out of 3000000
+ 8278 multiletter control sequences out of 15000+200000
+ 23532 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,15n,40p,1534b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,15n,40p,1334b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
 {G:/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc} <C:\Users\Karol\AppData\Loca
 l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk>{G:/Programs/MiKTeX
 /fonts/enc/dvips/pl/plmi.enc}{G:/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}{G
 :/Programs/MiKTeX/fonts/enc/dvips/pl/plme.enc} <C:\Users\Karol\AppData\Local\Mi
 KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\Karol\AppDat
-a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0800.pk> <C:\Users\Ka
-rol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Ka
+rol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C
 :\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1
-728.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dp
-i600\ecbx1095.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
-ppen\ec\dpi600\ecti1200.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\l
-jfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\
-fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Karol\AppData\Local\M
-iKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\Karol\AppDa
-ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk> <C:\Users\K
-arol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <
-C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc
-1728.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\d
-pi600\ecrm2074.pk><G:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-><G:/Programs/MiKTeX/fonts/type1/public/pl/plex10.pfb><G:/Programs/MiKTeX/fonts
-/type1/public/pl/plmi12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi6.pfb
-><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fonts/
-type1/public/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><G
-:/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><G:/Programs/MiKTeX/fonts/type
-1/public/pl/plsy10.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
-Output written on praca.pdf (37 pages, 5832044 bytes).
+095.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dp
+i600\ecti1200.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
+ppen\ec\dpi600\ecrm1200.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\l
+jfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Karol\AppData\Local\MiKTeX\2.9\
+fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\Karol\AppData\Local\M
+iKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk> <C:\Users\Karol\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\K
+arol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1728.pk> <
+C:\Users\Karol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm
+2074.pk><G:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><G:/Progr
+ams/MiKTeX/fonts/type1/public/pl/plex10.pfb><G:/Programs/MiKTeX/fonts/type1/pub
+lic/pl/plmi12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plmi6.pfb><G:/Progr
+ams/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fonts/type1/publ
+ic/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><G:/Programs
+/MiKTeX/fonts/type1/public/pl/plr8.pfb><G:/Programs/MiKTeX/fonts/type1/public/p
+l/plsy10.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
+Output written on praca.pdf (39 pages, 9131807 bytes).
 PDF statistics:
- 791 PDF objects out of 1000 (max. 8388607)
+ 763 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 131 words of extra memory for PDF output out of 10000 (max. 10000000)
 
