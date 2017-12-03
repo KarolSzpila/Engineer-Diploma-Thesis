@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  3 DEC 2017 04:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  3 DEC 2017 16:20
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -1091,8 +1091,13 @@ File: schematics/gps.png Graphic file (type png)
 Package pdftex.def Info: schematics/gps.png used on input line 218.
 (pdftex.def)             Requested size: 455.24408pt x 153.19402pt.
  [8 <./schematics/display.png>] [9 <./schematics/sdram.png> <./schematics/gps.p
-ng>] [10]
-<plots/gpsZ0.png, id=65, 887.56593pt x 456.20438pt>
+ng>]
+Overfull \hbox (2.56424pt too wide) in paragraph at lines 227--228
+[]\T1/cmr/m/n/12 Zdecydowano si¦ na wy-ko-na-nie PCB tech-no-lo-gi¡ czte-ro-war
+-stwo-w¡. Po-zwo-li-ªo to zmniej-
+ []
+
+[10] <plots/gpsZ0.png, id=65, 887.56593pt x 456.20438pt>
 File: plots/gpsZ0.png Graphic file (type png)
  <use plots/gpsZ0.png>
 Package pdftex.def Info: plots/gpsZ0.png used on input line 281.
@@ -1127,6 +1132,9 @@ File: pcb/usb.png Graphic file (type png)
 <use pcb/usb.png>
 Package pdftex.def Info: pcb/usb.png used on input line 344.
 (pdftex.def)             Requested size: 227.62204pt x 152.54799pt.
+
+Underfull \vbox (badness 2762) has occurred while \output is active []
+
  [13 <./plots/usbzD.png> <./pcb/usb.png>] [14]
 <plots/timing.png, id=84, 651.18282pt x 118.19156pt>
 File: plots/timing.png Graphic file (type png)
@@ -1211,11 +1219,11 @@ File: plots/mvc.png Graphic file (type png)
 Package pdftex.def Info: plots/mvc.png used on input line 542.
 (pdftex.def)             Requested size: 455.24408pt x 115.82962pt.
 
-<plots/uml.png, id=119, 1136.245pt x 865.2325pt>
+<plots/uml.png, id=119, 1136.245pt x 864.22874pt>
 File: plots/uml.png Graphic file (type png)
  <use plots/uml.png>
 Package pdftex.def Info: plots/uml.png used on input line 554.
-(pdftex.def)             Requested size: 597.83789pt x 455.24408pt.
+(pdftex.def)             Requested size: 598.53139pt x 455.24408pt.
  [23
 
  <./plots/mvc.png>]
@@ -1224,12 +1232,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 558--561
  []
 
 [24 <./plots/uml.png>] [25] [26]
-<plots/modelTask.png, id=136, 238.8925pt x 943.525pt>
+<plots/modelTask.png, id=136, 236.885pt x 942.52126pt>
 File: plots/modelTask.png Graphic file (type png)
 
 <use plots/modelTask.png>
 Package pdftex.def Info: plots/modelTask.png used on input line 644.
-(pdftex.def)             Requested size: 113.52664pt x 448.38058pt.
+(pdftex.def)             Requested size: 112.38829pt x 447.17014pt.
 
 <plots/dataTask.png, id=137, 290.58563pt x 410.2828pt>
 File: plots/dataTask.png Graphic file (type png)
@@ -1244,11 +1252,11 @@ File: plots/usbTask.png Graphic file (type png)
 Package pdftex.def Info: plots/usbTask.png used on input line 662.
 (pdftex.def)             Requested size: 142.26378pt x 355.6537pt.
 
-<plots/guiTask.png, id=144, 256.96pt x 552.0625pt>
+<plots/guiTask.png, id=144, 256.96pt x 551.05875pt>
 File: plots/guiTask.png Graphic file (type png)
  <use plots/guiTask.png>
 Package pdftex.def Info: plots/guiTask.png used on input line 669.
-(pdftex.def)             Requested size: 184.9429pt x 397.34149pt.
+(pdftex.def)             Requested size: 182.09746pt x 390.5229pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 680--683
 
@@ -1289,30 +1297,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 879--881
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 938--940
+
+ []
+
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 982--984
+Underfull \hbox (badness 10000) in paragraph at lines 986--988
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 989--992
+Underfull \hbox (badness 10000) in paragraph at lines 993--996
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 998--1000
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1004
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1049--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1041
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1058
 
  []
 
 [34]
 Rozdzia\PlPrIeC {\l } 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1074--1076
+Underfull \hbox (badness 10000) in paragraph at lines 1082--1084
 
  []
 
@@ -1322,18 +1340,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1074--1076
 File: images/warrning.png Graphic file (type png)
 
 <use images/warrning.png>
-Package pdftex.def Info: images/warrning.png used on input line 1092.
+Package pdftex.def Info: images/warrning.png used on input line 1100.
 (pdftex.def)             Requested size: 455.24408pt x 255.65297pt.
  <images/work.png, id=175, 4067.195pt x 2304.61pt>
 File: images/work.png Graphic file (type png)
 
 <use images/work.png>
-Package pdftex.def Info: images/work.png used on input line 1098.
+Package pdftex.def Info: images/work.png used on input line 1106.
 (pdftex.def)             Requested size: 455.24408pt x 257.93874pt.
  [36 <./images/warrning.png> <./images/work.png>]
 Rozdzia\PlPrIeC {\l } 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1106
+Underfull \hbox (badness 10000) in paragraph at lines 1112--1114
 
  []
 
@@ -1341,7 +1359,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1104--1106
 File: images/deviceTop2.jpg Graphic file (type jpg)
 
 <use images/deviceTop2.jpg>
-Package pdftex.def Info: images/deviceTop2.jpg used on input line 1113.
+Package pdftex.def Info: images/deviceTop2.jpg used on input line 1121.
 (pdftex.def)             Requested size: 455.24408pt x 335.02623pt.
  [37
 
@@ -1350,24 +1368,24 @@ Package pdftex.def Info: images/deviceTop2.jpg used on input line 1113.
 File: images/deviceBottom.jpg Graphic file (type jpg)
 
 <use images/deviceBottom.jpg>
-Package pdftex.def Info: images/deviceBottom.jpg used on input line 1119.
+Package pdftex.def Info: images/deviceBottom.jpg used on input line 1127.
 (pdftex.def)             Requested size: 455.24408pt x 341.42978pt.
 
 <images/radarTest2.png, id=186, 1951.29pt x 1037.8775pt>
 File: images/radarTest2.png Graphic file (type png)
 
 <use images/radarTest2.png>
-Package pdftex.def Info: images/radarTest2.png used on input line 1127.
+Package pdftex.def Info: images/radarTest2.png used on input line 1135.
 (pdftex.def)             Requested size: 455.24408pt x 242.12753pt.
  [38 <./images/deviceBottom.jpg> <./images/radarTest2.png>] <images/dataTest.pn
 g, id=191, 1158.3275pt x 1228.59pt>
 File: images/dataTest.png Graphic file (type png)
 
 <use images/dataTest.png>
-Package pdftex.def Info: images/dataTest.png used on input line 1133.
+Package pdftex.def Info: images/dataTest.png used on input line 1141.
 (pdftex.def)             Requested size: 455.24408pt x 482.86003pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1137--1139
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1147
 
  []
 
@@ -1411,9 +1429,9 @@ ams/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fonts/type1/publ
 ic/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><G:/Programs
 /MiKTeX/fonts/type1/public/pl/plr8.pfb><G:/Programs/MiKTeX/fonts/type1/public/p
 l/plsy10.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
-Output written on praca.pdf (42 pages, 56373092 bytes).
+Output written on praca.pdf (42 pages, 56368272 bytes).
 PDF statistics:
- 790 PDF objects out of 1000 (max. 8388607)
+ 792 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

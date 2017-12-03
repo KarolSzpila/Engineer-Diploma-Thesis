@@ -93,9 +93,9 @@ ADS-B (ang. Automatic Dependent Surveillance–Broadcast) to system służący d
 \\
 
 
-Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpytywania statku powietrznego o danym 24-bitowym adresie ICAO (ang International Civil Aviation Organization). SSR to wtórny radar dozorowania, uzupełniający prace PSR o dodatkowe informacje odebrane od statku powietrznego. Zapytania wysyłane są przez ATM (ang. Air Traffic Management) na częstotliwości 1030Mhz, natomiast odpowiedzi na 1090Mhz. ADS-B wykorzystuje Mode-S jako technologię do przesyłania informacji.
+Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpytywania statku powietrznego o danym 24-bitowym adresie ICAO (ang International Civil Aviation Organization). SSR to wtórny radar dozorowania, uzupełniający prace PSR o dodatkowe informacje odebrane od samolotu. Zapytania wysyłane są przez ATM (ang. Air Traffic Management) na częstotliwości 1030Mhz, natomiast odpowiedzi na 1090Mhz. ADS-B wykorzystuje Mode-S jako technologię do przesyłania informacji.
 \begin{table}[ph]
-\caption{\textit{ Rodzaje pakietów Mode-S}}
+\caption{\textit{ Rodzaje wiadomości Mode-S}}
 \label{tab:adsb}
   \centering
   \def\arraystretch{1.3}% 
@@ -121,14 +121,14 @@ Mode-S to system SSR (ang. Secondary Surveillance Radar) wykorzystywania do odpy
 \end{table}
 \newpage
 
-Powyższa tabela prezentuje podział wiadomości Mode-S ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wyróżniamy wiadomości krótkie o długości 56 bitów i rozszerzone 112 bitowe.DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System). ACAS to system zapobiegania kolizji w kontroli ruchu powietrznego. Wyróżniamy odpowiedz Short Air to Air ACAS (DF0), odbierane przez stacje ATM, oraz Long Air to Air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Uczestnicy ruchu wysyłający ramkę DF5 potwierdzają, że są wyposażeni w transponder Mode-S. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, które zawierają dodatkowe informacja niedostępne w ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymany pakiet DF20 i DF21, ponieważ nie zawiera on wysłanego BDS. Poniżej przedstawiono parametry odpowiadające poszczególnym BDS.
+Powyższa tabela prezentuje podział wiadomości Mode-S ze względu na rozmiar bloku danych oraz DF (ang. Downlink Format), czyli format odebranej ramki. Wyróżniamy wiadomości krótkie o długości 56 bitów i rozszerzone 112 bitowe. DF0 i DF16 wykorzystywane są w ACAS (ang. Airborne Collision Avoidance System). ACAS to system zapobiegania kolizji w kontroli ruchu powietrznego. Wyróżniamy odpowiedz Short Air to Air ACAS (DF0), odbierane przez stacje ATM, oraz Long Air to Air ACAS (DF16), stosowaną do informowania poszczególnych statków o możliwości kolizji. Uczestnicy ruchu wysyłający ramkę DF5 potwierdzają, że są wyposażeni w transponder Mode-S. Ponadto, można wyróżnić odpowiedzi Mode-S EHS (ang. Enhanced Surveillance) DF20 i DF21, które zawierają dodatkowe informacja niedostępne w ADS-B, w zależności od wysłanego przez kontrolę naziemną BDS (ang. Comm-B Data Selector). BDS to numer określający żądaną w odpowiedzi informację. Tylko SSR który wysłał zapytanie Mode-S EHS jest wstanie zdekodować otrzymany pakiet DF20 i DF21, ponieważ nie zawiera on wysłanego BDS. Poniżej przedstawiono parametry odpowiadające poszczególnym BDS.
 \begin{figure}[ph]
   \centering
   \includegraphics[width=\textwidth]{images/bds.png}
   \caption{\textit{ BDS dla wiadomości DF20 i DF21 \\http://www.eurocontrol.int/articles/mode-s-operational-overview}}
 \end{figure}
 
-Wiadomość Mode-S można odbierać przy pomocy dowolnego odbiornika dostrojonego na częstotliwości 1090MHz. Tunery z układem RTL2832U można łatwo przekształcić w SDR (ang. Software Defined Radio) SDR to system komunikacji radiowej w którym parametry odbiornika są konfigurowane poprzez pogram bez ingerencji w sprzęt. Wspomniane urządzenie jest znacznie tańsze od profesjonalnych rozwiązań, co spopularyzowało ADS-B w zastosowaniach amatorskich. 
+Wiadomość Mode-S można odbierać przy pomocy dowolnego odbiornika dostrojonego na częstotliwość 1090MHz. Tunery z układem RTL2832U można łatwo przekształcić w SDR (ang. Software Defined Radio).  SDR to system komunikacji radiowej w którym parametry radia są konfigurowane poprzez pogram bez ingerencji w sprzęt. Wspomniane urządzenie jest znacznie tańsze od profesjonalnych rozwiązań, co spopularyzowało ADS-B w zastosowaniach amatorskich. 
 
 
 
@@ -137,7 +137,7 @@ Celem niniejszej pracy było stworzenie prototypu systemu pozwalającego na loka
 Wewnętrzną odpowiedzialna za wykrywanie, zbieranie i dekodowanie wiadomości oraz wizualną, zajmującą się prezentacją danych oraz interakcją z użytkownikiem. Urządzenie można wykorzystać jako alternatywa dla drogich i profesjonalny systemów w przypadku zastosowań amatorskich.
 
 \section{Środowisko sprzętowe i wykorzystane narzędzia}
-W tym podrozdziale zostaną przedstawiono wykorzystanie w systemie urządzenia oraz środowisko programistyczne.
+W tym podrozdziale przedstawiono wykorzystanie w systemie urządzenia oraz środowisko programistyczne.
 \\
 
 
@@ -152,7 +152,7 @@ Poniżej wymieniono użyte biblioteki.
 \end{itemize}
 
 
-Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnienia wielozadaniowości oraz mechanizmów do zarządzania zasobami sprzętowymi. Do programowania urządzenia wykorzystano programatora ST-Link z zestawu uruchomieniowego STM32F429I-DISC1. Poniżej zaprezentowano wykorzystane programy.
+Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnienia wielozadaniowości oraz mechanizmów do zarządzania zasobami sprzętowymi. Do programowania urządzenia wykorzystano programator ST-Link z zestawu uruchomieniowego STM32F429I-DISC1. Poniżej zaprezentowano wykorzystane programy.
 
 \begin{itemize}
   \item Atollic True Studio - środowisko do programowania mikrokontrolerów
@@ -161,12 +161,12 @@ Zdecydowano się na wykorzystanie systemu operacyjnego FreeRTOS, w celu zapewnie
 \end{itemize}
 
 \chapter{ Architektura sprzętowa}
-W tym rozdziale zostanie opisana część sprzętowa projektu. Zostanie przedstawionoy schemat urządzenia oraz projekt PCB wraz z wykorzystanymi elementami oraz zewnętrznymi urządzeniami.
+W tym rozdziale zostanie opisana część sprzętowa projektu. Przedstawiono schemat urządzenia oraz projekt PCB wraz z wykorzystanymi elementami oraz zewnętrznymi urządzeniami.
 
 
 \section{ Schemat Urządzenia}
 \subsection*{Zasilanie}
-Urządzenie jest zasilanie z zewnętrznego źródła 5V poprzez port USB typu mini A. Pozwala to na podłączenie PCB zarówno do sieci przy pomocy ogólnodostępnych przetwornic lub akumulatorów lub portu w komputerze USB. Stabilizator LM1117 wykorzystano do obniżenia napięcia zasilania do wartości 3,3V przy jakiej pracują okłady scalone znajdujące się na PCB. Kondensatory C5, C6, C7, C8 zajmują się filtracją zasilania 3,3V i i 5V.
+Urządzenie jest zasilanie z zewnętrznego źródła 5V poprzez port USB typu mini A. Pozwala to na podłączenie PCB zarówno do sieci przy pomocy ogólnodostępnych przetwornic i akumulatorów lub portu w komputerze USB. Stabilizator LM1117 wykorzystano do obniżenia napięcia zasilania do wartości 3,3V przy jakiej pracują okłady scalone znajdujące się na PCB. Kondensatory C5, C6, C7, C8 zajmują się filtracją zasilania 3,3V i i 5V.
 Poniżej przedstawiono schemat podłączenia.
 
 \begin{figure}[!h]
@@ -184,7 +184,7 @@ Wykorzystany mikrokontroler to STM32F767ZIT6. Układ został wybrany ze względu
 \end{figure}
 
 \subsection*{Interfejsy komunikacyjne}
-System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do przechowywania skompresowanych obrazów do tła GUI lub map. Do programowania mikrokontrolera wykorzystano interfejs SWD zgodny z ST-Link. Komunikacja SDR odbywa się poprzez interfejs USB2.0 Full-Speed, który został wyprowadzony poprzez gniazdo Micro USB-B pozwalając w ten sposób zaoszczędzić na rozmiarze PCB. System jako Host będzie zasilać podłączony tuner. Zgodnie ze standardem maksymalny prąd wyjściowy to 500mA \cite{usbSpec}. Z tego powodu zastosowano przełącznik STMPS2141STR. W przypadku podania stanu wysokiego na pin USB PSO układ zostanie włączony. Jeżeli nie występują żadne sytuacje nieporządne takie jak przetężenie prądowe czy zwarcie, zapali się zielona dioda sygnalizująca poprawnie działanie. W przypadku jakichkolwiek problemów prąd zostanie natychmiast odcięty, a układ wystawi wysoki stan na pin FAULT informując o tym mikrokontroler i zapalając czerwona diodę. W celu zabezpieczania interfejsu przed niepożądanymi wyładowaniami elektrostatycznymi zastosowano układ STMECMF02-4CMX8 dedykowany dla USB2.0, służący do ochrony ESD (ang . Electro Static Discharge ) , który pełni również funkcję filtru EMI, (ang. Electroagnecitc Interferences). Poniżej przedstawiono schemat połączenia układów.
+System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do przechowywania skompresowanych obrazów do tła GUI lub map. Do programowania mikrokontrolera wykorzystano interfejs SWD zgodny z ST-Link. Komunikacja SDR odbywa się poprzez interfejs USB2.0 Full-Speed, który został wyprowadzony poprzez gniazdo Micro USB-B pozwalając w ten sposób zaoszczędzić na rozmiarze PCB. System jako Host będzie zasilać podłączony tuner. Zgodnie ze standardem maksymalny prąd wyjściowy to 500mA \cite{usbSpec}. Z tego powodu zastosowano przełącznik STMPS2141STR. W przypadku podania stanu wysokiego na pin USB PSO układ zostanie włączony. Jeżeli nie występują żadne sytuacje nieporządne takie jak przetężenie prądowe czy zwarcie, zapali się zielona dioda sygnalizująca poprawnie działanie. W przypadku jakichkolwiek problemów prąd zostanie natychmiast odcięty, a układ wystawi stan wysoki na pin FAULT informując o tym mikrokontroler i zapalając czerwona diodę. W celu zabezpieczania interfejsu przed niepożądanymi wyładowaniami elektrostatycznymi zastosowano układ STMECMF02-4CMX8 dedykowany dla USB2.0, służący do ochrony ESD (ang . Electro Static Discharge ) , który pełni również funkcję filtru EMI, (ang. Electroagnecitc Interferences). Poniżej przedstawiono schemat połączenia układów.
  %sprawdzic czy prawda z h na faul
 
 \begin{figure}[!h]
@@ -194,8 +194,8 @@ System posiada gniazdo na kartę Micro SD, która może zostać wykorzysta do pr
 \end{figure}
 
 \subsection*{Wyświetlacz}
-Zgodnie z założeniem, system ma posiadać interfejs  użytkownika. Do tego celu wybrano wyświetlacz HY101CTP z pojemnościowym panelem dotykowym. Przekątna wynosi 10,1",a rozdzielczośś to 1024 na 600 pikseli. Matryca jest sterowana poprzez MIPI-DPI (ang. Mobile Industry Processor Interface - Display Parell Interface). Panel dotykowy komunikuje się z mikrokontrolerem poprzez interfejs I2C. Podświetlenie jest włączane stane wysokim na pinie DISP ON a jasność zależy od wypełniania sygnału PWM o częstotliwości 10Khz na lini BL ADJ.
-Rezystory R3 i R8 mają za zadanie wymusić stan wysoki na liniach interfesju I2C, ponieważ są sterownie w trybie otwartego drenu. W tej konfiguracji można tylko zewrzeć linie do masy zmieniając stan wysoki na niski. Pozwoliło to wyeliminować sytuacje w której linia na jednym końcu jest zwarta do masy a na drugim do zasilania co doprowadziło by do zwarcia i gwałtownego wzrostu mocy mogącego uszkodzić układ.
+Zgodnie z założeniem, system ma posiadać interfejs  użytkownika. Do tego celu wybrano wyświetlacz HY101CTP z pojemnościowym panelem dotykowym. Przekątna wynosi 10,1",a rozdzielczośś to 1024 na 600 pikseli. Matryca jest sterowana poprzez MIPI-DPI (ang. Mobile Industry Processor Interface - Display Parell Interface). Panel dotykowy komunikuje się z mikrokontrolerem poprzez interfejs I2C. Podświetlenie jest włączane stane wysokim na pinie DISP ON a jasność zależy od wypełniania sygnału PWM o częstotliwości 10 KHz na lini BL ADJ.
+Rezystory R3 i R8 mają za zadanie wymusić stan wysoki na liniach interfesju I2C, ponieważ są sterownie w trybie otwartego drenu. W tej konfiguracji można tylko zewrzeć linie do masy zmieniając stan wysoki na niski. Pozwoliło to wyeliminować sytuacje w której linia na jednym końcu jest zwarta do masy a na drugim do zasilania co doprowadziłoby do zwarcia i gwałtownego wzrostu mocy mogącego uszkodzić układ.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/display.png}
@@ -212,7 +212,7 @@ Do działania interfejsu graficznego potrzebna jest pamięć na ramki wysyłane 
 \end{figure}
 
 \subsection*{Moduł GPS}
-Aby system był w stanie popranie obliczyć odległość od namierzonego statu powietrznego i poprawnie zaznaczyć jego pozycję na radarze, potrzebna jest lokalizacja urządzenia urządzenia. Do tego zadania wybrano układ NEO-6M-0-001 z zewnętrzną aktywną anteną. Do układu została podłączono zewnętrza bateria podtrzymująca zasilanie. Dzięki temu urządzenie można uruchomić poprzez ciepły start, co pozwala zaoszczędzić czas potrzebny na znalezienie odpowiedniej liczby satelitów GPS. Do komunikacji z mikrokontrolerem wykorzystano interfejs UART (ang. Universal Asynchronous Receiver Transmitter).
+Aby system był w stanie obliczyć odległość od namierzonego statu powietrznego i poprawnie zaznaczyć jego pozycję na radarze, potrzebna jest lokalizacja urządzenia. Do tego zadania wybrano układ NEO-6M-0-001 z zewnętrzną aktywną anteną. Do układu została podłączona bateria podtrzymująca zasilanie. Dzięki temu urządzenie można uruchomić poprzez ciepły start, co pozwala zaoszczędzić czas potrzebny konfigurację modułu. Do komunikacji z mikrokontrolerem wykorzystano interfejs UART (ang. Universal Asynchronous Receiver Transmitter).
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{schematics/gps.png}
@@ -221,10 +221,10 @@ Aby system był w stanie popranie obliczyć odległość od namierzonego statu p
 \newpage
 
 \section{ Wykonanie PCB }
-Poniżej szczegółowo opisano projekt oraz wykonanie PCB wraz z obliczeniami. Opisano decyzję projektowe wynikajcie z ograniczeń technologi oraz występowania niepożądanych zjawisk fizycznych.
+Poniżej szczegółowo opisano projekt oraz wykonanie PCB wraz z obliczeniami. Opisano decyzję projektowe wynikajcie z ograniczeń technologicznych oraz występowania niepożądanych zjawisk fizycznych.
 
 \subsection*{Parametry PCB} \label{pcbSection}
-W projekcie PCB, zdecydowano się na wykonanie technologią czterowarstwową. Pozwoliło to zmniejszyć rozmiary urządzenia oraz zapewnić dobre ekranowanie pomiędzy warstwami sygnałowymi. Ponadto ciągłość warstw referencyjnych (masy i zasilania) pozwala by prądy powrotne przepływało możliwe najkrótszą drogą o najmniejszej impedancji zmniejszając emisje EMC. Poniżej przedstawiono tabele z układem warstw PCB.
+Zdecydowano się na wykonanie PCB technologią czterowarstwową. Pozwoliło to zmniejszyć rozmiary urządzenia oraz zapewnić dobre ekranowanie pomiędzy warstwami sygnałowymi. Ponadto ciągłość warstw referencyjnych (masy i zasilania) pozwala, by prądy powrotne przepływało możliwe najkrótszą drogąi zmniejszając w ten sposób emisję EMI. Poniżej przedstawiono tabelę z układem warstw PCB.
 
 \begin{table}[htb]
 \def\arraystretch{1.3}% 
@@ -279,7 +279,7 @@ gdzie
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{plots/gpsZ0.png}
-    \caption{\textit{ Impedancja ścieżki w zależności od szerokości ścieżki}}
+    \caption{\textit{ Wykres impedancji ścieżki w zależności od szerokości}}
 \end{figure}
 
 Powyższy wykres przedstawia impedancję ścieżki antenowej modułu GPS w zależności od szerokości, obliczoną ze wzoru ~\ref{eq:gps_z0}. Z tabeli ~\ref{tab:pcbStack} odczytano T = 1,4 mil, H = 6,7 mil oraz \textbf{$\varepsilon_r$} = 3,66. Czerwoną linią zaznaczono pożądane dopasowanie Z$_0$ = 50 $\Omega$. Założono że W zostanie obliczone z dokładnością do 1 mil. Obliczenia wykonano zaczynając od najmniejszej szerokości gwarantowanej przez producenta W = 5 mil, aż do otrzymania pierwszego punktu pod prostą z optymalnym dopasowaniem. Najlepsze dopasanie otrzymano dla W = 12 mil, gdzie Z$_0$ $\approx$ 49.95 $\Omega$
@@ -299,7 +299,7 @@ Korzystając ze wzoru ~\ref{eq:gammaGPS} obliczono:
 \Gamma= \frac{Z_0 - Z_s}{Z_0 + Z_s} = \frac{49,59\Omega -50\Omega}{49,59\Omega  + 50\Omega } \approx 0.0005 
 \end{equation}
 
-W przeliczeniu na wartość procentową otrzymujemy $\Gamma \cdot 100\% = 0.0005 \cdot 100\% = 0.05\%$ sygnału odbitego przez linie transmisyjną. Jest pomijanie mała strata zatem pozostano prze szerokości W = 12 mil.\\
+Po przeliczeniu na wartość procentową otrzymujemy $\Gamma \cdot 100\% = 0.0005 \cdot 100\% = 0.05\%$ sygnału odbitego przez linie transmisyjną. Jest to pomijanie mała strata zatem pozostano przy szerokości W = 12 mil.\\
 
 Zgodnie z zaleceniami noty katalogowej wykonano serię przelotek pod i do okola układu GPS (U2). Ten sam zabieg zastosowano również dla ścieżki antenowej (pomiędzy J1 i U2). Zapewniło to lepsze odprowadzanie ciepła przez moduł, a zatem niższą temperaturę pracy i mniejsza emisję EMI. Poniżej zaprezentowano zdjęcie z projektem.
 \begin{figure}[!h]
@@ -309,7 +309,7 @@ Zgodnie z zaleceniami noty katalogowej wykonano serię przelotek pod i do okola 
 \end{figure}
 
 \subsection*{USB}
-W projekcie wykorzystano wbudowany w STM32F767xx kontroler interfejsu USB2.0 Full-Speed o maksymalnej przepustowości 12Mb/s. Zgodnie ze standardem, należy dopasować impedancję różnicową pomiędzy liniami transmisyjnymi sygnału nieodwróconego i odwróconego do 90 \textbf{$\Omega$}. Poniżej przedstawiono zastosowany wzór oraz obliczenia.
+W projekcie wykorzystano wbudowany w STM32F767xx kontroler interfejsu USB2.0 Full-Speed o maksymalnej przepustowości 12Mb/s. Zgodnie ze standardem, należy dopasować impedancję różnicową pomiędzy liniami transmisyjnymi sygnału nieodwróconego i odwróconego do Z$_d$ = 90 $\pm$ 15\% $\Omega$\cite{usbSpec}. Poniżej przedstawiono zastosowany wzór oraz obliczenia.
 \begin{equation}
 Z_0= \frac{174}{\sqrt{\varepsilon_r + 1.41}}\ln{\left(\frac{5.98H}{0.8W + T}\right)} \left(1-0.48e^{(-0.96\frac{D}{H})}\right) \label{eq:usb_zd} \cite{highSpeedDesign}
 \end{equation}
@@ -332,12 +332,12 @@ gdzie
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{plots/usbzD.png}
-    \caption{\textit{Impedancja różnicowa w zależności od szerokości ścieżki}}
+    \caption{\textit{Wykres impedancji różnicowej w zależności od szerokości ścieżki}}
 \end{figure}
 
-Poniższy wykres przedstawia impedancję różnicową lini transmisyjnych interfejsu USB w zależności od szerokości obliczoną ze wzoru ~\ref{eq:usb_zd} z parametrami T = 1,4 mil, H = 6,7 mil i \textbf{$\varepsilon_r$} = 3,66 z tabeli ~\ref{tab:pcbStack}. Założono odległość pomiędzy ścieżkami D = 8 mil równą rozstawowi pinów w mikrokontrolerze. Czerwoną linią zaznaczono pożądane dopasowanie Z$_d$ = 90 $\Omega$. Założono że W zostanie obliczone z dokładnością do 1 mils. Obliczenia wykonano zaczynając od najmniejszej szerokości gwarantowanej przez producenta W = 5 mil, aż do punktu pod prostą z optymalnym dopasowaniem. Najlepsze dopasanie otrzymano dla W = 11 mil, gdzie Z$_d$ $\approx$ 89.56 $\Omega$. Zgodnie ze specyfikacją interfejsu USB2.0 Full-speed impedancja różnicowa musi wynosić Z$_d$ = 90 $\pm$ 15\% $\Omega$.\cite{usbSpec} Zatem $ 76,5\Omega \leq$ Z$_d$ $\leq 103,5\Omega$. Z$_d$ obliczone dla W = 11 mil spełnia to wymaganie.
+Poniższy wykres przedstawia impedancję różnicową lini transmisyjnych interfejsu USB w zależności od szerokości obliczoną ze wzoru ~\ref{eq:usb_zd} z parametrami T = 1,4 mil, H = 6,7 mil i \textbf{$\varepsilon_r$} = 3,66 z tabeli ~\ref{tab:pcbStack}. Założono odległość pomiędzy ścieżkami D = 8 mil równą rozstawowi pinów w mikrokontrolerze. Czerwoną linią zaznaczono pożądane dopasowanie Z$_d$ = 90 $\Omega$. Założono że W zostanie obliczone z dokładnością do 1 mils. Obliczenia wykonano zaczynając od najmniejszej szerokości gwarantowanej przez producenta W = 5 mil, aż do punktu pod prostą z optymalnym dopasowaniem. Najlepsze dopasanie otrzymano dla W = 11 mil, gdzie Z$_d$ $\approx$ 89.56 $\Omega$. Zgodnie ze specyfikacją interfejsu USB2.0 Full-speed impedancja różnicowa musi wynosić Z$_d$ = 90 $\pm$ 15\% $\Omega$. Zatem $ 76,5\Omega \leq$ Z$_d$ $\leq 103,5\Omega$. Z$_d$ obliczone dla W = 11 mil spełnia to wymaganie.
 
-Wszystkie elementy zostały umieszczone na górnej warstwie sygnałowej, aby nie stosować przelotek które wprowadzając niepożądane pojemności i indukcyjności linii transmisyjnych. Ścieżki są zaginane po kątem nie większym niż 45$^\circ$. Warstwą referencyjną dla sygnałów jest warstwa masy co zapewnia lepsze ekranowanie. Linie różnicowe są oddzielone polem masy od innych sygnałów o co najmniej 50 mil. Zastosowanie powyższych reguł pozwoliło ograniczyć zjawiska utrudniające dopasowania impedancji. Wspominanie w rozdziale schematu rezystory R5 i R4 służą jako szeregowa terminacja sygnału. Dzięki temu zabiegowi czasy narastania zboczy się większe co zmniejsza generowanie zakłócenia EMC. Układ U6 działa jako zabezpieczenie przeciwko wyładowaniom elektrostatycznym mogącym uszkodzić urządzenie oraz jako dodatkowy filtr EMI . Rezystory R5 i R4 pełnią rolę szeregowej terminacji sygnału. Zgodnie z notą katalogową układu STM32F767xx ich rezystancja powinna wynosić 22 \textbf{$\Omega$}. Poniżej przedstawiono część projektu PCB z interfejsem USB.
+Wszystkie elementy zostały umieszczone na górnej warstwie sygnałowej, aby nie stosować przelotek które wprowadzają niepożądane pojemności i indukcyjności linii transmisyjnych. Ścieżki są zaginane po kątem nie większym niż 45$^\circ$. Warstwą referencyjną dla sygnałów jest warstwa masy co zapewnia lepsze ekranowanie. Linie różnicowe są oddzielone polem masy od innych sygnałów o co najmniej 50 mil. Zastosowanie powyższych reguł pozwoliło ograniczyć zjawiska utrudniające dopasowania impedancji. Układ U6 działa jako zabezpieczenie przeciwko wyładowaniom elektrostatycznym mogącym uszkodzić urządzenie oraz jako dodatkowy filtr EMI . Rezystory R5 i R4 pełnią rolę szeregowej terminacji sygnału. Zgodnie z notą katalogową układu STM32F767xx ich rezystancja powinna wynosić 22 \textbf{$\Omega$}. Dzięki temu zabiegowi czasy narastania zboczy są większe co zmniejsza generowanie EMI. Poniżej przedstawiono część projektu PCB z interfejsem USB.
 
 \begin{figure}[!h]
     \centering
@@ -363,7 +363,7 @@ CLK = 1024 \cdot 600 \cdot 60Hz = 614400 \cdot 60Hz = 36864000 Hz \approx 37MHz
 $$
 Interfejsy o takich częstotliwościach zostały uznane za szybkie, co za tym idzie podjęto dodatkowe działania podczas projektowania ich linii transmisyjnych. Zadbano by warstwy referencyjne pod ścieżkami sygnałowymi były ciągłe, aby zapewnić ekranowanie i ograniczyć przesłuchy od linii po przeciwnej stronie płytki. Ponadto dopasowano długości wszystkich ścieżek w interfejsie, by sygnały przychodziły w możliwie podobnym czasie. Wzorując się na projekcie referencyjnym płytki ewaluacyjnej STM32F746G-DISCO zadbano, by różnica długości pomiędzy liniami dla obu interfejsów nie była większa niż 100 mil. Opóźnienie linii transmisyjnej, czyli czas jaki sygnał potrzebuje na pokonanie określonej drogi wyraża się wzorem:
 \begin{equation}
-t = \frac{l \sqrt{\varepsilon_r}}{c} \label{eq:td}
+t = \frac{l \sqrt{\varepsilon_r}}{c} \label{eq:td} \cite{highSpeedDesign}
 \end{equation}
 gdzie
 \begin{itemize}
@@ -371,7 +371,7 @@ gdzie
   \item \textbf{$\varepsilon_r$} - stała elektryczna 
   \item c - szybkość rozchodzenia się fali w próżni
 \end{itemize}
-Korzystając ze wzoru ~\ref{eq:td} dla parametrów l = 0.00254m (100 mil) i c = 299 792 458$\frac{m}{s}$ oraz $\varepsilon_r$ = 3,66 obliczono opóźnienie sygnału czyli czas jakim dzieli sygnały w liniach o długości różniącej się o 100mil.
+Korzystając ze wzoru ~\ref{eq:td} dla parametrów l = 0.00254 m (100 mil), c = 299 792 458$\frac{m}{s}$ oraz $\varepsilon_r$ = 3,66 obliczono opóźnienie sygnału czyli czas jaki dzieli sygnały w liniach o długości różniącej się o 100 mil.
 $$
 t = \frac{0.00254m \sqrt{3,66}}{299 792 458\frac{m}{s}} = \frac{0.00485931m}{299 792 458\frac{m}{s}} = 1.621\cdot10^{-11}s = 16,21 ps
 $$
@@ -404,9 +404,9 @@ t_{low} = \frac{1}{36864000Mhz} \cdot 45\% = 27127ps\cdot45\% = 12207ps
 $$
 W nocie THC63LVDM83D znaleziono $t_{setup} = 2000ps$. Korzystając z ~\ref{eq:timing} obliczono
 $$
-t_{max} = 4167ps - 2000ps = 2167ps
+t_{max} = 12207ps - 2000ps = 10207ps
 $$
-Ograniczenia czasowe nie zostały przekroczone, ponieważ $t_{max}= 12207ps \geq t=16,21$.\\
+Ograniczenia czasowe nie zostały przekroczone, ponieważ $t_{max}= 10207ps \geq t=16,21$.\\
 
 Poniżej przedstawiono tabelę z czasami ustalania dla wszystkich sygnałów interfejsu odczytanych z noty ukłądu IS42S16400J-7TLI.
 
@@ -579,8 +579,8 @@ Poniżej opisano funkcjonalności klas we wszystkich przestrzeniach nazw.
 \noindent
 \textbf{\textit{Controler}} - przestrzeń nazw zawierająca klasy związane z realizacją kontrolera z MVC.
 \begin{itemize}[label={}]
-  \item \textbf{\textit{ADS\_BDecoder}} - klasa odbierająca od obiektu RTLSDR ciągi próbek sygnału radiowego. Odpowiedzialna za wykrywanie ramek od dekodowanie ich do typu ADS\_BMessage.
-  \item \textbf{\textit{ADS\_BMessage}} - struktura reprezentują odebraną wiadomość. W zależności od typu zawiera inne informacje o samolocie.
+  \item \textbf{\textit{ADS\_BDecoder}} - klasa odbierająca od obiektu RTLSDR ciągi próbek sygnału radiowego. Odpowiedzialna za wykrywanie ramek i dekodowanie ich do typu ADS\_BMessage.
+  \item \textbf{\textit{ADS\_BMessage}} - struktura reprezentują odebraną wiadomość. W zależności od typu zawiera różne informacje o samolocie.
   \item \textbf{\textit{FlightControlControler}} - reprezentacja kontrolera w MVC. Klasa jest odpowiedzialna na dodawanie i modyfikowanie wpisów w zależności od odebranych wiadomości. Zajmuje się również przetwarzaniem akcji systemu (przerwania od zegara odliczającego czas życia wpisów) i użytkownika (interakcja z panelem dotykowym). Przekazuje dane z modelu do widoku i informuje o potrzebie odświeżenia interfejsu.
 \end{itemize}
 \vskip 0.55cm
@@ -593,9 +593,9 @@ Poniżej opisano funkcjonalności klas we wszystkich przestrzeniach nazw.
 \vskip 0.55cm
 
 \noindent
-\textbf{\textit{BoardSuport}} - zawiera klasy będące wysokopoziomowymi interfejsami do obsługi urządzeń wchodzących w skład PCB. Jest odpowiedzialna za inicializację wszystkich klas z przestrzeni BoardSupport i Drivers.
+\textbf{\textit{BoardSuport}} - zawiera klasy będące wysokopoziomowymi interfejsami do obsługi urządzeń wchodzących w skład PCB. 
 \begin{itemize}[label={}]
-  \item \textbf{\textit{BoardMenager}} - klasa zapewniająca komunikację pomiędzy aplikacją a sprzętem.
+  \item \textbf{\textit{BoardMenager}} - klasa zapewniająca komunikację pomiędzy aplikacją a sprzętem. Jest odpowiedzialna za inicializację wszystkich klas z przestrzeni BoardSupport i Drivers.
   \item \textbf{\textit{Led}} - interfejs do obsługi LED znajdującej się na płytce.
   \item \textbf{\textit{RTLSDR}} - klasa implementująca obsługę tunera DVB-T jako SDR korzystając z librtlsdr. Odpowiada za strojenie urządzenia i konfigurację układu próbkującego. 
   \item \textbf{\textit{GPS}} - zajmuję się przetwarzaniem wiadomości przychodzących od modułu GPS poprzez UART. Zapewnia dostęp do zdekodowanych współrzędnych geograficznych.
@@ -621,12 +621,12 @@ Komunikacja pomiędzy komponentami odbywa się przy pomocy interfejsów. Każda 
 
 
 \section{Procesy w systemie operacyjnym}
-W projekcie wykorzystano system operacyjny FreeRTOS, co pozwoliło podzielić poszczególne części aplikacji na procesy. Wielozadaniowość jest potrzebna, by jednocześnie obsługiwać interfejs użytkownika, zarządzać akwizycją danych oraz wykonywać obliczenia związane z logiką programu, tak aby użytkownik miał wrażenie płynnego działania aplikacji. Mechanizm semaforów wykorzystano to synchronizacji zadań z przerwaniami sprzętowym, natomiast kolejki pozwoliły na przesyłania pomiędzy nimi danych i zdarzeń. Ponadto użyto liczników programowych do odliczania czasu życia poszczególnych wpisów w modelu. Każdy wpis jest usuwany po 120s od otrzymania ostatniej dotyczącej go wiadomości.
+W projekcie wykorzystano system operacyjny FreeRTOS, co pozwoliło podzielić poszczególne części aplikacji na procesy. Wielozadaniowość jest potrzebna, by jednocześnie obsługiwać interfejs użytkownika, zarządzać akwizycją danych oraz wykonywać obliczenia związane z logiką programu, tak aby użytkownik miał wrażenie płynnego działania aplikacji. Mechanizm semaforów wykorzystano to synchronizacji zadań z przerwaniami sprzętowym, natomiast kolejki pozwoliły na przesyłanie pomiędzy nimi danych i zdarzeń. Ponadto użyto liczników programowych do odliczania czasu życia poszczególnych wpisów w modelu. Każdy wpis jest usuwany po 120s od otrzymania ostatniej dotyczącej go wiadomości.
 \newpage
 \noindent
 W systemie wydzielono następujące procesy:
 \begin{itemize}
-\item USBMonitorTask - odpowiedzialny za obsługę maszyny stanów USB oraz wykrywanie i konfigurację Tunera DVB-T jako SDR. 
+\item USBMonitorTask - odpowiedzialny za obsługę maszyny stanów USB oraz wykrywanie i konfigurację tunera DVB-T jako SDR. 
   
 \item RTLSDRDataAquisitionTask - proces zajmujący się obsługą komunikacji z SDR oraz wykrywaniem wiadomości ADS-B i przesyłaniem ich do FlightControlerTask poprzez kolejkę.
     
@@ -641,7 +641,7 @@ Poniżej przedstawiono schematy blokowe poszczególnych zadań.
 \centering
 \begin{minipage}[c]{0.35\linewidth}
 \centering
-\includegraphics[width=3.99cm]{plots/modelTask.png}
+\includegraphics[width=3.95cm]{plots/modelTask.png}
 \caption{Schemat blokowy zadania FlightControlerTask}
 \end{minipage}
 \hfill
@@ -666,7 +666,7 @@ Poniżej przedstawiono schematy blokowe poszczególnych zadań.
 \hfill
 \begin{minipage}[c]{0.45\linewidth}
 \centering
-\includegraphics[width=6.5cm]{plots/guiTask.png}
+\includegraphics[width=6.4cm]{plots/guiTask.png}
 \caption{Schemat blokowy zadania GUITask}
 \end{minipage}
 \end{figure}
@@ -678,22 +678,22 @@ Każdy bit jest kodowany co $1\mu$s. Na początku wiadomości dodawana jest prea
 
 
 SDR został skonfigurowany, by wydzielać sygnał z fali nośnej o częstotliwość 1090Mhz.
-Na jego wyjściu otrzymujemy przebieg o częstotliwości $f=2Mhz$, ponieważ poszczególne impulsy trwają 0,5$\mu$s. Z godnie z twierdzeniem Kotielnikowa-Shannona do poprawnego odtworzenia sygnału potrzebujemy próbkować go z częstotliwością co najmniej $2f$. W SDR próbki są pobierane przez dwa 8 bitowe przetworniki ADC.Przed jednym z układów następuje przesunięcie sygnału w fazie o -90$^\circ$. Dzięki temu dla częstotliwości próbkowania 2Mhz pasmo przenoszenie jest dwukrotnie szersze i również wynosi 2Mhz \cite{digit}. Dane otrzymane z SDR są w postaci I/Q. Para próbek I/Q stanowi liczbę rzeczywistą gdzie gdzie I to chwilowa amplituda sygnału odebranego przez przetwornik, a to Q to chwilowa amplituda sygnału przesuniętego w fazie o -90$^\circ$ względem I. Chwilowa amplituda nadanego sygnału to moduł liczby zespolonej I/Q obliczony z następującego wzoru:
+Na jego wyjściu otrzymujemy przebieg o częstotliwości $f=2Mhz$, ponieważ poszczególne impulsy trwają 0,5$\mu$s. Z godnie z twierdzeniem Kotielnikowa-Shannona do poprawnego odtworzenia sygnału potrzebujemy częstotliwości próbkowania co najmniej $2f$. W SDR próbki są pobierane przez dwa 8 bitowe przetworniki ADC. Przed jednym z układów następuje przesunięcie sygnału w fazie o -90$^\circ$. Dzięki temu dla częstotliwości próbkowania 2Mhz pasmo przenoszenie jest dwukrotnie szersze i również wynosi 2Mhz \cite{digit}. Dane otrzymane z SDR są w postaci I/Q. Para próbek I/Q stanowi liczbę rzeczywistą gdzie gdzie I to chwilowa amplituda sygnału odebranego przez przetwornik, a to Q to chwilowa amplituda sygnału przesuniętego w fazie o -90$^\circ$ względem I. Chwilowa amplituda nadanego sygnału to moduł liczby zespolonej I/Q obliczony z następującego wzoru:
 \\
 \begin{equation}
 \label{eq:amplitude}
 A = \sqrt{I^2 + Q^2}
 \end{equation}
 \\
-Aby wykryć pakiet należy przeliczyć ciąg próbek I/Q na kolejne wartości amplitudy, według wzoru ~\ref{eq:amplitude}. Następnie znaleźć w sygnale preambułę oraz zdekodować wiadomości przy pomocy demodulacji PPM. Aby potwierdzić poprawność ramki należy obliczyć sumę CRC i porównać z wartością odebraną w wartością.
+Aby wykryć pakiet należy przeliczyć ciąg próbek I/Q na kolejne wartości amplitudy, według wzoru ~\ref{eq:amplitude}. Następnie znaleźć w sygnale preambułę oraz zdekodować wiadomości przy pomocy demodulacji PPM. Aby potwierdzić poprawność ramki należy obliczyć sumę CRC i porównać z wartością odebraną.
 \\
 
 \subsection*{Dekodowanie ADS-B}
-ADS-B to wiadomości Mode-S o parametrze Downlink format równym 17. Poniżej przedstawiono strukturę pakietu ADS-B.
+ADS-B to wiadomości Mode-S o parametrze Downlink format równym 17. Poniżej przedstawiono strukturę bloku danych ADS-B.
 
 \begin{table}[htb]
 \def\arraystretch{1.3}% 
-\caption{\textit{ Struktura wiadomości ADS-B}}
+\caption{\textit{ Struktura bloku danych w wiadomości ADS-B}}
 \label{tab:adsbFrame}
 \begin{center}
 \begin{tabular}{ |c|c| }
@@ -720,7 +720,7 @@ W zależności od typu, wiadomość może zawierać następujące informacje.
 
 \begin{table}[htb]
 \def\arraystretch{1.3}% 
-\caption{\textit{ Struktura wiadomości ADS-B}}
+\caption{\textit{ Typy wiadomości ADS-B}}
 \label{tab:adsbFrame}
 \begin{center}
 \begin{tabular}{ |c|c| }
@@ -776,12 +776,12 @@ Zawartość & \begin{tabular}{c}Rodzaj \\transpondera\end{tabular} & Znak 1 & Zn
 \end{center}
 \end{table}
 
-Pozycja statku powietrznego jest zakodowana w formacie CPR (ang. Compact Position Reporting). Wyróżniamy dwie metody dekodowania takich wiadomość. GUP (ang. Globally Unambiguous Position), która potrzebuje do dwóch kolejnych wiadomości i LUP (ang. Locally Unambiguous Position), gdzie wymagana jest pozycja referencyjna, np. lokalizacja odbiornika radiowego, która nie może być odalona od statku powietrznego o więcej niż 180Nm. Ze względu na ograniczone możliwość anteny tunera w projekcie wykorzystano metodę LUP.
+Pozycja statku powietrznego jest zakodowana w formacie CPR (ang. Compact Position Reporting). Wyróżniamy dwie metody dekodowania takich wiadomość. GUP (ang. Globally Unambiguous Position), która potrzebuje dwóch kolejnych wiadomości i LUP (ang. Locally Unambiguous Position), gdzie wymagana jest pozycja referencyjna, np. lokalizacja odbiornika radiowego, która nie może być odalona od statku powietrznego o więcej niż 180Nm. Ze względu na ograniczone możliwość anteny tunera w projekcie wykorzystano metodę LUP.
 Poniżej przedstawiono strukturę pakietu ADS-B dla wiadomości z pozycją.
 
 \begin{table}[htb]
 \def\arraystretch{1.3}% 
-\caption{\textit{ Zawartość wiadomości ADS-B w zależności od typu}}
+\caption{\textit{ Zawartość wiadomości ADS-B typu 9-18 i 20-22}}
 \label{tab:adsb}
   \centering
   \def\arraystretch{1.3}% 
@@ -819,7 +819,7 @@ Poniżej przedstawiono algorytm dekodowania pozycji samolotu.
 \noindent
 Znaczenie użytych symboli:
 \begin{itemize}
-\item NZ to ustalona liczba stref szerokość geograficznych wynosząca 15.
+\item NZ - ustalona liczba stref szerokość geograficznych wynosząca 15.
 \item Lat$_{ref}$ - referencyjna szerokość geograficzna
 \item Lon$_{ref}$ - referencyjna długość geograficzna
 \item Lat$_{CPR}$ - szerokość geograficzna w formacie CPR
@@ -857,7 +857,7 @@ j = \floor{\frac{Lat_{ref}}{dLat}} + \floor{\frac{mod(Lat_{ref},dLat}{dLat} - La
 \end{equation}
 \\
 
-Obliczone parametry pozwoliły na obliczenia szerokość geograficznej według następującego wzoru:
+Obliczone parametry pozwoliły na uzyskanie szerokość geograficznej według następującego wzoru:
 \begin{equation}
 Lat = dLat \cdot \left(j + Lat_{CPR}\right)
 \end{equation}
@@ -900,7 +900,7 @@ A= \left\{ \begin{array}{ll}
 \noindent
 gdzie: 
 \begin{itemize}
-\item N - wartość pola ALT uśnięciu bitu Q.
+\item N - wartość pola ALT po usunięciu bitu Q.
 \item A - zdekodowany pułap lotu w stopach.
 \end{itemize}
 
@@ -924,7 +924,7 @@ Wiadomości typu 9 dzielimy na dwa rodzaje. Z prędkością względem powierzchn
   \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{V$_{EW}$} & \multicolumn{1}{c|}{Hdg} & \multicolumn{1}{c|}{Prędkość Wschód-Zachód}& \multicolumn{1}{c|}{Kurs}\\\cline{1-5}
   \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{S$_{NS}$} & \multicolumn{1}{c|}{AS$_t$} & \multicolumn{1}{c|}{Prędkości Północ-Południe} & \multicolumn{1}{c|}{Typ prędkości powietrznej}\\\cline{1-5}
   \multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{V$_{NS}$} & \multicolumn{1}{c|}{AS}  & \multicolumn{1}{c|}{Prędkość powietrzna}& \multicolumn{1}{c|}{Prędkość powietrzna}\\\cline{1-5}
-  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{Vr$_{src}$} & \multicolumn{2}{c|}{Flaga typu wysokości Barometryczna lub GNSS}\\\cline{1-5}
+  \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{Vr$_{src}$} & \multicolumn{2}{c|}{Flaga typu wysokości - barometryczna lub GNSS}\\\cline{1-5}
   \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{S$_{Vr}$} & \multicolumn{2}{c|}{znak zmiany pułapu}\\\cline{1-5}
   \multicolumn{1}{|c|}{1} & \multicolumn{2}{c|}{Vr} & \multicolumn{2}{c|}{prędkość zmiany pułapu}\\\cline{1-5}
   \multicolumn{1}{|c|}{2} & \multicolumn{2}{c|}{RES-B} & \multicolumn{2}{c|}{rejestr zarezerwowany}\\\cline{1-5}
@@ -936,6 +936,10 @@ Wiadomości typu 9 dzielimy na dwa rodzaje. Z prędkością względem powierzchn
 
 
 Poniżej przedstawiono algorytmy dekodowania kursu i szybkości w zależności od typu wiadomości.
+\\
+
+\noindent
+gdzie:
 \begin{itemize}
 \item v - szybkość statku w węzłach
 \item h - kurs statku w stopniach
@@ -1017,13 +1021,12 @@ d = 2R\arcsin\left(\sqrt{\sin^2\left(\frac{\varphi_2 - \varphi_1}{2}\right)
 %\cos\left(\lambda_2 - \lambda_1\right)
 %\right)
 %\end{equation}
-\newpage
 gdzie:
 \begin{itemize}
 \item d - dystans pomiędzy punktami na sferze w metrach
 \item $\theta$ - namiar pomiędzy punktami na sferze w radianach
 \item $\varphi_1$ i $\lambda_1$ - szerokość i długość geograficzna odbiornika
-\item $\varphi_1$ i $\lambda_1$ - szerokość i długość geograficzna samolotu
+\item $\varphi_2$ i $\lambda_2$ - szerokość i długość geograficzna samolotu
 \end{itemize}
 \vskip 0.5cm
 Tak otrzymany punkt został przeniesiony do współrzędnych kartezjańskich
@@ -1034,11 +1037,15 @@ x = r\sin(\theta)\\
 y = r\cos(\theta\\
 \end{array}
 \end{equation}
+\\
+
+\noindent
+gdzie:
 \begin{itemize}
 \item r - dystans obliczony z równania ~\ref{eq:dystans} w milach nautycznych
 \end{itemize}
 \vskip 0.5cm
-
+\noindent
 Położenie na obrazie rastrowym otrzymano według następującego algorytmu:
 \begin{equation}
 \renewcommand*{\arraystretch}{1.3}
@@ -1049,16 +1056,17 @@ y_{img} = y \frac{range}{size} + y_{center}\\
 \end{equation}
 \\
 
+\noindent
 gdzie:
 \begin{itemize}
 \item range - promień radaru w milach nautycznych
-\item range - promień radaru w pikselach
-\item range - $x_{center}$ - współrzędna x środka radaru na obrazie
-\item range - $y_{center}$ - współrzędna y środka radaru na obrazie
+\item size - promień radaru w pikselach
+\item $x_{center}$ - współrzędna x środka radaru na obrazie
+\item $y_{center}$ - współrzędna y środka radaru na obrazie
 \end{itemize}
 
 \chapter{Interfejs użytkownika}
-W tym rozdziale opisano poszczególne elementy interfejsu użytkownika, oraz dane przez nie prezentowane.
+W tym rozdziale opisano poszczególne elementy interfejsu użytkownika, oraz prezentowane dane.
 
 \subsection*{Opis prezentowanych danych}
 Interfejs graficzny użytkownika GUI (ang. Graphical User Interface) podzielono na dwie części. Z prawej strony znajduję się lista z wszystkimi wykrytymi samolotami. 
@@ -1074,7 +1082,7 @@ Poniżej opisano kolejne kolumny listy.
 Wpis pojawia się po odebraniu pierwszej wiadomości z danym adresem i jest aktualizowany, gdy kolejne pakiety zostaną odebrane. W przypadku zapełnienia wszystkich widocznych wierszy istnieje możliwość przewijania przy pomocy paska znajdującego się przy prawej krawędzi wyświetlacza.
 \\
 
-Po prawej stronie znajduje się radar pokazujący położenie wykrytych statków powietrznych względem pozycji odbiornika. Kolejne okręgi sygnalizują odległość od urządzenia w milach nautycznych. Wzdłuż największego okręgu naniesiono oś określającą kurs w stopniach. Radar prezentuje następujące informacje o samolocie.
+Po lewej stronie znajduje się radar pokazujący położenie wykrytych statków powietrznych względem pozycji odbiornika. Kolejne okręgi sygnalizują odległość od urządzenia w milach nautycznych. Wzdłuż największego okręgu naniesiono oś określającą kurs w stopniach. Radar prezentuje następujące informacje o samolocie.
 \begin{itemize}
 \item Znacznik położenia.
 \item Adres ICAO pozwalający odnaleźć odpowiedni wiersz na liście.
@@ -1090,13 +1098,13 @@ W przypadku nie wykrycia urządzenia USB zostanie wyświetlone okienko ze stosow
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{images/warrning}
-    \caption{\textit{nformacja o braku urządzenia SDR}}
+    \caption{\textit{Informacja o braku urządzenia SDR}}
 \end{figure}
 \vskip 1cm
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{images/work}
-    \caption{\textit{Prezentacja Interfejsu użytkownika}}
+    \caption{\textit{Prezentacja interfejsu użytkownika}}
 \end{figure}
 \newpage
 
@@ -1134,11 +1142,11 @@ Poniżej zaprezentowano porównanie danych ze strony $www.flightradar24.com$ i p
     \caption{\textit{Porównanie danych zdekodowanych przez urządzenie i ze strony WWW}}
 \end{figure}
 
-Można zauważyć ze pozycja na mapie i radarze nieznacznie się różni. Wynika to z formy prezentowanych danych. Strono wykorzystuje odwzorowanie walcowe równokątne jako sposób przedstawiania globu w postaci płaszczyzny. Radar pokazuje pozycje statku jako współrzędne biegunowe.Zdekodowane dane są poprawne i zgadają się z prezentowanymi na stronie. Występują niewiele różnice pomiędzy położeniem, które wynikają z dokładnośco interpolacji położenia samolotu pomiędzy kolejnymi wiadomościami z pozycją. Ponadto urządzenie nie wykryło wszystkich statków powietrznych pokazanych na stronie.
+Można zauważyć ze pozycja na mapie i radarze nieznacznie się różni. Wynika to z formy prezentowanych danych. Strono wykorzystuje odwzorowanie walcowe równokątne jako sposób przedstawiania globu w postaci płaszczyzny. Radar pokazuje pozycje statku jako współrzędne biegunowe. Zdekodowane dane są poprawne i zgadają się z prezentowanymi na stronie. Występują niewielkie różnice pomiędzy położeniem, które wynikają z dokładności interpolacji położenia samolotu pomiędzy kolejnymi wiadomościami z pozycją. Ponadto urządzenie nie wykryło wszystkich statków powietrznych pokazanych na stronie.
 \\
 
 
-Wykonane PCB działało poprawnie z wszystkimi komponentami systemu. Udało się nawiązać komunikacje z tunerem DVB-T poprzez interfejs USB, a następnie wykryć i zdekodować przychodzące wiadomości ADS-B, których poprawonośc udało sie potwierdzić w innym źródle. Otrzymane dane zostały poprawnie zaprezentowane poprzez GUI.
+Wykonane PCB działało poprawnie z wszystkimi komponentami systemu. Udało się nawiązać komunikacje z tunerem DVB-T poprzez interfejs USB, a następnie wykryć i zdekodować przychodzące wiadomości ADS-B. Poprawność zdekodowanych informacji potwierdzono w innym źródle. GUI poprawnie zaprezentowało otrzymane dane.
 
 \addcontentsline{toc}{chapter}{Bibliografia} %utworzenie w spisie treści pozycji Bibliografia
 \bibliography{bibliografia} % wstawia bibliografię korzystając z pliku bibliografia.bib - dotyczy BibTeXa, jeżeli nie korzystamy z BibTeXa należy użyć otoczenia thebibliography
