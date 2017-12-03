@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  1 DEC 2017 01:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.7)  3 DEC 2017 04:44
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -587,7 +587,276 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box29
 \enitdp@description=\count109
 )
-\c@theorem=\count110
+(G:\Programs\MiKTeX\tex\latex\breqn\breqn.sty
+(G:\Programs\MiKTeX\tex\latex\l3kernel\expl3.sty
+Package: expl3 2017/11/14 L3 programming layer (loader) 
+
+(G:\Programs\MiKTeX\tex\latex\l3kernel\expl3-code.tex
+Package: expl3 2017/11/14 L3 programming layer (code)
+\c_max_int=\count110
+\l_tmpa_int=\count111
+\l_tmpb_int=\count112
+\g_tmpa_int=\count113
+\g_tmpb_int=\count114
+\g__intarray_font_int=\count115
+\g__prg_map_int=\count116
+\c_log_iow=\count117
+\l_iow_line_count_int=\count118
+\l__iow_line_target_int=\count119
+\l__iow_one_indent_int=\count120
+\l__iow_indent_int=\count121
+\c_zero_dim=\dimen141
+\c_max_dim=\dimen142
+\l_tmpa_dim=\dimen143
+\l_tmpb_dim=\dimen144
+\g_tmpa_dim=\dimen145
+\g_tmpb_dim=\dimen146
+\c_zero_skip=\skip54
+\c_max_skip=\skip55
+\l_tmpa_skip=\skip56
+\l_tmpb_skip=\skip57
+\g_tmpa_skip=\skip58
+\g_tmpb_skip=\skip59
+\c_zero_muskip=\muskip11
+\c_max_muskip=\muskip12
+\l_tmpa_muskip=\muskip13
+\l_tmpb_muskip=\muskip14
+\g_tmpa_muskip=\muskip15
+\g_tmpb_muskip=\muskip16
+\l_keys_choice_int=\count122
+\c__fp_leading_shift_int=\count123
+\c__fp_middle_shift_int=\count124
+\c__fp_trailing_shift_int=\count125
+\c__fp_big_leading_shift_int=\count126
+\c__fp_big_middle_shift_int=\count127
+\c__fp_big_trailing_shift_int=\count128
+\c__fp_Bigg_leading_shift_int=\count129
+\c__fp_Bigg_middle_shift_int=\count130
+\c__fp_Bigg_trailing_shift_int=\count131
+\c__fp_rand_size_int=\count132
+\c__fp_rand_four_int=\count133
+\c__fp_rand_eight_int=\count134
+\l__sort_length_int=\count135
+\l__sort_min_int=\count136
+\l__sort_top_int=\count137
+\l__sort_max_int=\count138
+\l__sort_true_max_int=\count139
+\l__sort_block_int=\count140
+\l__sort_begin_int=\count141
+\l__sort_end_int=\count142
+\l__sort_A_int=\count143
+\l__sort_B_int=\count144
+\l__sort_C_int=\count145
+\l__tl_build_start_index_int=\count146
+\l__tl_build_index_int=\count147
+\l__tl_analysis_normal_int=\count148
+\l__tl_analysis_index_int=\count149
+\l__tl_analysis_nesting_int=\count150
+\l__tl_analysis_type_int=\count151
+\l__regex_internal_a_int=\count152
+\l__regex_internal_b_int=\count153
+\l__regex_internal_c_int=\count154
+\l__regex_balance_int=\count155
+\l__regex_group_level_int=\count156
+\l__regex_mode_int=\count157
+\c__regex_cs_in_class_mode_int=\count158
+\c__regex_cs_mode_int=\count159
+\l__regex_catcodes_int=\count160
+\l__regex_default_catcodes_int=\count161
+\c__regex_catcode_D_int=\count162
+\c__regex_catcode_S_int=\count163
+\c__regex_catcode_L_int=\count164
+\c__regex_catcode_O_int=\count165
+\c__regex_catcode_A_int=\count166
+\c__regex_all_catcodes_int=\count167
+\l__regex_show_lines_int=\count168
+\l__regex_min_state_int=\count169
+\l__regex_max_state_int=\count170
+\l__regex_left_state_int=\count171
+\l__regex_right_state_int=\count172
+\l__regex_capturing_group_int=\count173
+\l__regex_min_pos_int=\count174
+\l__regex_max_pos_int=\count175
+\l__regex_curr_pos_int=\count176
+\l__regex_start_pos_int=\count177
+\l__regex_success_pos_int=\count178
+\l__regex_curr_char_int=\count179
+\l__regex_curr_catcode_int=\count180
+\l__regex_last_char_int=\count181
+\l__regex_case_changed_char_int=\count182
+\l__regex_curr_state_int=\count183
+\l__regex_step_int=\count184
+\l__regex_min_active_int=\count185
+\l__regex_max_active_int=\count186
+\l__regex_replacement_csnames_int=\count187
+\l__regex_match_count_int=\count188
+\l__regex_min_submatch_int=\count189
+\l__regex_submatch_int=\count190
+\l__regex_zeroth_submatch_int=\count191
+\g__debug_trace_regex_int=\count192
+\c_empty_box=\box30
+\l_tmpa_box=\box31
+\l_tmpb_box=\box32
+\g_tmpa_box=\box33
+\g_tmpb_box=\box34
+\l__box_top_dim=\dimen147
+\l__box_bottom_dim=\dimen148
+\l__box_left_dim=\dimen149
+\l__box_right_dim=\dimen150
+\l__box_top_new_dim=\dimen151
+\l__box_bottom_new_dim=\dimen152
+\l__box_left_new_dim=\dimen153
+\l__box_right_new_dim=\dimen154
+\l__box_internal_box=\box35
+\l__coffin_internal_box=\box36
+\l__coffin_internal_dim=\dimen155
+\l__coffin_offset_x_dim=\dimen156
+\l__coffin_offset_y_dim=\dimen157
+\l__coffin_x_dim=\dimen158
+\l__coffin_y_dim=\dimen159
+\l__coffin_x_prime_dim=\dimen160
+\l__coffin_y_prime_dim=\dimen161
+\c_empty_coffin=\box37
+\l__coffin_aligned_coffin=\box38
+\l__coffin_aligned_internal_coffin=\box39
+\l_tmpa_coffin=\box40
+\l_tmpb_coffin=\box41
+\l__coffin_display_coffin=\box42
+\l__coffin_display_coord_coffin=\box43
+\l__coffin_display_pole_coffin=\box44
+\l__coffin_display_offset_dim=\dimen162
+\l__coffin_display_x_dim=\dimen163
+\l__coffin_display_y_dim=\dimen164
+\l__coffin_bounding_shift_dim=\dimen165
+\l__coffin_left_corner_dim=\dimen166
+\l__coffin_right_corner_dim=\dimen167
+\l__coffin_bottom_corner_dim=\dimen168
+\l__coffin_top_corner_dim=\dimen169
+\l__coffin_scaled_total_height_dim=\dimen170
+\l__coffin_scaled_width_dim=\dimen171
+)
+(G:\Programs\MiKTeX\tex\latex\l3kernel\l3pdfmode.def
+File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count193
+\l__driver_tmp_box=\box45
+))
+Package: breqn 2017/01/27 v0.98e Breaking equations
+
+(G:\Programs\MiKTeX\tex\latex\breqn\flexisym.sty
+Package: flexisym 2017/01/27 v0.98e Make math characters macros
+LaTeX Info: Redefining \textprime on input line 300.
+LaTeX Info: Redefining \not on input line 358.
+
+(G:\Programs\MiKTeX\tex\latex\breqn\cmbase.sym
+File: cmbase.sym 2007/12/19 v0.92
+LaTeX Info: Redefining \hbar on input line 325.
+LaTeX Info: Redefining \surd on input line 327.
+LaTeX Info: Redefining \angle on input line 335.
+LaTeX Info: Redefining \neq on input line 336.
+LaTeX Info: Redefining \mapsto on input line 337.
+LaTeX Info: Redefining \cong on input line 338.
+LaTeX Info: Redefining \notin on input line 341.
+LaTeX Info: Redefining \rightleftharpoons on input line 342.
+LaTeX Info: Redefining \doteq on input line 343.
+LaTeX Info: Redefining \hookrightarrow on input line 344.
+LaTeX Info: Redefining \hookleftarrow on input line 345.
+LaTeX Info: Redefining \bowtie on input line 346.
+LaTeX Info: Redefining \models on input line 347.
+LaTeX Info: Redefining \Longrightarrow on input line 348.
+LaTeX Info: Redefining \longrightarrow on input line 349.
+LaTeX Info: Redefining \Longleftarrow on input line 350.
+LaTeX Info: Redefining \longleftarrow on input line 351.
+LaTeX Info: Redefining \longmapsto on input line 352.
+LaTeX Info: Redefining \longleftrightarrow on input line 353.
+LaTeX Info: Redefining \Longleftrightarrow on input line 354.
+LaTeX Info: Redefining \cdots on input line 358.
+LaTeX Info: Redefining \vdots on input line 361.
+LaTeX Info: Redefining \ddots on input line 366.
+)
+(G:\Programs\MiKTeX\tex\latex\breqn\mathstyle.sty
+Package: mathstyle 2017/01/27 0.98e Tracking mathstyle implicitly
+LaTeX Info: Redefining \displaystyle on input line 93.
+LaTeX Info: Redefining \textstyle on input line 95.
+LaTeX Info: Redefining \scriptstyle on input line 97.
+LaTeX Info: Redefining \scriptscriptstyle on input line 99.
+LaTeX Info: Redefining \genfrac on input line 145.
+))
+(G:\Programs\MiKTeX\tex\latex\tools\calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count194
+\calc@Bcount=\count195
+\calc@Adimen=\dimen172
+\calc@Bdimen=\dimen173
+\calc@Askip=\skip60
+\calc@Bskip=\skip61
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count196
+\calc@Cskip=\skip62
+)
+\inf@bad=\count197
+\maxint=\count198
+\listwidth=\dimen174
+\eqnumsep=\dimen175
+\eqmargin=\dimen176
+\eqlinespacing=\skip63
+\eqlineskip=\skip64
+\eqlineskiplimit=\dimen177
+\eqbinoffset=\muskip17
+\eqdelimoffset=\muskip18
+\eqindentstep=\dimen178
+\eqstyle=\toks25
+\eqbreakdepth=\count199
+\eqinterlinepenalty=\count266
+\intereqpenalty=\count267
+\intereqskip=\skip65
+\prerelpenalty=\count268
+\prebinoppenalty=\count269
+\Dmedmuskip=\muskip19
+\Dthickmuskip=\muskip20
+\eqleftskip=\skip66
+\eqrightskip=\skip67
+\eq@vspan=\skip68
+\eq@binoffset=\muskip21
+\EQ@box=\box46
+\EQ@copy=\box47
+\EQ@numbox=\box48
+\eq@wdNum=\dimen179
+\GRP@numbox=\box49
+\grp@wdNum=\dimen180
+\eq@lines=\count270
+\eq@curline=\count271
+\eq@badness=\count272
+\EQ@vims=\count273
+\eq@dp=\dimen181
+\eq@wdL=\dimen182
+\eq@wdT=\dimen183
+\eq@wdMin=\dimen184
+\grp@wdL=\dimen185
+\grp@wdR=\dimen186
+\grp@wdT=\dimen187
+\eq@wdRmax=\dimen188
+\eq@firstht=\dimen189
+\eq@wdCond=\dimen190
+\eq@indentstep=\dimen191
+\eq@linewidth=\dimen192
+\grp@linewidth=\dimen193
+\eq@hshift=\dimen194
+\eq@given@sidespace=\dimen195
+\mathindent=\dimen196
+\eq@final@linecount=\count274
+\eq@wdR=\dimen197
+\EQ@continue=\toks26
+\lr@level=\count275
+\GRP@queue=\toks27
+\GRP@box=\box50
+\GRP@wholebox=\box51
+\darraycolsep=\skip69
+\cur@row=\count276
+\cur@col=\count277
+\conditionsep=\skip70
+)
+\c@theorem=\count278
  (praca.aux
 
 LaTeX Warning: Label `tab:adsbFrame' multiply defined.
@@ -604,39 +873,36 @@ LaTeX Warning: Label `tab:adsb' multiply defined.
 
 LaTeX Warning: Label `tab:adsb' multiply defined.
 
-
-LaTeX Warning: Label `highSpeedDesign' multiply defined.
-
 )
 \openout1 = `praca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
  (G:\Programs\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count111
-\scratchdimen=\dimen141
-\scratchbox=\box30
-\nofMPsegments=\count112
-\nofMParguments=\count113
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count114
-\MPscratchDim=\dimen142
-\MPnumerator=\count115
-\makeMPintoPDFobject=\count116
-\everyMPtoPDFconversion=\toks26
+\scratchcounter=\count279
+\scratchdimen=\dimen198
+\scratchbox=\box52
+\nofMPsegments=\count280
+\nofMParguments=\count281
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count282
+\MPscratchDim=\dimen199
+\MPnumerator=\count283
+\makeMPintoPDFobject=\count284
+\everyMPtoPDFconversion=\toks29
 ) (G:\Programs\MiKTeX\tex\generic\oberdiek\pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -685,53 +951,53 @@ G,.JBIG2,.JB2,.eps]
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\@temphbadness=\count117
-\@tempvbadness=\count118
-\@temphfuzz=\skip54
-\@temptextwidth=\skip55
-\@temptextheight=\skip56
-\@temptopmargin=\skip57
-\@tempheadheight=\skip58
-\@tempheadsep=\skip59
-\@tempoddsidemargin=\skip60
-\@tempevensidemargin=\skip61
-LaTeX Font Info:    Try loading font information for OML+plm on input line 79.
+\@temphbadness=\count285
+\@tempvbadness=\count286
+\@temphfuzz=\skip71
+\@temptextwidth=\skip72
+\@temptextheight=\skip73
+\@temptopmargin=\skip74
+\@tempheadheight=\skip75
+\@tempheadsep=\skip76
+\@tempoddsidemargin=\skip77
+\@tempevensidemargin=\skip78
+LaTeX Font Info:    Try loading font information for OML+plm on input line 83.
 
 (G:\Programs\MiKTeX\tex\latex\polski\omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 79.
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 83.
 
 
 (G:\Programs\MiKTeX\tex\latex\polski\omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 79.
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 83.
 
 
 (G:\Programs\MiKTeX\tex\latex\polski\omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 79.
+(Font)              <12> on input line 83.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 79.
+(Font)              <8> on input line 83.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 79.
-LaTeX Font Info:    Try loading font information for U+msa on input line 79.
+(Font)              <6> on input line 83.
+LaTeX Font Info:    Try loading font information for U+msa on input line 83.
 
 (G:\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 79.
+LaTeX Font Info:    Try loading font information for U+msb on input line 83.
 
 (G:\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-\@tempheightkier=\skip62
-\@tempheighttkier=\skip63
-\@tempheightspec=\skip64
-\@tempheighttspec=\skip65
+\@tempheightkier=\skip79
+\@tempheighttkier=\skip80
+\@tempheightspec=\skip81
+\@tempheighttspec=\skip82
  [1
 Non-PDF special ignored!
 
@@ -748,7 +1014,7 @@ Non-PDF special ignored!
  [1]
 Rozdzia\PlPrIeC {\l } 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
 
  []
 
@@ -760,19 +1026,20 @@ File: images/bds.png Graphic file (type png)
 Package pdftex.def Info: images/bds.png used on input line 127.
 (pdftex.def)             Requested size: 455.24408pt x 337.26573pt.
 
-Overfull \hbox (12.00002pt too wide) in paragraph at lines 125--129
- [][] 
- []
-
 [3 <./images/bds.png>]
 Rozdzia\PlPrIeC {\l } 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 146.
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--142
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
 
 (G:\Programs\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
  [4
 
 ]
@@ -781,7 +1048,7 @@ Rozdzia\PlPrIeC {\l } 3.
 File: schematics/power.png Graphic file (type png)
 
 <use schematics/power.png>
-Package pdftex.def Info: schematics/power.png used on input line 172.
+Package pdftex.def Info: schematics/power.png used on input line 174.
 (pdftex.def)             Requested size: 455.24408pt x 240.2896pt.
  [5
 
@@ -789,7 +1056,7 @@ Package pdftex.def Info: schematics/power.png used on input line 172.
 <schematics/uC.png, id=38, 712.16063pt x 568.37344pt>
 File: schematics/uC.png Graphic file (type png)
  <use schematics/uC.png>
-Package pdftex.def Info: schematics/uC.png used on input line 180.
+Package pdftex.def Info: schematics/uC.png used on input line 182.
 (pdftex.def)             Requested size: 570.43561pt x 455.24408pt.
 
 [6 <./schematics/uC.png>]
@@ -797,21 +1064,21 @@ Package pdftex.def Info: schematics/uC.png used on input line 180.
 File: schematics/conn.png Graphic file (type png)
 
 <use schematics/conn.png>
-Package pdftex.def Info: schematics/conn.png used on input line 190.
+Package pdftex.def Info: schematics/conn.png used on input line 192.
 (pdftex.def)             Requested size: 455.24408pt x 242.73067pt.
 
 <schematics/display.png, id=43, 649.67719pt x 552.56438pt>
 File: schematics/display.png Graphic file (type png)
 
 <use schematics/display.png>
-Package pdftex.def Info: schematics/display.png used on input line 199.
+Package pdftex.def Info: schematics/display.png used on input line 201.
 (pdftex.def)             Requested size: 455.24408pt x 387.20557pt.
  [7 <./schematics/conn.png>]
 <schematics/sdram.png, id=47, 733.23938pt x 441.14813pt>
 File: schematics/sdram.png Graphic file (type png)
 
 <use schematics/sdram.png>
-Package pdftex.def Info: schematics/sdram.png used on input line 208.
+Package pdftex.def Info: schematics/sdram.png used on input line 210.
 (pdftex.def)             Requested size: 455.24408pt x 273.89943pt.
 
 
@@ -821,24 +1088,24 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: schematics/gps.png Graphic file (type png)
 
 <use schematics/gps.png>
-Package pdftex.def Info: schematics/gps.png used on input line 216.
+Package pdftex.def Info: schematics/gps.png used on input line 218.
 (pdftex.def)             Requested size: 455.24408pt x 153.19402pt.
  [8 <./schematics/display.png>] [9 <./schematics/sdram.png> <./schematics/gps.p
 ng>] [10]
 <plots/gpsZ0.png, id=65, 887.56593pt x 456.20438pt>
 File: plots/gpsZ0.png Graphic file (type png)
  <use plots/gpsZ0.png>
-Package pdftex.def Info: plots/gpsZ0.png used on input line 279.
+Package pdftex.def Info: plots/gpsZ0.png used on input line 281.
 (pdftex.def)             Requested size: 455.24408pt x 233.9907pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--301
+Underfull \hbox (badness 10000) in paragraph at lines 302--303
 
  []
 
 <pcb/gps.png, id=66, 929.72343pt x 423.08063pt>
 File: pcb/gps.png Graphic file (type png)
  <use pcb/gps.png>
-Package pdftex.def Info: pcb/gps.png used on input line 305.
+Package pdftex.def Info: pcb/gps.png used on input line 307.
 (pdftex.def)             Requested size: 426.79134pt x 194.21274pt.
 
 
@@ -848,7 +1115,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: plots/usbzD.png Graphic file (type png)
 
 <use plots/usbzD.png>
-Package pdftex.def Info: plots/usbzD.png used on input line 332.
+Package pdftex.def Info: plots/usbzD.png used on input line 334.
 (pdftex.def)             Requested size: 455.24408pt x 275.21977pt.
 
 
@@ -858,20 +1125,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: pcb/usb.png Graphic file (type png)
 
 <use pcb/usb.png>
-Package pdftex.def Info: pcb/usb.png used on input line 342.
+Package pdftex.def Info: pcb/usb.png used on input line 344.
 (pdftex.def)             Requested size: 227.62204pt x 152.54799pt.
- [13 <./plots/usbzD.png> <./pcb/usb.png>]
-<plots/timing.png, id=81, 651.18282pt x 118.19156pt>
+ [13 <./plots/usbzD.png> <./pcb/usb.png>] [14]
+<plots/timing.png, id=84, 651.18282pt x 118.19156pt>
 File: plots/timing.png Graphic file (type png)
  <use plots/timing.png>
-Package pdftex.def Info: plots/timing.png used on input line 382.
-(pdftex.def)             Requested size: 284.52756pt x 51.64375pt.
+Package pdftex.def Info: plots/timing.png used on input line 386.
+(pdftex.def)             Requested size: 256.0748pt x 46.47865pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 404--406
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
 
  []
 
@@ -879,19 +1142,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 404--406
 File: pcb/ltdc.png Graphic file (type png)
 
 <use pcb/ltdc.png>
-Package pdftex.def Info: pcb/ltdc.png used on input line 444.
-(pdftex.def)             Requested size: 455.24408pt x 408.3439pt.
+Package pdftex.def Info: pcb/ltdc.png used on input line 451.
+(pdftex.def)             Requested size: 369.88582pt x 331.77942pt.
  [16 <./pcb/ltdc.png>]
 <pcb/top.png, id=92, 487.06969pt x 588.69937pt>
 File: pcb/top.png Graphic file (type png)
  <use pcb/top.png>
-Package pdftex.def Info: pcb/top.png used on input line 456.
+Package pdftex.def Info: pcb/top.png used on input line 463.
 (pdftex.def)             Requested size: 455.24408pt x 550.23349pt.
 
 <pcb/gnd.png, id=93, 481.04718pt x 595.47469pt>
 File: pcb/gnd.png Graphic file (type png)
  <use pcb/gnd.png>
-Package pdftex.def Info: pcb/gnd.png used on input line 466.
+Package pdftex.def Info: pcb/gnd.png used on input line 473.
 (pdftex.def)             Requested size: 455.24408pt x 563.54431pt.
 
 
@@ -900,7 +1163,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <pcb/power.png, id=94, 478.78876pt x 595.47469pt>
 File: pcb/power.png Graphic file (type png)
  <use pcb/power.png>
-Package pdftex.def Info: pcb/power.png used on input line 478.
+Package pdftex.def Info: pcb/power.png used on input line 485.
 (pdftex.def)             Requested size: 455.24408pt x 566.19748pt.
 
 
@@ -909,7 +1172,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <pcb/bottom.png, id=95, 469.00218pt x 596.98032pt>
 File: pcb/bottom.png Graphic file (type png)
  <use pcb/bottom.png>
-Package pdftex.def Info: pcb/bottom.png used on input line 488.
+Package pdftex.def Info: pcb/bottom.png used on input line 495.
 (pdftex.def)             Requested size: 455.24408pt x 579.4619pt.
 
 
@@ -919,7 +1182,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: images/topPcb.jpg Graphic file (type jpg)
 
 <use images/topPcb.jpg>
-Package pdftex.def Info: images/topPcb.jpg used on input line 498.
+Package pdftex.def Info: images/topPcb.jpg used on input line 505.
 (pdftex.def)             Requested size: 455.24408pt x 535.35863pt.
 
 
@@ -930,7 +1193,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: images/bottomPcb.jpg Graphic file (type jpg)
 
 <use images/bottomPcb.jpg>
-Package pdftex.def Info: images/bottomPcb.jpg used on input line 509.
+Package pdftex.def Info: images/bottomPcb.jpg used on input line 516.
 (pdftex.def)             Requested size: 455.24408pt x 579.06316pt.
 
 
@@ -945,18 +1208,18 @@ Rozdzia\PlPrIeC {\l } 4.
 <plots/mvc.png, id=117, 623.32875pt x 158.5925pt>
 File: plots/mvc.png Graphic file (type png)
  <use plots/mvc.png>
-Package pdftex.def Info: plots/mvc.png used on input line 535.
+Package pdftex.def Info: plots/mvc.png used on input line 542.
 (pdftex.def)             Requested size: 455.24408pt x 115.82962pt.
 
 <plots/uml.png, id=119, 1136.245pt x 865.2325pt>
 File: plots/uml.png Graphic file (type png)
  <use plots/uml.png>
-Package pdftex.def Info: plots/uml.png used on input line 547.
+Package pdftex.def Info: plots/uml.png used on input line 554.
 (pdftex.def)             Requested size: 597.83789pt x 455.24408pt.
  [23
 
  <./plots/mvc.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 551--554
+Underfull \hbox (badness 10000) in paragraph at lines 558--561
 
  []
 
@@ -965,90 +1228,151 @@ Underfull \hbox (badness 10000) in paragraph at lines 551--554
 File: plots/modelTask.png Graphic file (type png)
 
 <use plots/modelTask.png>
-Package pdftex.def Info: plots/modelTask.png used on input line 637.
+Package pdftex.def Info: plots/modelTask.png used on input line 644.
 (pdftex.def)             Requested size: 113.52664pt x 448.38058pt.
 
 <plots/dataTask.png, id=137, 290.58563pt x 410.2828pt>
 File: plots/dataTask.png Graphic file (type png)
 
 <use plots/dataTask.png>
-Package pdftex.def Info: plots/dataTask.png used on input line 644.
+Package pdftex.def Info: plots/dataTask.png used on input line 651.
 (pdftex.def)             Requested size: 194.90155pt x 275.18855pt.
  [27 <./plots/modelTask.png> <./plots/dataTask.png>]
 <plots/usbTask.png, id=143, 196.735pt x 491.8375pt>
 File: plots/usbTask.png Graphic file (type png)
  <use plots/usbTask.png>
-Package pdftex.def Info: plots/usbTask.png used on input line 655.
+Package pdftex.def Info: plots/usbTask.png used on input line 662.
 (pdftex.def)             Requested size: 142.26378pt x 355.6537pt.
 
 <plots/guiTask.png, id=144, 256.96pt x 552.0625pt>
 File: plots/guiTask.png Graphic file (type png)
  <use plots/guiTask.png>
-Package pdftex.def Info: plots/guiTask.png used on input line 662.
+Package pdftex.def Info: plots/guiTask.png used on input line 669.
 (pdftex.def)             Requested size: 184.9429pt x 397.34149pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 673--676
+Underfull \hbox (badness 10000) in paragraph at lines 680--683
 
  []
 
 [28 <./plots/usbTask.png> <./plots/guiTask.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 679--683
+Underfull \hbox (badness 10000) in paragraph at lines 686--690
 
  []
 
 [29]
-Overfull \hbox (5.40645pt too wide) in paragraph at lines 761--769
+Overfull \hbox (5.40645pt too wide) in paragraph at lines 768--776
  [] 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 807--810
+Underfull \hbox (badness 10000) in paragraph at lines 814--817
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--833
+Underfull \hbox (badness 10000) in paragraph at lines 838--840
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 850--852
+Underfull \hbox (badness 10000) in paragraph at lines 857--859
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 868--870
+Underfull \hbox (badness 10000) in paragraph at lines 875--877
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 872--874
+Underfull \hbox (badness 10000) in paragraph at lines 879--881
 
  []
 
-[32] [33]
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 982--984
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 989--992
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 998--1000
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 1049--1051
+
+ []
+
+[34]
 Rozdzia\PlPrIeC {\l } 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 979--981
+Underfull \hbox (badness 10000) in paragraph at lines 1074--1076
 
  []
 
-<images/GUI.jpg, id=167, 3131.7pt x 4175.6pt>
-File: images/GUI.jpg Graphic file (type jpg)
- <use images/GUI.jpg>
-Package pdftex.def Info: images/GUI.jpg used on input line 987.
-(pdftex.def)             Requested size: 341.42978pt x 455.24408pt.
+[35
 
-Underfull \vbox (badness 1975) has occurred while \output is active []
+] <images/warrning.png, id=174, 4103.33pt x 2304.61pt>
+File: images/warrning.png Graphic file (type png)
 
- [34
+<use images/warrning.png>
+Package pdftex.def Info: images/warrning.png used on input line 1092.
+(pdftex.def)             Requested size: 455.24408pt x 255.65297pt.
+ <images/work.png, id=175, 4067.195pt x 2304.61pt>
+File: images/work.png Graphic file (type png)
 
- <./images/GUI.jpg>] [35]
+<use images/work.png>
+Package pdftex.def Info: images/work.png used on input line 1098.
+(pdftex.def)             Requested size: 455.24408pt x 257.93874pt.
+ [36 <./images/warrning.png> <./images/work.png>]
 Rozdzia\PlPrIeC {\l } 6.
-No file praca.bbl.
-[36
 
-] [37
+Underfull \hbox (badness 10000) in paragraph at lines 1104--1106
+
+ []
+
+<images/deviceTop2.jpg, id=181, 3192.92876pt x 2349.77875pt>
+File: images/deviceTop2.jpg Graphic file (type jpg)
+
+<use images/deviceTop2.jpg>
+Package pdftex.def Info: images/deviceTop2.jpg used on input line 1113.
+(pdftex.def)             Requested size: 455.24408pt x 335.02623pt.
+ [37
+
+ <./images/deviceTop2.jpg>]
+<images/deviceBottom.jpg, id=185, 4175.6pt x 3131.7pt>
+File: images/deviceBottom.jpg Graphic file (type jpg)
+
+<use images/deviceBottom.jpg>
+Package pdftex.def Info: images/deviceBottom.jpg used on input line 1119.
+(pdftex.def)             Requested size: 455.24408pt x 341.42978pt.
+
+<images/radarTest2.png, id=186, 1951.29pt x 1037.8775pt>
+File: images/radarTest2.png Graphic file (type png)
+
+<use images/radarTest2.png>
+Package pdftex.def Info: images/radarTest2.png used on input line 1127.
+(pdftex.def)             Requested size: 455.24408pt x 242.12753pt.
+ [38 <./images/deviceBottom.jpg> <./images/radarTest2.png>] <images/dataTest.pn
+g, id=191, 1158.3275pt x 1228.59pt>
+File: images/dataTest.png Graphic file (type png)
+
+<use images/dataTest.png>
+Package pdftex.def Info: images/dataTest.png used on input line 1133.
+(pdftex.def)             Requested size: 455.24408pt x 482.86003pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1137--1139
+
+ []
+
+No file praca.bbl.
+[39 <./images/dataTest.png>] [40
 
 ] (praca.aux)
 
@@ -1056,13 +1380,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4890 strings out of 493323
- 67908 string characters out of 3142971
- 141357 words of memory out of 3000000
- 8278 multiletter control sequences out of 15000+200000
- 23532 words of font info for 54 fonts, out of 3000000 for 9000
+ 13384 strings out of 493323
+ 236095 string characters out of 3142971
+ 280260 words of memory out of 3000000
+ 16743 multiletter control sequences out of 15000+200000
+ 547848 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,15n,40p,1334b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,15n,40p,10358b,390s stack positions out of 5000i,500n,10000p,200000b,50000s
 {G:/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc} <C:\Users\Karol\AppData\Loca
 l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk>{G:/Programs/MiKTeX
 /fonts/enc/dvips/pl/plmi.enc}{G:/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}{G
@@ -1087,9 +1411,9 @@ ams/MiKTeX/fonts/type1/public/pl/plmi8.pfb><G:/Programs/MiKTeX/fonts/type1/publ
 ic/pl/plr12.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><G:/Programs
 /MiKTeX/fonts/type1/public/pl/plr8.pfb><G:/Programs/MiKTeX/fonts/type1/public/p
 l/plsy10.pfb><G:/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
-Output written on praca.pdf (39 pages, 9131807 bytes).
+Output written on praca.pdf (42 pages, 56373092 bytes).
 PDF statistics:
- 763 PDF objects out of 1000 (max. 8388607)
+ 790 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

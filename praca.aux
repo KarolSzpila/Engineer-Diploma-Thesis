@@ -5,7 +5,7 @@
 \@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces \textit  { Rodzaje pakiet\IeC {\'o}w Mode-S}\relax }}{2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{tab:adsb}{{1.1}{2}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.2}{\ignorespaces \textit  { BDS dla wiadomo\IeC {\'s}ci DF20 i DF21}\relax }}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces \textit  { BDS dla wiadomo\IeC {\'s}ci DF20 i DF21  http://www.eurocontrol.int/articles/mode-s-operational-overview}\relax }}{3}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2} Cele i za\IeC {\l }o\IeC {\.z}enia projektowe }{4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -15,11 +15,12 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1} Schemat Urz\IeC {\k a}dzenia}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textit  {Schemat cz\IeC {\k e}\IeC {\'s}ci zasilania PCB}\relax }}{5}}
+\citation{usbSpec}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \textit  {Schemat pod\IeC {\l }\IeC {\k a}czenia mikrokontrolera STM32F767ZIT6}\relax }}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces \textit  {Schemat pod\IeC {\l }\IeC {\k a}czenia zewn\IeC {\k e}trznych interfejs\IeC {\'o}w}\relax }}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \textit  { Schemat pod\IeC {\l }\IeC {\k a}czenia wy\IeC {\'s}wietlacza}\relax }}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces \textit  {Schemat pod\IeC {\l }\IeC {\k a}czenia uk\IeC {\l }adu SDRAM}\relax }}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit  { Schemat pod\IeC {\l }\IeC {\k a}czenia modu\IeC {\l }u GPS}\relax }}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit  {Schemat pod\IeC {\l }\IeC {\k a}czenia modu\IeC {\l }u GPS}\relax }}{9}}
 \citation{highSpeedDesign}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2} Wykonanie PCB }{10}}
 \newlabel{pcbSection}{{3.2}{10}}
@@ -31,7 +32,7 @@
 \newlabel{eq:gammaGPS}{{3.2}{11}}
 \citation{highSpeedDesign}
 \citation{usbSpec}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces \textit  {Projekt PCB dla uk\IeC {\l }adu GPS}\relax }}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces \textit  {Projekt PCB dla modu\IeC {\l }u GPS}\relax }}{12}}
 \newlabel{eq:usb_zd}{{3.4}{12}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces \textit  {Impedancja r\IeC {\'o}\IeC {\.z}nicowa w zale\IeC {\.z}no\IeC {\'s}ci od szeroko\IeC {\'s}ci \IeC {\'s}cie\IeC {\.z}ki}\relax }}{13}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces \textit  {Projekt PCB dla interfejsu USB}\relax }}{13}}
@@ -56,10 +57,11 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Wzorzec projektowy MVC}{23}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \textit  {Diagram interakcji pomi\IeC {\k e}dzy komponentami MVC}\relax }}{23}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Model UML}{24}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \textit  {Model klas UML}\relax }}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \textit  {Diagram klas UML}\relax }}{24}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Procesy w systemie operacyjnym}{26}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Schemat blokowy zadania FlightControlerTask\relax }}{27}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Schemat blokowy zadania RTLSDRDataAquisitionTask\relax }}{27}}
+\citation{digit}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Schemat blokowy zadania USBMonitorTask\relax }}{28}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Schemat blokowy zadania GUITask\relax }}{28}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Wykrywanie i dekodowanie wiadomo\IeC {\'s}ci ADS-B}{28}}
@@ -68,23 +70,31 @@
 \newlabel{tab:adsbFrame}{{4.1}{29}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces \textit  { Struktura wiadomo\IeC {\'s}ci ADS-B}\relax }}{29}}
 \newlabel{tab:adsbFrame}{{4.2}{29}}
-\newlabel{tab:adsb}{{\caption@xref {tab:adsb}{ on input line 745}}{30}}
+\newlabel{tab:adsb}{{\caption@xref {tab:adsb}{ on input line 752}}{30}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces \textit  { Struktura pakietu ADS-B typu 1-4}\relax }}{30}}
 \newlabel{tab:adsbFrame}{{4.3}{30}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces \textit  { Zawarto\IeC {\'s}\IeC {\'c} wiadomo\IeC {\'s}ci ADS-B w zale\IeC {\.z}no\IeC {\'s}ci od typu}\relax }}{30}}
 \newlabel{tab:adsb}{{4.4}{30}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces \textit  { Zawarto\IeC {\'s}\IeC {\'c} wiadomo\IeC {\'s}ci ADS-B z pr\IeC {\k e}dko\IeC {\'s}ci\IeC {\k a} w zale\IeC {\.z}no\IeC {\'s}ci od podtypu.}\relax }}{32}}
 \newlabel{tab:adsb}{{4.5}{32}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{34}}
+\citation{posCalc}
+\newlabel{eq:dystans}{{4.18}{33}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{35}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces \textit  {Wygl\IeC {\k a}d interfejsu u\IeC {\.z}ytkownika}\relax }}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces \textit  {nformacja o braku urz\IeC {\k a}dzenia SDR}\relax }}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces \textit  {Prezentacja Interfejsu u\IeC {\.z}ytkownika}\relax }}{36}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6} Podsumowanie }{37}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces \textit  {Zdj\IeC {\k e}cie gotowego urz\IeC {\k a}dzenia}\relax }}{37}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces \textit  {Zdj\IeC {\k e}cie ty\IeC {\l }u urz\IeC {\k a}dzenia}\relax }}{38}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces \textit  {Por\IeC {\'o}wnanie pozycji samolot\IeC {\'o}w na radzrze i mapie}\relax }}{38}}
 \bibdata{bibliografia}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6} Podsumowanie }{36}}
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{Bibliografia}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces \textit  {Por\IeC {\'o}wnanie danych zdekodowanych przez urz\IeC {\k a}dzenie i ze strony WWW}\relax }}{39}}
+\@writefile{toc}{\contentsline {chapter}{Bibliografia}{39}}
 \bibcite{highSpeedDesign}{1}
-\bibcite{highSpeedDesign}{2}
+\bibcite{digit}{2}
 \bibcite{usbSpec}{3}
 \bibcite{adsbDecoding}{4}
+\bibcite{posCalc}{5}

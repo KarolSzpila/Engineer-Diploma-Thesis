@@ -9,6 +9,6 @@
 \contentsline {section}{\numberline {4.2}Model UML}{24}
 \contentsline {section}{\numberline {4.3}Procesy w systemie operacyjnym}{26}
 \contentsline {section}{\numberline {4.4}Wykrywanie i dekodowanie wiadomo\IeC {\'s}ci ADS-B}{28}
-\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{34}
-\contentsline {chapter}{\numberline {6} Podsumowanie }{35}
-\contentsline {chapter}{Bibliografia}{35}
+\contentsline {chapter}{\numberline {5}Interfejs u\IeC {\.z}ytkownika}{35}
+\contentsline {chapter}{\numberline {6} Podsumowanie }{37}
+\contentsline {chapter}{Bibliografia}{39}
